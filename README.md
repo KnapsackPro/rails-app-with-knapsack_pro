@@ -61,3 +61,14 @@ You can use below command on CI to run tests:
     $ KNAPSACK_PRO_CI_NODE_TOTAL=2 KNAPSACK_PRO_CI_NODE_INDEX=1 bundle exec rake knapsack_pro:minitest
 
 See [circle.yml](circle.yml) to see how we set up CircleCI.
+
+
+# Development of this project
+
+In `bin` directory are files:
+
+* `bin/knapsack_pro_rspec`
+* `bin/knapsack_pro_minitest`
+* `bin/knapsack_pro_cucumber`
+
+They exist for test reason when you want to run this project on local machine. In that case the `KNAPSACK_PRO_ENDPOINT` is pointed to staging which is reserved only for Knapsack Pro developers.
