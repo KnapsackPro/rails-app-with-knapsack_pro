@@ -3,6 +3,7 @@ machine:
     version: 2.2.3
   environment:
     KNAPSACK_PRO_REPO_PATH: ~/gems/knapsack_pro-ruby
+    KNAPSACK_PRO_ENDPOINT: http://api-staging.knapsackpro.com
 dependencies:
   pre:
     - mkdir ~/gems
