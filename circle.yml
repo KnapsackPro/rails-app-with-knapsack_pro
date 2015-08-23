@@ -1,24 +1,21 @@
 machine:
   ruby:
-    version: 2.2.2
+    version: 2.2.3
   environment:
-    KNAPSACK_REPO_PATH: ~/gems/knapsack
+    KNAPSACK_PRO_REPO_PATH: ~/gems/knapsack_pro-ruby
 dependencies:
   pre:
     - mkdir ~/gems
-    - cd ~/gems && git clone -b $CIRCLE_BRANCH --single-branch git@github.com:ArturT/knapsack.git
-    - cd ~/gems/knapsack && git branch
-    - cd ~/gems/knapsack && git log -n 1
+    - cd ~/gems && git clone -b $CIRCLE_BRANCH --single-branch git@github.com:KnapsackPro/knapsack_pro-ruby.git
+    - cd ~/gems/knapsack_pro-ruby && git branch
+    - cd ~/gems/knapsack_pro-ruby && git log -n 1
 test:
   override:
-    #- KNAPSACK_GENERATE_REPORT=true bundle exec rspec spec
-    - bundle exec rake knapsack:rspec:
+    - bundle exec rake knapsack_pro:rspec:
         parallel: true
 
-    #- KNAPSACK_GENERATE_REPORT=true bundle exec cucumber features
-    - bundle exec rake knapsack:cucumber:
+    - bundle exec rake knapsack_pro:cucumber:
         parallel: true
 
-    #- KNAPSACK_GENERATE_REPORT=true bundle exec rake test
-    - bundle exec rake knapsack:minitest[--verbose]:
+    - bundle exec rake knapsack_pro:minitest[--verbose]:
         parallel: true
