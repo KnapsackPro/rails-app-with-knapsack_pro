@@ -3,6 +3,8 @@ machine:
     version: 2.2.3
   environment:
     KNAPSACK_PRO_REPO_PATH: ~/gems/knapsack_pro-ruby
+    # In production you should use endpoint http://api.knapsackpro.com
+    # Below endpoint is just for internal tests by KnapsackPro developers
     KNAPSACK_PRO_ENDPOINT: http://api-staging.knapsackpro.com
 dependencies:
   pre:
