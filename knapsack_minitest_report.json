@@ -1,8 +1,0 @@
-{
-  "test/minitest/meme_spec_test.rb": 9.441375732421875e-05,
-  "test/controllers/articles_controller_test.rb": 0.3529675006866455,
-  "test/models/article_test.rb": 2.8133392333984375e-05,
-  "test/minitest_duplicated/meme_spec_test.rb": 0.00013327598571777344,
-  "test/minitest_duplicated/meme_unit_test.rb": 0.00031304359436035156,
-  "test/controllers/welcome_controller_test.rb": 0.010305166244506836
-}
