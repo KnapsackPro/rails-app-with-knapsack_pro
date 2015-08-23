@@ -1,5 +1,5 @@
 #!/bin/bash
 
 KNAPSACK_PRO_ENDPOINT=http://api.knapsackpro.dev:3000 \
-  KNAPSACK_PRO_TEST_SUITE_TOKEN=cucumber_test_suite_token \
+  KNAPSACK_PRO_TEST_SUITE_TOKEN_CUCUMBER=cucumber-token \
   bundle exec rake knapsack_pro:cucumber
