@@ -6,13 +6,6 @@ require 'minitest/spec'
 require 'knapsack_pro'
 
 # CUSTOM_CONFIG_GOES_HERE
-KnapsackPro::Client::Connection.credentials.set = {
-  # token for minitest test suite
-  test_suite_token: 'abc',
-
-  # KNAPSACK_PRO_ENDPOINT is set in circle.yml so we use different endpoint when running tests on CI server
-  endpoint: ENV['KNAPSACK_PRO_ENDPOINT'] || 'http://api.knapsackpro.dev:3000'
-}
 
 knapsack_pro_adapter = KnapsackPro::Adapters::MinitestAdapter.bind
 knapsack_pro_adapter.set_test_helper_path(__FILE__)
