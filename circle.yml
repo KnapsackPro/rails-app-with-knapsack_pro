@@ -3,9 +3,12 @@ machine:
     version: 2.2.3
   environment:
     KNAPSACK_PRO_REPO_PATH: ~/gems/knapsack_pro-ruby
+
     # In production you should use endpoint http://api.knapsackpro.com
+    # which is default so it means you don't need to set KNAPSACK_PRO_ENDPOINT
     # Below endpoint is just for internal tests by KnapsackPro developers.
     KNAPSACK_PRO_ENDPOINT: http://api-staging.knapsackpro.com
+
     # Tokens are set in CircleCI settings so you can't read them from this file.
     # KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC: rspec-token
     # KNAPSACK_PRO_TEST_SUITE_TOKEN_CUCUMBER: cucumber-token
