@@ -18,7 +18,7 @@ dependencies:
     - mkdir ~/gems
     - cd ~/gems && git clone -b $CIRCLE_BRANCH --single-branch git@github.com:KnapsackPro/knapsack_pro-ruby.git
     - cd ~/gems/knapsack_pro-ruby && git branch
-    - cd ~/gems/knapsack_pro-ruby && git log -n 1
+    - cd ~/gems/knapsack_pro-ruby && git log -n 1 | more
 test:
   override:
     - bundle exec rake knapsack_pro:rspec:
