@@ -1,6 +1,10 @@
 PATH
   remote: ~/Documents/github/knapsack-pro/knapsack_pro-ruby
   specs:
+    knapsack_pro (0.0.1)
+      activesupport (>= 3.2.8)
+      rake
+      timecop (>= 0.1.0)
 
 GEM
   remote: https://rubygems.org/
@@ -173,6 +177,7 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (2.0.1)
+    timecop (0.8.0)
     turbolinks (2.5.3)
       coffee-rails
     tzinfo (1.2.2)
