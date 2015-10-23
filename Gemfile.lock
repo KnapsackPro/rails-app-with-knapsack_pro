@@ -1,9 +1,6 @@
 PATH
   remote: ~/Documents/github/knapsack-pro/knapsack_pro-ruby
   specs:
-    knapsack_pro (0.0.1)
-      activesupport (~> 4.2)
-      rake
 
 GEM
   remote: https://rubygems.org/
