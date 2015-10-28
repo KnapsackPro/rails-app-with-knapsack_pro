@@ -21,7 +21,7 @@ global:
 before_install:
   - "echo 'gem: --no-ri --no-rdoc' > ~/.gemrc"
   - mkdir ~/gems
-  - cd ~/gems && git clone -b $TRAVIS_BRANCH --single-branch git@github.com:KnapsackPro/knapsack_pro-ruby.git
+  - cd ~/gems && git clone -b $TRAVIS_BRANCH --single-branch https://github.com/KnapsackPro/knapsack_pro-ruby.git
   - cd ~/gems/knapsack_pro-ruby && git branch
   - cd ~/gems/knapsack_pro-ruby && git log -n 1 | more
 script:
