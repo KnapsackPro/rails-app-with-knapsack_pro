@@ -27,8 +27,8 @@ before_install:
 install:
   - bundle install --jobs=3 --retry=3
 script:
-    - bundle exec rake knapsack_pro:rspec
-    - bundle exec rake knapsack_pro:cucumber
-    - bundle exec rake knapsack_pro:minitest[--verbose]
+  - bundle exec rake knapsack_pro:rspec
+  - bundle exec rake knapsack_pro:cucumber
+  - bundle exec rake knapsack_pro:minitest[--verbose]
 notifications:
   email: false
