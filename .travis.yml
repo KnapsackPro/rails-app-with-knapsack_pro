@@ -5,8 +5,8 @@ rvm:
   - 2.0.0
   - 2.1.5
   - 2.2.3
-global:
-  env:
+env:
+  global:
     KNAPSACK_PRO_REPO_PATH: ~/gems/knapsack_pro-ruby
 
     # In production you should use endpoint http://api.knapsackpro.com
