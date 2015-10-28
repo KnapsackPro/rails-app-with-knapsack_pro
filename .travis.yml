@@ -18,6 +18,8 @@ env:
     # KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC: rspec-token
     # KNAPSACK_PRO_TEST_SUITE_TOKEN_CUCUMBER: cucumber-token
     # KNAPSACK_PRO_TEST_SUITE_TOKEN_MINITEST: minitest-token
+
+    KNAPSACK_PRO_REPOSITORY_ADAPTER: git
 before_install:
   - "echo 'gem: --no-ri --no-rdoc' > ~/.gemrc"
   - mkdir ~/gems
