@@ -1,0 +1,32 @@
+---
+sudo: false
+language: ruby
+rvm:
+  - 2.0.0
+  - 2.1.5
+  - 2.2.3
+global:
+  env:
+    KNAPSACK_PRO_REPO_PATH: ~/gems/knapsack_pro-ruby
+
+    # In production you should use endpoint http://api.knapsackpro.com
+    # which is default so it means you don't need to set KNAPSACK_PRO_ENDPOINT
+    # Below endpoint is just for internal tests by KnapsackPro developers.
+    KNAPSACK_PRO_ENDPOINT: http://api-staging.knapsackpro.com
+
+    # Tokens are set in Travis CI settings so you can't read them from this file.
+    # KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC: rspec-token
+    # KNAPSACK_PRO_TEST_SUITE_TOKEN_CUCUMBER: cucumber-token
+    # KNAPSACK_PRO_TEST_SUITE_TOKEN_MINITEST: minitest-token
+before_install:
+  - "echo 'gem: --no-ri --no-rdoc' > ~/.gemrc"
+  - mkdir ~/gems
+  - cd ~/gems && git clone -b $TRAVIS_BRANCH --single-branch git@github.com:KnapsackPro/knapsack_pro-ruby.git
+  - cd ~/gems/knapsack_pro-ruby && git branch
+  - cd ~/gems/knapsack_pro-ruby && git log -n 1 | more
+script:
+    - bundle exec rake knapsack_pro:rspec
+    - bundle exec rake knapsack_pro:cucumber
+    - bundle exec rake knapsack_pro:minitest[--verbose]
+notifications:
+  email: false
