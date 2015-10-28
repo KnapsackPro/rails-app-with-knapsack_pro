@@ -1,6 +1,7 @@
 # Rails app with knapsack_pro gem
 
 [![Circle CI](https://circleci.com/gh/KnapsackPro/rails-app-with-knapsack_pro.svg)](https://circleci.com/gh/KnapsackPro/rails-app-with-knapsack_pro)
+[![Build Status](https://travis-ci.org/KnapsackPro/rails-app-with-knapsack_pro.svg)](https://travis-ci.org/KnapsackPro/rails-app-with-knapsack_pro)
 
 This is example Ruby on Rails app with knapsack_pro gem. Knapsack Pro splits tests across CI nodes and makes sure that tests will run comparable time on each node.
 
