@@ -24,6 +24,8 @@ before_install:
   - cd ~/gems && git clone -b $TRAVIS_BRANCH --single-branch https://github.com/KnapsackPro/knapsack_pro-ruby.git
   - cd ~/gems/knapsack_pro-ruby && git branch
   - cd ~/gems/knapsack_pro-ruby && git log -n 1 | more
+install:
+  - bundle install
 script:
     - bundle exec rake knapsack_pro:rspec
     - bundle exec rake knapsack_pro:cucumber
