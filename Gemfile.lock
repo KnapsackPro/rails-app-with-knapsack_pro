@@ -1,7 +1,7 @@
 PATH
   remote: ~/Documents/github/knapsack-pro/knapsack_pro-ruby
   specs:
-    knapsack_pro (0.1.1)
+    knapsack_pro (0.3.0)
       activesupport (>= 3.2.8)
       rake
       timecop (>= 0.1.0)
