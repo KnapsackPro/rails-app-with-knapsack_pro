@@ -2,6 +2,9 @@ machine:
   ruby:
     version: 2.2.3
   environment:
+    RAILS_ENV: test
+    RACK_ENV: test
+
     KNAPSACK_PRO_REPO_PATH: ~/gems/knapsack_pro-ruby
 
     # In production you should use endpoint http://api.knapsackpro.com
