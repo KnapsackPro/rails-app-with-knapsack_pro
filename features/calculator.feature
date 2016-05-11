@@ -1,5 +1,6 @@
 Feature: Tests for calculator
 
+  @Test
   Scenario: Adding
     Given I visit calculator
     When there are 12 cucumbers
