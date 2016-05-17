@@ -27,6 +27,9 @@ test:
     - bundle exec rake knapsack_pro:rspec:
         parallel: true
 
+    - bundle exec rake knapsack_pro:cucumber:
+        parallel: true
+
     - bundle exec rake "knapsack_pro:cucumber[--tag @Test]":
         parallel: true
 
