@@ -16,6 +16,7 @@ machine:
     # KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC: rspec-token
     # KNAPSACK_PRO_TEST_SUITE_TOKEN_CUCUMBER: cucumber-token
     # KNAPSACK_PRO_TEST_SUITE_TOKEN_MINITEST: minitest-token
+    # KNAPSACK_PRO_TEST_SUITE_TOKEN_SPINACH: spinach-token
 dependencies:
   pre:
     - mkdir ~/gems
@@ -34,4 +35,7 @@ test:
         parallel: true
 
     - bundle exec rake knapsack_pro:minitest[--verbose]:
+        parallel: true
+
+    - KNAPSACK_PRO_TEST_FILE_PATTERN="spinach_features/**{,/*/**}/*.feature" bundle exec rake "knapsack_pro:spinach[-f spinach_features]":
         parallel: true

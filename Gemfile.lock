@@ -64,6 +64,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.10.0)
+    colorize (0.7.7)
     concurrent-ruby (1.0.1)
     cucumber (2.3.3)
       builder (>= 2.1.2)
@@ -88,6 +89,7 @@ GEM
     erubis (2.7.0)
     execjs (2.6.0)
     gherkin (3.2.0)
+    gherkin-ruby (0.3.2)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     i18n (0.7.0)
@@ -175,6 +177,10 @@ GEM
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
     slop (3.6.0)
+    spinach (0.8.10)
+      colorize
+      gherkin-ruby (>= 0.3.2)
+      json
     spring (1.7.1)
     sprockets (3.6.0)
       concurrent-ruby (~> 1.0)
@@ -218,6 +224,7 @@ DEPENDENCIES
   rspec-rails
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
+  spinach
   spring
   sqlite3
   turbolinks
