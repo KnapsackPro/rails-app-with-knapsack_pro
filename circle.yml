@@ -39,3 +39,13 @@ test:
 
     - KNAPSACK_PRO_TEST_FILE_PATTERN="spinach_features/**{,/*/**}/*.feature" bundle exec rake "knapsack_pro:spinach[-f spinach_features]":
         parallel: true
+
+    # Check if https endpoint is working
+    - KNAPSACK_PRO_ENDPOINT=https://api-staging.knapsackpro.com bundle exec rake knapsack_pro:rspec:
+        parallel: true
+
+    - KNAPSACK_PRO_ENDPOINT=https://api-staging.knapsackpro.com bundle exec rake knapsack_pro:cucumber:
+        parallel: true
+
+    - KNAPSACK_PRO_ENDPOINT=https://api-staging.knapsackpro.com bundle exec rake knapsack_pro:minitest[--verbose]:
+        parallel: true
