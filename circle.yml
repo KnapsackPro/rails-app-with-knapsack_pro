@@ -25,7 +25,7 @@ dependencies:
     - cd ~/gems/knapsack_pro-ruby && git log -n 1 | more
 test:
   override:
-    - bundle exec rake knapsack_pro:rspec:
+    - KNAPSACK_PRO_FIXED_TEST_SUITE_SPLIT=false bundle exec rake knapsack_pro:rspec:
         parallel: true
 
     - bundle exec rake knapsack_pro:cucumber:
@@ -41,7 +41,7 @@ test:
         parallel: true
 
     # Check if https endpoint is working
-    - KNAPSACK_PRO_ENDPOINT=https://api-staging.knapsackpro.com bundle exec rake knapsack_pro:rspec:
+    - KNAPSACK_PRO_FIXED_TEST_SUITE_SPLIT=false KNAPSACK_PRO_ENDPOINT=https://api-staging.knapsackpro.com bundle exec rake knapsack_pro:rspec:
         parallel: true
 
     - KNAPSACK_PRO_ENDPOINT=https://api-staging.knapsackpro.com bundle exec rake knapsack_pro:cucumber:
