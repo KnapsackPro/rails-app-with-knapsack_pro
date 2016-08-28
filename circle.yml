@@ -49,3 +49,8 @@ test:
 
     - KNAPSACK_PRO_ENDPOINT=https://api-staging.knapsackpro.com bundle exec rake knapsack_pro:minitest[--verbose]:
         parallel: true
+
+    # Example of encrypted test files names
+    # KNAPSACK_PRO_SALT is set in CircleCI settings
+    - KNAPSACK_PRO_TEST_FILES_ENCRYPTED=true KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=$KNAPSACK_PRO_FOR_ENCRYPTED_TEST_SUITE_TOKEN_RSPEC bundle exec rake knapsack_pro:rspec:
+        parallel: true
