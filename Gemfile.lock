@@ -1,9 +1,10 @@
 PATH
   remote: ~/Documents/github/knapsack-pro/knapsack_pro-ruby
   specs:
-    knapsack_pro (0.12.0)
+    knapsack_pro (0.13.0)
       rake
       timecop (>= 0.1.0)
+      tty-prompt (~> 0.7)
 
 GEM
   remote: https://rubygems.org/
@@ -86,6 +87,7 @@ GEM
     database_cleaner (1.5.3)
     debug_inspector (0.0.2)
     diff-lcs (1.2.5)
+    equatable (0.5.0)
     erubis (2.7.0)
     execjs (2.6.0)
     gherkin (3.2.0)
@@ -113,8 +115,12 @@ GEM
     minitest (5.8.4)
     multi_json (1.11.2)
     multi_test (0.1.2)
+    necromancer (0.3.0)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
+    pastel (0.6.1)
+      equatable (~> 0.5.0)
+      tty-color (~> 0.3.0)
     pry (0.10.3)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -194,6 +200,13 @@ GEM
     thread_safe (0.3.5)
     tilt (2.0.2)
     timecop (0.8.1)
+    tty-color (0.3.0)
+    tty-cursor (0.3.0)
+    tty-prompt (0.7.1)
+      necromancer (~> 0.3.0)
+      pastel (~> 0.6.0)
+      tty-cursor (~> 0.3.0)
+      wisper (~> 1.6.1)
     turbolinks (2.5.3)
       coffee-rails
     tzinfo (1.2.2)
@@ -205,6 +218,7 @@ GEM
       binding_of_caller (>= 0.7.2)
       railties (>= 4.0)
       sprockets-rails (>= 2.0, < 4.0)
+    wisper (1.6.1)
     xpath (2.0.0)
       nokogiri (~> 1.3)
 
