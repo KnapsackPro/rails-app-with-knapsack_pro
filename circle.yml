@@ -56,7 +56,8 @@ test:
         parallel: true
 
     # Fallback when cannot connect to API
-    - KNAPSACK_PRO_ENDPOINT=https://api-fake.knapsackpro.com bundle exec rake knapsack_pro:rspec:
+    # https://knapsackpro.com is a wrong API url but correct server url so request should fail
+    - KNAPSACK_PRO_ENDPOINT=https://knapsackpro.com bundle exec rake knapsack_pro:rspec:
         parallel: true
 
     - KNAPSACK_PRO_LOG_LEVEL=warn bundle exec rake knapsack_pro:rspec:
