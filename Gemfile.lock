@@ -1,7 +1,7 @@
 PATH
   remote: ~/Documents/github/knapsack-pro/knapsack_pro-ruby
   specs:
-    knapsack_pro (0.17.0)
+    knapsack_pro (0.18.0)
       rake
       timecop (>= 0.1.0)
       tty-prompt (~> 0.7)
@@ -250,4 +250,4 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 BUNDLED WITH
-   1.11.2
+   1.13.6
