@@ -25,6 +25,13 @@ dependencies:
     - cd ~/gems/knapsack_pro-ruby && git log -n 1 | more
 test:
   override:
+    # Queue mode
+    # We run queue tests first because test suite is small so we want to CI nodes
+    # to start at the same time so they will use the same queue
+    - bundle exec rake knapsack_pro:queue:rspec:
+        parallel: true
+
+    # Regular mode
     - KNAPSACK_PRO_FIXED_TEST_SUITE_SPLIT=false bundle exec rake knapsack_pro:rspec:
         parallel: true
 
@@ -60,8 +67,4 @@ test:
         parallel: true
 
     - KNAPSACK_PRO_LOG_LEVEL=warn bundle exec rake knapsack_pro:rspec:
-        parallel: true
-
-    # Queue tasks to parallelize tests
-    - bundle exec rake knapsack_pro:queue:rspec:
         parallel: true
