@@ -61,3 +61,7 @@ test:
 
     - KNAPSACK_PRO_LOG_LEVEL=warn bundle exec rake knapsack_pro:rspec:
         parallel: true
+
+    # Queue tasks to parallelize tests
+    - bundle exec rake knapsack_pro:queue:rspec:
+        parallel: true
