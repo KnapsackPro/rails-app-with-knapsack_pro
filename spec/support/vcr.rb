@@ -1,4 +1,11 @@
 require 'vcr'
+require 'webmock/rspec'
+
+WebMock.disable_net_connect!(allow: [
+  'api.knapsackpro.com',
+  'api-staging.knapsackpro.com',
+  'api.knapsackpro.dev',
+]) if defined?(WebMock)
 
 VCR.configure do |config|
   config.cassette_library_dir = "spec/fixtures/vcr_cassettes"
@@ -14,9 +21,3 @@ VCR.configure do |config|
   )
 end
 
-require 'webmock/rspec'
-WebMock.disable_net_connect!(allow: [
-  'api.knapsackpro.com',
-  'api-staging.knapsackpro.com',
-  'api.knapsackpro.dev',
-]) if defined?(WebMock)
