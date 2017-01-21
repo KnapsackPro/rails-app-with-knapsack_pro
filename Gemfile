@@ -46,6 +46,8 @@ group :development, :test do
   gem 'spring'
 
   gem 'knapsack_pro', path: ENV['KNAPSACK_PRO_REPO_PATH'] || '~/Documents/github/knapsack-pro/knapsack_pro-ruby'
+
+  gem 'timecop'
 end
 
 group :test do
