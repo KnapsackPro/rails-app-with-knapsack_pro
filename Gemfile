@@ -59,5 +59,5 @@ group :test do
   gem 'spinach'
   gem 'timecop'
   gem 'vcr'
-  gem 'webmock'
+  gem 'webmock', require: false
 end
