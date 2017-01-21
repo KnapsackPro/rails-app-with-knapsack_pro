@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# RSpec
+./bin/knapsack_pro_rspec 0 2
+./bin/knapsack_pro_rspec 1 2
+
+./bin/knapsack_pro_rspec_encrypted 0 2
+./bin/knapsack_pro_rspec_encrypted 1 2
+
+./bin/knapsack_pro_rspec_disabled 0 2
+./bin/knapsack_pro_rspec_disabled 1 2
+
+./bin/knapsack_pro_queue_rspec 0 2
+./bin/knapsack_pro_queue_rspec 1 2
+
+./bin/bin_knapsack_pro_rspec 0 2
+./bin/bin_knapsack_pro_rspec 1 2
+
+./bin/bin_knapsack_pro_queue_rspec 0 2
+./bin/bin_knapsack_pro_queue_rspec 1 2
+
+# Cucumber
+./bin/knapsack_pro_cucumber 0 2
+./bin/knapsack_pro_cucumber 1 2
+
+# Minitest
+./bin/knapsack_pro_minitest 0 2
+./bin/knapsack_pro_minitest 1 2
+
+# Spinach
+./bin/knapsack_pro_spinach 0 2
+./bin/knapsack_pro_spinach 1 2
