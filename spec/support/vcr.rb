@@ -14,6 +14,7 @@ VCR.configure do |config|
   )
 end
 
+require 'webmock/rspec'
 WebMock.disable_net_connect!(allow: [
   'api.knapsackpro.com',
   'api-staging.knapsackpro.com',
