@@ -9,6 +9,7 @@ VCR.configure do |config|
     '127.0.0.1',
     '0.0.0.0',
     'api.knapsackpro.com',
+    'api-fake.knapsackpro.com',
     'api-staging.knapsackpro.com',
     'api.knapsackpro.dev',
   )
@@ -18,6 +19,7 @@ require 'webmock/rspec'
 
 WebMock.disable_net_connect!(allow: [
   'api.knapsackpro.com',
+  'api-fake.knapsackpro.com',
   'api-staging.knapsackpro.com',
   'api.knapsackpro.dev',
 ]) if defined?(WebMock)
