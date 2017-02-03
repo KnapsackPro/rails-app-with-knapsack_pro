@@ -12,6 +12,7 @@ VCR.configure do |config|
     'api-fake.knapsackpro.com',
     'api-staging.knapsackpro.com',
     'api.knapsackpro.dev',
+    'api-disabled-for-fork.knapsackpro.com',
   )
 end
 
@@ -22,4 +23,5 @@ WebMock.disable_net_connect!(allow: [
   'api-fake.knapsackpro.com',
   'api-staging.knapsackpro.com',
   'api.knapsackpro.dev',
+  'api-disabled-for-fork.knapsackpro.com',
 ]) if defined?(WebMock)
