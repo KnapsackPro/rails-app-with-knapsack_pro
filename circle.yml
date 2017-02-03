@@ -31,6 +31,10 @@ test:
     - KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=$KNAPSACK_PRO_QUEUE_TEST_SUITE_TOKEN_RSPEC bundle exec rake knapsack_pro:queue:rspec:
         parallel: true
 
+    # Queue mode retry CI with the same test suite split as last dynamic queue run
+    - KNAPSACK_PRO_FIXED_QUEUE_SPLIT=true KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=$KNAPSACK_PRO_QUEUE_TEST_SUITE_TOKEN_RSPEC bundle exec rake knapsack_pro:queue:rspec:
+        parallel: true
+
     # Regular mode
     - KNAPSACK_PRO_FIXED_TEST_SUITE_SPLIT=false bundle exec rake knapsack_pro:rspec:
         parallel: true
