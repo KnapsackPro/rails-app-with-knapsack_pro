@@ -51,6 +51,7 @@ test:
         parallel: true
 
     - bundle exec rake "knapsack_pro:cucumber[--format junit --out tmp/cucumber_junit.xml]"
+        parallel: true
 
     - bundle exec rake knapsack_pro:minitest[--verbose]:
         parallel: true
