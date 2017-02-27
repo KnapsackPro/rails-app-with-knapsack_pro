@@ -60,4 +60,7 @@ group :test do
   gem 'timecop'
   gem 'vcr'
   gem 'webmock', require: false
+
+  gem 'capybara'
+  gem 'capybara-screenshot'
 end
