@@ -17,5 +17,12 @@ describe 'Calculator' do
       click_button 'Add'
       expect(page).to have_content 'Result is 5'
     end
+
+    it 'this must fail' do
+      fill_in 'calculator_x', with: '2'
+      fill_in 'calculator_y', with: '3'
+      click_button 'Add'
+      expect(page).to have_content 'Result is fake'
+    end
   end
 end
