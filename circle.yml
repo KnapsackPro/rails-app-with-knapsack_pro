@@ -20,7 +20,7 @@ machine:
 dependencies:
   pre:
     - mkdir ~/gems
-    - cd ~/gems && git clone -b $CIRCLE_BRANCH --single-branch git@github.com:KnapsackPro/knapsack_pro-ruby.git
+    - cd ~/gems && git clone -b master --single-branch git@github.com:KnapsackPro/knapsack_pro-ruby.git
     - cd ~/gems/knapsack_pro-ruby && git branch
     - cd ~/gems/knapsack_pro-ruby && git log -n 1 | more
 test:
