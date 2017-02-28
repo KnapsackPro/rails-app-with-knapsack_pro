@@ -23,6 +23,8 @@ dependencies:
     - cd ~/gems && git clone -b master --single-branch git@github.com:KnapsackPro/knapsack_pro-ruby.git
     - cd ~/gems/knapsack_pro-ruby && git branch
     - cd ~/gems/knapsack_pro-ruby && git log -n 1 | more
+    - mkdir -p tmp/test-reports/rspec/regular_mode/
+    - mkdir -p tmp/test-reports/rspec/queue_mode/
 test:
   override:
     # Queue mode
@@ -35,6 +37,15 @@ test:
     - KNAPSACK_PRO_FIXED_QUEUE_SPLIT=true KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=$KNAPSACK_PRO_QUEUE_TEST_SUITE_TOKEN_RSPEC bundle exec rake knapsack_pro:queue:rspec:
         parallel: true
 
+    # Queue mode with junit formatter
+    # Retry CI with the same test suite split as last dynamic queue run
+    # The rspec.xml will have tests from all intermediate requests to API.
+    - KNAPSACK_PRO_FIXED_QUEUE_SPLIT=true KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=$KNAPSACK_PRO_QUEUE_TEST_SUITE_TOKEN_RSPEC bundle exec rake "knapsack_pro:queue:rspec[--format documentation --format RspecJunitFormatter --out tmp/test-reports/rspec/queue_mode/rspec.xml]":
+        parallel: true
+    # Queue mode retry CI with the same test suite split as last dynamic queue run
+    - KNAPSACK_PRO_FIXED_QUEUE_SPLIT=true KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=$KNAPSACK_PRO_QUEUE_TEST_SUITE_TOKEN_RSPEC bundle exec rake knapsack_pro:queue:rspec:
+        parallel: true
+
     # Second run should not allow to initialize a new queue for the same CI build ID
     - KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=$KNAPSACK_PRO_QUEUE_TEST_SUITE_TOKEN_RSPEC bundle exec rake knapsack_pro:queue:rspec:
         parallel: true
@@ -42,6 +53,10 @@ test:
 
     # Regular mode
     - KNAPSACK_PRO_FIXED_TEST_SUITE_SPLIT=false bundle exec rake knapsack_pro:rspec:
+        parallel: true
+
+    # Regular mode with junit formatter
+    - KNAPSACK_PRO_FIXED_TEST_SUITE_SPLIT=false bundle exec rake "knapsack_pro:rspec[--format documentation --format RspecJunitFormatter --out tmp/test-reports/rspec/regular_mode/rspec.xml]":
         parallel: true
 
     - bundle exec rake knapsack_pro:cucumber:

@@ -3,6 +3,9 @@ COMMANDS = %{
 ./bin/knapsack_pro_rspec 0 2
 ./bin/knapsack_pro_rspec 1 2
 
+./bin/knapsack_pro_rspec_junit 0 2
+./bin/knapsack_pro_rspec_junit 1 2
+
 ./bin/knapsack_pro_rspec_encrypted 0 2
 ./bin/knapsack_pro_rspec_encrypted 1 2
 
@@ -11,6 +14,9 @@ COMMANDS = %{
 
 ./bin/knapsack_pro_queue_rspec 0 2
 ./bin/knapsack_pro_queue_rspec 1 2
+
+./bin/knapsack_pro_queue_rspec_junit 0 2
+./bin/knapsack_pro_queue_rspec_junit 1 2
 
 ./bin/knapsack_pro_queue_rspec_initialized_once 0 2
 ./bin/knapsack_pro_queue_rspec_initialized_once 1 2
