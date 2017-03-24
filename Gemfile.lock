@@ -1,7 +1,7 @@
 PATH
   remote: ../knapsack_pro-ruby
   specs:
-    knapsack_pro (0.29.0)
+    knapsack_pro (0.30.0)
       rake
       timecop (>= 0.1.0)
       tty-prompt (~> 0.7)
@@ -123,7 +123,7 @@ GEM
     minitest (5.10.1)
     multi_json (1.12.1)
     multi_test (0.1.2)
-    necromancer (0.3.0)
+    necromancer (0.4.0)
     nokogiri (1.7.0.1)
       mini_portile2 (~> 2.1.0)
     pastel (0.7.1)
@@ -214,11 +214,11 @@ GEM
     tilt (2.0.6)
     timecop (0.8.1)
     tty-color (0.4.2)
-    tty-cursor (0.3.0)
-    tty-prompt (0.10.1)
-      necromancer (~> 0.3.0)
+    tty-cursor (0.4.0)
+    tty-prompt (0.12.0)
+      necromancer (~> 0.4.0)
       pastel (~> 0.7.0)
-      tty-cursor (~> 0.3.0)
+      tty-cursor (~> 0.4.0)
       wisper (~> 1.6.1)
     turbolinks (5.0.1)
       turbolinks-source (~> 5)
