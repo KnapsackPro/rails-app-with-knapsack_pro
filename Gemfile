@@ -62,5 +62,6 @@ group :test do
   gem 'webmock', require: false
 
   gem 'capybara'
-  gem 'capybara-screenshot'
+  #gem 'capybara-screenshot'
+  gem 'capybara-screenshot', github: 'ArturT/capybara-screenshot', branch: 'fix-reporter_module-loaded-twice'
 end

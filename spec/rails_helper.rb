@@ -5,10 +5,8 @@ require File.expand_path('../../config/environment', __FILE__)
 require 'rspec/rails'
 
 require 'capybara/rspec'
-unless ENV['KNAPSACK_PRO_RSPEC_DEPENDENCIES_LOADED']
-  ENV['KNAPSACK_PRO_RSPEC_DEPENDENCIES_LOADED'] = 'true'
-  require 'capybara-screenshot/rspec'
-end
+require 'capybara-screenshot/rspec'
+
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
