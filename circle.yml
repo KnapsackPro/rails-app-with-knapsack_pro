@@ -50,6 +50,10 @@ test:
     - KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=$KNAPSACK_PRO_QUEUE_TEST_SUITE_TOKEN_RSPEC bundle exec rake knapsack_pro:queue:rspec:
         parallel: true
 
+    # parallel_tests gem and knapsack_pro in Queue Mode
+    - KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=$KNAPSACK_PRO_QUEUE_TEST_SUITE_TOKEN_RSPEC KNAPSACK_PRO_CI_NODE_TOTAL=$CIRCLE_NODE_TOTAL KNAPSACK_PRO_CI_NODE_INDEX=$CIRCLE_NODE_INDEX PARALLEL_TESTS_CONCURRENCY=2 parallel_test -n $PARALLEL_TESTS_CONCURRENCY -e './bin/parallel_tests':
+        parallel: true
+
 
     # Regular mode
     - KNAPSACK_PRO_FIXED_TEST_SUITE_SPLIT=false bundle exec rake knapsack_pro:rspec:

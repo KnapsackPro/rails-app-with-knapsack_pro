@@ -30,6 +30,9 @@ COMMANDS = %{
 ./bin/knapsack_pro_fixed_queue_split_rspec_encrypted 0 2
 ./bin/knapsack_pro_fixed_queue_split_rspec_encrypted 1 2
 
+./bin/parallel_tests_knapsack_pro_queue_rspec 0 2
+./bin/parallel_tests_knapsack_pro_queue_rspec 1 2
+
 ./bin/bin_knapsack_pro_rspec 0 2
 ./bin/bin_knapsack_pro_rspec 1 2
 

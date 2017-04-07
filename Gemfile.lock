@@ -132,6 +132,9 @@ GEM
     necromancer (0.4.0)
     nokogiri (1.7.0.1)
       mini_portile2 (~> 2.1.0)
+    parallel (1.11.1)
+    parallel_tests (2.14.1)
+      parallel
     pastel (0.7.1)
       equatable (~> 0.5.0)
       tty-color (~> 0.4.0)
@@ -260,6 +263,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   knapsack_pro!
+  parallel_tests
   pry
   rails (~> 4.2.8.rc1)
   rspec-rails
