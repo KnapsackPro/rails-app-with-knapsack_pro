@@ -15,6 +15,9 @@ COMMANDS = %{
 ./bin/knapsack_pro_queue_rspec 0 2
 ./bin/knapsack_pro_queue_rspec 1 2
 
+./bin/knapsack_pro_queue_rspec_default_formatter 0 2
+./bin/knapsack_pro_queue_rspec_default_formatter 1 2
+
 ./bin/knapsack_pro_queue_rspec_junit 0 2
 ./bin/knapsack_pro_queue_rspec_junit 1 2
 
