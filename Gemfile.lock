@@ -10,7 +10,7 @@ GIT
 PATH
   remote: ../knapsack_pro-ruby
   specs:
-    knapsack_pro (0.32.0)
+    knapsack_pro (0.33.0)
       rake
       timecop (>= 0.1.0)
       tty-prompt (~> 0.7)
