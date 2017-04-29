@@ -27,7 +27,7 @@ describe 'Calculator' do
     #
     # Fix is here: https://github.com/mattheworiordan/capybara-screenshot/pull/205
     # We use forked capybara-screenshot gem in Gemfile
-    xit 'this must fail' do
+    it 'this must fail' do
       fill_in 'calculator_x', with: '2'
       fill_in 'calculator_y', with: '3'
       click_button 'Add'
