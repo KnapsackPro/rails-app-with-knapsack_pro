@@ -5,6 +5,7 @@ RSpec.configure do |config|
   config.verbose_retry = true
   # show exception that triggers a retry if verbose_retry is set to true
   config.display_try_failure_messages = true
+  config.fail_fast = 3
 
   # run retry only on features
   config.around :each, :js do |ex|
