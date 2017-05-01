@@ -34,7 +34,8 @@ test:
         parallel: true
 
     # Queue mode retry CI with the same test suite split as last dynamic queue run
-    - KNAPSACK_PRO_FIXED_QUEUE_SPLIT=true KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=$KNAPSACK_PRO_QUEUE_TEST_SUITE_TOKEN_RSPEC bundle exec rake knapsack_pro:queue:rspec:
+    # Test --profile formatter to show only once the profile summary.
+    - KNAPSACK_PRO_FIXED_QUEUE_SPLIT=true KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=$KNAPSACK_PRO_QUEUE_TEST_SUITE_TOKEN_RSPEC bundle exec rake "knapsack_pro:queue:rspec[--profile]":
         parallel: true
 
     # Queue mode with junit formatter
