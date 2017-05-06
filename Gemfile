@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 4.2.8'
+gem 'rails', '>= 5.0.0.rc2', '< 5.1'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
@@ -51,6 +51,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'rails-controller-testing'
   gem 'rspec-rails'
   gem 'rspec_junit_formatter'
 

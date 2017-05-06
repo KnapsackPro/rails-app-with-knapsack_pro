@@ -7,6 +7,17 @@ require 'rspec/rails'
 require 'capybara/rspec'
 require 'capybara-screenshot/rspec'
 
+# https://github.com/rails/rails-controller-testing#rspec
+# Thanks to that Knapsack Pro Queue Mode works
+require 'rails-controller-testing'
+RSpec.configure do |config|
+  [:controller, :view, :request].each do |type|
+    config.include ::Rails::Controller::Testing::TestProcess, :type => type
+    config.include ::Rails::Controller::Testing::TemplateAssertions, :type => type
+    config.include ::Rails::Controller::Testing::Integration, :type => type
+  end
+end
+
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
