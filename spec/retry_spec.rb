@@ -1,5 +1,5 @@
 describe 'Retry' do
-  it 'should randomly succeed', retry: 3 do
+  it 'should randomly succeed', retry: 100 do
     expect(rand(2)).to eq(1)
   end
 
