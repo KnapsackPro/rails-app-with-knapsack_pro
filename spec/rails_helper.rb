@@ -78,4 +78,6 @@ RSpec.configure do |config|
     print 'Run after test suite'
     print '-'*20
   end
+
+  config.include ActiveSupport::Testing::TimeHelpers
 end
