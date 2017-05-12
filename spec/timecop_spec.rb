@@ -17,4 +17,14 @@ describe 'Timecop' do
 
     Timecop.return
   end
+
+  it 'when stub Time' do
+    allow(Time).to receive(:now).and_return(time_1)
+
+    expect(Time.now).to eq time_1
+
+    allow(Time).to receive(:now).and_return(time_2)
+
+    expect(Time.now).to eq time_2
+  end
 end
