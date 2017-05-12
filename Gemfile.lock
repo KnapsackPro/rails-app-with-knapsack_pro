@@ -7,6 +7,17 @@ GIT
       capybara (>= 1.0, < 3)
       launchy
 
+GIT
+  remote: git://github.com/cucumber/cucumber-rails.git
+  revision: ba31e5cad2df219218af31856745d4784d5fb4c3
+  specs:
+    cucumber-rails (1.5.0)
+      capybara (>= 1.1.2, < 3)
+      cucumber (>= 1.3.8, < 4)
+      mime-types (>= 1.17, < 4)
+      nokogiri (~> 1.5)
+      railties (>= 4, < 5.2)
+
 PATH
   remote: ../knapsack_pro-ruby
   specs:
@@ -83,12 +94,6 @@ GEM
       multi_test (>= 0.1.2)
     cucumber-core (1.5.0)
       gherkin (~> 4.0)
-    cucumber-rails (1.4.5)
-      capybara (>= 1.1.2, < 3)
-      cucumber (>= 1.3.8, < 4)
-      mime-types (>= 1.16, < 4)
-      nokogiri (~> 1.5)
-      railties (>= 3, < 5.1)
     cucumber-wire (0.0.1)
     database_cleaner (1.6.0)
     debug_inspector (0.0.2)
@@ -261,7 +266,7 @@ DEPENDENCIES
   byebug
   capybara
   capybara-screenshot!
-  cucumber-rails
+  cucumber-rails!
   database_cleaner
   jbuilder (~> 2.0)
   jquery-rails
