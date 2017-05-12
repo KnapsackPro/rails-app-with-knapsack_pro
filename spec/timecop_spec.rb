@@ -2,7 +2,7 @@ describe 'Timecop' do
   let(:time_1) { Time.local(2015, 12, 1) }
   let(:time_2) { Time.local(2016, 1, 21) }
 
-  it do
+  it 'travel in time' do
     Timecop.travel(time_1)
 
     expect(Time.now.year).to eq 2015
