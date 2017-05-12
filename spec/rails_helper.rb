@@ -6,6 +6,7 @@ require 'rspec/rails'
 
 require 'capybara/rspec'
 require 'capybara-screenshot/rspec'
+require 'timecop'
 
 # https://github.com/rails/rails-controller-testing#rspec
 # Thanks to that Knapsack Pro Queue Mode works
