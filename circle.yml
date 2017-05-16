@@ -27,9 +27,9 @@ dependencies:
     - mkdir -p tmp/test-reports/rspec/queue_mode/
 test:
   override:
-    - bundle exec rspec spec
+    - bundle exec rspec spec:
         parallel: true
-    - xvfb-run -a bundle exec rspec spec
+    - xvfb-run -a bundle exec rspec spec:
         parallel: true
 
     # Queue mode
