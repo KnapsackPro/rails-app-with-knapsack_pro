@@ -32,9 +32,9 @@ test:
     - xvfb-run -a bundle exec rspec spec:
         parallel: true
 
-    - xvfb-run -a KNAPSACK_PRO_FIXED_TEST_SUITE_SPLIT=false bundle exec rake knapsack_pro:rspec:
+    - KNAPSACK_PRO_FIXED_TEST_SUITE_SPLIT=false xvfb-run -a bundle exec rake knapsack_pro:rspec:
         parallel: true
-    - xvfb-run -a KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=$KNAPSACK_PRO_QUEUE_TEST_SUITE_TOKEN_RSPEC bundle exec rake knapsack_pro:queue:rspec:
+    - KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=$KNAPSACK_PRO_QUEUE_TEST_SUITE_TOKEN_RSPEC xvfb-run -a bundle exec rake knapsack_pro:queue:rspec:
         parallel: true
 
     # Queue mode
