@@ -9,13 +9,10 @@
 
 RSpec.configure do |config|
   config.before(:each) do |example|
-    #puts Capybara.current_driver
     #Capybara.current_driver = :selenium if example.metadata[:js]
-    #puts Capybara.current_driver
   end
 
   config.after(:each) do |example|
-    #Capybara.use_default_driver if example.metadata[:js]
-    puts "default: #{Capybara.current_driver}"
+    #Capybara.use_default_driver
   end
 end
