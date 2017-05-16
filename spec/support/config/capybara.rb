@@ -5,15 +5,17 @@
   #config.allow_unknown_urls
 #end
 
-Capybara.default_driver = :rack_test
+#Capybara.default_driver = :rack_test
 
 RSpec.configure do |config|
   config.before(:each) do |example|
-    Capybara.current_driver = :webkit if example.metadata[:js]
-    Capybara.current_driver = :selenium if example.metadata[:selenium]
+    #puts Capybara.current_driver
+    #Capybara.current_driver = :selenium if example.metadata[:js]
+    #puts Capybara.current_driver
   end
 
   config.after(:each) do |example|
-    Capybara.use_default_driver if example.metadata[:js] || example.metadata[:selenium]
+    #Capybara.use_default_driver if example.metadata[:js]
+    puts "default: #{Capybara.current_driver}"
   end
 end

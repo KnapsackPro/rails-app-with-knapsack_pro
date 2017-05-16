@@ -4,3 +4,8 @@ describe 'some stuff which requires js', js: true do
   it 'will switch to one specific driver', :driver => :webkit do
   end
 end
+
+describe 'something' do
+  it 'a test' do
+  end
+end
