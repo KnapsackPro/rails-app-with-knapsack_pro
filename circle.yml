@@ -27,6 +27,11 @@ dependencies:
     - mkdir -p tmp/test-reports/rspec/queue_mode/
 test:
   override:
+    - bundle exec rspec spec
+        parallel: true
+    - xvfb-run -a bundle exec rspec spec
+        parallel: true
+
     # Queue mode
     # We run queue tests first because test suite is small so we want to CI nodes
     # to start at the same time so they will use the same queue
