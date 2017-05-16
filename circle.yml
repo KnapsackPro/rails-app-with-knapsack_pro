@@ -32,6 +32,11 @@ test:
     - xvfb-run -a bundle exec rspec spec:
         parallel: true
 
+    - xvfb-run -a KNAPSACK_PRO_FIXED_TEST_SUITE_SPLIT=false bundle exec rake knapsack_pro:rspec:
+        parallel: true
+    - xvfb-run -a KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=$KNAPSACK_PRO_QUEUE_TEST_SUITE_TOKEN_RSPEC bundle exec rake knapsack_pro:queue:rspec:
+        parallel: true
+
     # Queue mode
     # We run queue tests first because test suite is small so we want to CI nodes
     # to start at the same time so they will use the same queue
