@@ -17,6 +17,9 @@ machine:
     # KNAPSACK_PRO_TEST_SUITE_TOKEN_CUCUMBER: cucumber-token
     # KNAPSACK_PRO_TEST_SUITE_TOKEN_MINITEST: minitest-token
     # KNAPSACK_PRO_TEST_SUITE_TOKEN_SPINACH: spinach-token
+
+    # https://discuss.circleci.com/t/capybara-unable-to-find-mozilla-geckodriver/11451/7
+    PATH: "${PATH}:${HOME}/${CIRCLE_PROJECT_REPONAME}/drivers"
 dependencies:
   pre:
     - mkdir ~/gems
