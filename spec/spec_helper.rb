@@ -1,6 +1,18 @@
 require 'knapsack_pro'
 
 # CUSTOM_CONFIG_GOES_HERE
+if ENV['ENABLE_AFTER_SUBSET_QUEUE_HOOK']
+  KnapsackPro::Hooks::Queue.after_subset_queue do |queue_id, subset_queue_id|
+    puts '/'*40
+    # This must be the same path as value for rspec --out argument
+    old_file_xml_file = 'tmp/test-reports/rspec/queue_mode/rspec.xml'
+
+    queue_path = "tmp/knapsack_pro/queue_rspec_xml/#{queue_id}"
+    FileUtils.mkdir_p(queue_path)
+    new_xml_file = "#{queue_path}/rspec_#{Time.now.to_i}_#{subset_queue_id}.xml"
+    FileUtils.mv(old_file_xml_file, new_xml_file)
+  end
+end
 
 KnapsackPro::Adapters::RSpecAdapter.bind
 
