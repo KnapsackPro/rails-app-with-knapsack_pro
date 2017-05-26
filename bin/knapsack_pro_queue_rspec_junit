@@ -8,5 +8,4 @@ KNAPSACK_PRO_ENDPOINT=http://api.knapsackpro.dev:3000 \
   KNAPSACK_PRO_PROJECT_DIR=~/Documents/github/knapsack-pro/rails-app-with-knapsack_pro \
   KNAPSACK_PRO_CI_NODE_TOTAL=${2:-2} \
   KNAPSACK_PRO_CI_NODE_INDEX=${1:-0} \
-  ENABLE_AFTER_SUBSET_QUEUE_HOOK=true \
   bundle exec rake "knapsack_pro:queue:rspec[--format documentation --format RspecJunitFormatter --out tmp/test-reports/rspec/queue_mode/rspec.xml]"
