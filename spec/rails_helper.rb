@@ -81,4 +81,6 @@ RSpec.configure do |config|
   end
 
   config.include ActiveSupport::Testing::TimeHelpers
+
+  config.example_status_persistence_file_path = "tmp/rspec_examples.txt"
 end

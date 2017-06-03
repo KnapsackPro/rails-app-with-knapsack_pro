@@ -30,6 +30,9 @@ COMMANDS = %{
 ./bin/knapsack_pro_queue_rspec_initialized_once 0 2
 ./bin/knapsack_pro_queue_rspec_initialized_once 1 2
 
+./bin/knapsack_pro_queue_rspec_only_failures 0 2
+./bin/knapsack_pro_queue_rspec_only_failures 1 2
+
 ./bin/knapsack_pro_fixed_queue_split_rspec 0 2
 ./bin/knapsack_pro_fixed_queue_split_rspec 1 2
 
