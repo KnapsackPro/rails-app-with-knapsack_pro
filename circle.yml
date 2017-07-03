@@ -25,6 +25,7 @@ dependencies:
     - cd ~/gems/knapsack_pro-ruby && git log -n 1 | more
     - mkdir -p tmp/test-reports/rspec/regular_mode/
     - mkdir -p tmp/test-reports/rspec/queue_mode/
+    - mkdir -p tmp/test-reports/cucumber/regular_mode/
 test:
   override:
     # Queue mode
@@ -70,7 +71,7 @@ test:
     - bundle exec rake "knapsack_pro:cucumber[--tag @Test]":
         parallel: true
 
-    - bundle exec rake "knapsack_pro:cucumber[--format junit --out tmp/cucumber_junit.xml]":
+    - bundle exec rake "knapsack_pro:cucumber[--format junit --out tmp/test-reports/cucumber/regular_mode]":
         parallel: true
 
     - bundle exec rake knapsack_pro:minitest[--verbose]:
