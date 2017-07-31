@@ -65,6 +65,10 @@ test:
     - KNAPSACK_PRO_FIXED_TEST_SUITE_SPLIT=false bundle exec rake "knapsack_pro:rspec[--format documentation --format RspecJunitFormatter --out tmp/test-reports/rspec/regular_mode/rspec.xml]":
         parallel: true
 
+    # Regular mode with custom test_dir
+    - KNAPSACK_PRO_FIXED_TEST_SUITE_SPLIT=false KNAPSACK_PRO_TEST_DIR=spec KNAPSACK_PRO_TEST_FILE_PATTERN="{spec,engines/*/spec}/**/*_spec.rb" bundle exec rake knapsack_pro:rspec:
+        parallel: true
+
     - bundle exec rake knapsack_pro:cucumber:
         parallel: true
 
