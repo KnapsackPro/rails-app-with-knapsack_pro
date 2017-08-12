@@ -1,12 +1,24 @@
 require 'knapsack_pro'
 
 # CUSTOM_CONFIG_GOES_HERE
+KnapsackPro::Hooks::Queue.before_queue do |queue_id|
+  print '-'*20
+  print 'Before Queue Hook - run before test suite'
+  print '-'*20
+end
+
 KnapsackPro::Hooks::Queue.after_subset_queue do |queue_id, subset_queue_id|
   # TODO This must be the same path as value for rspec --out argument
   old_xml_file = 'tmp/test-reports/rspec/queue_mode/rspec.xml'
   # move results to new_xml_file so the results won't accumulate with duplicated xml tags in old_xml_file
   new_xml_file = 'tmp/test-reports/rspec/queue_mode/rspec_final_results.xml'
   FileUtils.mv(old_xml_file, new_xml_file) if File.exist?(old_xml_file)
+end
+
+KnapsackPro::Hooks::Queue.after_queue do |queue_id|
+  print '-'*20
+  print 'After Queue Hook - run after test suite'
+  print '-'*20
 end
 
 KnapsackPro::Adapters::RSpecAdapter.bind

@@ -64,22 +64,6 @@ RSpec.configure do |config|
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
 
-  config.before(:suite) do
-    unless ENV['KNAPSACK_PRO_RSPEC_BEFORE_SUITE_LOADED']
-      ENV['KNAPSACK_PRO_RSPEC_BEFORE_SUITE_LOADED'] = 'true'
-      # this will be called only once before the tests started on the CI node
-      print '-'*20
-      print 'Run before test suite'
-      print '-'*20
-    end
-  end
-
-  at_exit do
-    print '-'*20
-    print 'Run after test suite'
-    print '-'*20
-  end
-
   config.include ActiveSupport::Testing::TimeHelpers
 
   config.example_status_persistence_file_path = "tmp/rspec_examples.txt"
