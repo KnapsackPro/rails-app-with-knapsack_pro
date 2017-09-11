@@ -48,6 +48,8 @@ group :development, :test do
   gem 'parallel_tests'
 
   gem 'knapsack_pro', path: ENV['KNAPSACK_PRO_REPO_PATH'] || '~/Documents/github/knapsack-pro/knapsack_pro-ruby'
+
+  gem 'test-unit-rails'
 end
 
 group :test do
