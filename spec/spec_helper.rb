@@ -16,6 +16,10 @@ KnapsackPro::Hooks::Queue.after_subset_queue do |queue_id, subset_queue_id|
 end
 
 KnapsackPro::Hooks::Queue.after_queue do |queue_id|
+  # Metadata collection
+  # https://circleci.com/docs/1.0/test-metadata/#metadata-collection-in-custom-test-steps
+  FileUtils.cp(new_xml_file, "#{ENV['CIRCLE_TEST_REPORTS']}/rspec.xml") if ENV['CIRCLE_TEST_REPORTS']
+
   print '-'*20
   print 'After Queue Hook - run after test suite'
   print '-'*20
