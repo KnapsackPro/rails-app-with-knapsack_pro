@@ -6,7 +6,6 @@ class TestMeme < Test::Unit::TestCase
   end
 
   def test_that_kitty_can_eat
-    puts 'Meme first test with minitest syntax'
     assert_equal "OHAI!", @meme.i_can_has_cheezburger?
   end
 
