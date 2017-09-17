@@ -11,6 +11,14 @@ class FooTest < Test::Unit::TestCase
     end
   end
 
+  def setup
+    puts 'SETUP --------'
+  end
+
+  def teardown
+    puts 'TEARDOWN --------'
+  end
+
   test "the truth" do
     assert true
   end
