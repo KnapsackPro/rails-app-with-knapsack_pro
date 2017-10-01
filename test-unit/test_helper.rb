@@ -30,3 +30,7 @@ class ActiveSupport::TestCase
 
   # Add more helper methods to be used by all tests here...
 end
+
+if ActionDispatch::IntegrationTest.method_defined?(:fixture_path=)
+  ActionDispatch::IntegrationTest.fixture_path = File.expand_path("../fixtures", __FILE__)
+end
