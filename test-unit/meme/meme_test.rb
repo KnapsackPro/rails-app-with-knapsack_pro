@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class TestMeme < Test::Unit::TestCase
+class MemeTest < Test::Unit::TestCase
   def setup
     @meme = Meme.new
   end
