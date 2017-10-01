@@ -71,5 +71,5 @@ group :test do
   #gem 'capybara-screenshot'
   gem 'capybara-screenshot', github: 'ArturT/capybara-screenshot', branch: 'fix-reporter_module-loaded-twice'
 
-  gem 'shared_should'
+  gem 'shared_should', require: false
 end
