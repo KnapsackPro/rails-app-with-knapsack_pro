@@ -81,6 +81,10 @@ test:
     - bundle exec rake knapsack_pro:minitest[--verbose]:
         parallel: true
 
+
+    - KNAPSACK_PRO_TEST_DIR=test-unit KNAPSACK_PRO_TEST_FILE_PATTERN="test-unit/**{,/*/**}/*_test.rb" bundle exec rake knapsack_pro:test_unit[--verbose]:
+        parallel: true
+
     - KNAPSACK_PRO_TEST_FILE_PATTERN="spinach_features/**{,/*/**}/*.feature" bundle exec rake knapsack_pro:spinach:
         parallel: true
 
