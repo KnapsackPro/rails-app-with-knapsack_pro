@@ -8,7 +8,7 @@ require 'knapsack_pro'
 # CUSTOM_CONFIG_GOES_HERE
 
 knapsack_pro_adapter = KnapsackPro::Adapters::TestUnitAdapter.bind
-#knapsack_pro_adapter.set_test_helper_path(__FILE__)
+knapsack_pro_adapter.set_test_helper_path(__FILE__)
 
 class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
