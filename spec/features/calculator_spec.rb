@@ -1,4 +1,4 @@
-describe 'Calculator' do
+describe 'Calculator', :tag_a do
   before do
     visit calculator_index_path
   end

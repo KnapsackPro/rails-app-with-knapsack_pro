@@ -21,6 +21,9 @@ COMMANDS = %{
 ./bin/knapsack_pro_queue_rspec_record_first_run 0 2
 ./bin/knapsack_pro_queue_rspec_record_first_run 1 2
 
+./bin/knapsack_pro_queue_rspec_tags 0 2
+./bin/knapsack_pro_queue_rspec_tags 1 2
+
 ./bin/knapsack_pro_queue_rspec_default_formatter 0 2
 ./bin/knapsack_pro_queue_rspec_default_formatter 1 2
 
