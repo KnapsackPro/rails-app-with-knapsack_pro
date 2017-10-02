@@ -87,6 +87,7 @@ In `bin` directory are files:
 
 * `bin/knapsack_pro_rspec`
 * `bin/knapsack_pro_minitest`
+* `bin/knapsack_pro_test_unit`
 * `bin/knapsack_pro_cucumber`
 
 They exist for test reason when you want to run this project on local machine. In that case the `KNAPSACK_PRO_ENDPOINT` is pointed to staging which is reserved only for Knapsack Pro developers.
