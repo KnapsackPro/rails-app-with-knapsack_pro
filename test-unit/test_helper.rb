@@ -1,7 +1,8 @@
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 
-require 'test/unit/rails/test_help'
+# don't load this because it breaks CI
+# require 'test/unit/rails/test_help'
 
 # To use test-unit we need to ensure the minitest is not loaded
 # because shoulda_test detect it.
@@ -23,10 +24,3 @@ require 'knapsack_pro'
 
 knapsack_pro_adapter = KnapsackPro::Adapters::TestUnitAdapter.bind
 knapsack_pro_adapter.set_test_helper_path(__FILE__)
-
-class ActiveSupport::TestCase
-  # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
-  fixtures :all
-
-  # Add more helper methods to be used by all tests here...
-end
