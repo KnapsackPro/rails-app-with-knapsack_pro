@@ -23,10 +23,3 @@ require 'knapsack_pro'
 
 knapsack_pro_adapter = KnapsackPro::Adapters::TestUnitAdapter.bind
 knapsack_pro_adapter.set_test_helper_path(__FILE__)
-
-class ActiveSupport::TestCase
-  # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
-  fixtures :all
-
-  # Add more helper methods to be used by all tests here...
-end
