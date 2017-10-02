@@ -63,6 +63,23 @@ You can use below command on CI to run tests:
 
 See [circle.yml](circle.yml) to see how we set up CircleCI.
 
+## Parallel test-unit test suite with knapsack_pro
+
+### How to set up knapsack_pro
+
+See [test-unit/test_helper.rb](test-unit/test_helper.rb)
+
+You can use below command on CI to run tests:
+
+    # Run this on first CI server
+    $ KNAPSACK_PRO_CI_NODE_TOTAL=2 KNAPSACK_PRO_CI_NODE_INDEX=0 bundle exec rake knapsack_pro:test_unit
+
+    # Run this on second CI server
+    $ KNAPSACK_PRO_CI_NODE_TOTAL=2 KNAPSACK_PRO_CI_NODE_INDEX=1 bundle exec rake knapsack_pro:test_unit
+
+See [circle.yml](circle.yml) to see how we set up CircleCI.
+
+
 
 # Development of this project
 
