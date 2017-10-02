@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1.1'
+gem 'rails', '~> 5.1.4'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
@@ -48,6 +48,8 @@ group :development, :test do
   gem 'parallel_tests'
 
   gem 'knapsack_pro', path: ENV['KNAPSACK_PRO_REPO_PATH'] || '~/Documents/github/knapsack-pro/knapsack_pro-ruby'
+
+  gem 'test-unit-rails'
 end
 
 group :test do
@@ -68,4 +70,6 @@ group :test do
   gem 'capybara'
   #gem 'capybara-screenshot'
   gem 'capybara-screenshot', github: 'ArturT/capybara-screenshot', branch: 'fix-reporter_module-loaded-twice'
+
+  gem 'shared_should', require: false
 end

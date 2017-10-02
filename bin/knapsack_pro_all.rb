@@ -71,6 +71,10 @@ COMMANDS = %{
 ./bin/knapsack_pro_minitest 0 2
 ./bin/knapsack_pro_minitest 1 2
 
+# Test::Unit
+./bin/knapsack_pro_test_unit 0 2
+./bin/knapsack_pro_test_unit 1 2
+
 # Spinach
 ./bin/knapsack_pro_spinach 0 2
 ./bin/knapsack_pro_spinach 1 2
