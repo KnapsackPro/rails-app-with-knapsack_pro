@@ -28,9 +28,6 @@ dependencies:
     - mkdir -p tmp/test-reports/cucumber/regular_mode/
 test:
   override:
-    - KNAPSACK_PRO_TEST_DIR=test-unit KNAPSACK_PRO_TEST_FILE_PATTERN="test-unit/**{,/*/**}/*_test.rb" bundle exec rake "knapsack_pro:test_unit[--verbose]":
-        parallel: true
-
     # Queue mode
     # We run queue tests first because test suite is small so we want to CI nodes
     # to start at the same time so they will use the same queue
@@ -82,6 +79,9 @@ test:
         parallel: true
 
     - bundle exec rake knapsack_pro:minitest[--verbose]:
+        parallel: true
+
+    - KNAPSACK_PRO_TEST_DIR=test-unit KNAPSACK_PRO_TEST_FILE_PATTERN="test-unit/**{,/*/**}/*_test.rb" bundle exec rake "knapsack_pro:test_unit[--verbose]":
         parallel: true
 
     - KNAPSACK_PRO_TEST_FILE_PATTERN="spinach_features/**{,/*/**}/*.feature" bundle exec rake knapsack_pro:spinach:
