@@ -2,10 +2,8 @@
 sudo: false
 language: ruby
 rvm:
-  - 2.0.0
-  - 2.1.0
-  - 2.1.5
   - 2.2.3
+  - 2.4.2
 env:
   global:
     - KNAPSACK_PRO_REPO_PATH=~/gems/knapsack_pro-ruby
