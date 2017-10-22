@@ -1,6 +1,6 @@
 machine:
   ruby:
-    version: 2.4.1
+    version: 2.4.2
   environment:
     RAILS_ENV: test
     RACK_ENV: test
