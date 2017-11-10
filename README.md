@@ -83,6 +83,14 @@ See [circle.yml](circle.yml) to see how we set up CircleCI.
 
 # Development of this project
 
+Ensure you created databases:
+
+```
+$ rake db:create
+$ TEST_ENV_NUMBER=1 rake db:create
+$ TEST_ENV_NUMBER=2 rake db:create
+```
+
 In `bin` directory are files:
 
 * `bin/knapsack_pro_rspec`
