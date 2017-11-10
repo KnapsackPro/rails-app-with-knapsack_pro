@@ -10,7 +10,7 @@
         "heroku-postgresql"
       ],
       "scripts": {
-        "test": "bundle exec rake knapsack_pro:rspec"
+        "test": "env && bundle exec rake knapsack_pro:rspec"
       },
       "env": {
         "KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC": "5813b393f84e729aac22f60d0b73af6b"
