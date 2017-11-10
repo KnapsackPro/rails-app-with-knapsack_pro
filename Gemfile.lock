@@ -7,8 +7,10 @@ GIT
       capybara (>= 1.0, < 3)
       launchy
 
-PATH
-  remote: ../knapsack_pro-ruby
+GIT
+  remote: git://github.com/KnapsackPro/knapsack_pro-ruby.git
+  revision: 052a541865e657030e58daf30dfa853d279ae67b
+  branch: heroku-ci
   specs:
     knapsack_pro (0.52.0)
       rake
