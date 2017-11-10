@@ -2,7 +2,10 @@
   "environments": {
     "test": {
       "formation": {
-        "quantity": 2
+        "test": {
+          "quantity": 2,
+          "size": "Standard-1X"
+        }
       },
       "addons": [
         "heroku-postgresql"
