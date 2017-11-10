@@ -1,6 +1,9 @@
 {
   "environments": {
     "test": {
+      "addons": [
+        "heroku-postgresql"
+      ],
       "scripts": {
         "test": "bundle exec rake knapsack_pro:rspec"
       },
