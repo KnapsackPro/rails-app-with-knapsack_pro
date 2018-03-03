@@ -67,7 +67,7 @@ jobs:
           key: v2-dependencies-bundler-{{ checksum "Gemfile.lock" }}
 
       # Database setup
-      - run: rake db:setup
+      - run: bin/rails db:setup
 
       # run tests!
       # Queue mode
