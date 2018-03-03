@@ -68,6 +68,8 @@ jobs:
 
       # Database setup
       - run: bin/rails db:setup
+      # Database setup for parallel_tests gem
+      - run: TEST_ENV_NUMBER=2 bin/rails db:setup
 
       # run tests!
       # Queue mode
