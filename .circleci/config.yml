@@ -1,0 +1,142 @@
+# Ruby CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-ruby/ for more details
+#
+version: 2
+jobs:
+  build:
+    parallelism: 2
+    docker:
+      # specify the version you desire here
+      - image: circleci/ruby:2.5.0-node-browsers
+        environment:
+          RAILS_ENV: test
+          RACK_ENV: test
+          KNAPSACK_PRO_REPO_PATH: ~/gems/knapsack_pro-ruby
+
+          # In production you should use endpoint https://api.knapsackpro.com
+          # which is default so it means you don't need to set KNAPSACK_PRO_ENDPOINT
+          # Below endpoint is just for internal tests by KnapsackPro developers.
+          KNAPSACK_PRO_ENDPOINT: https://api-staging.knapsackpro.com
+
+          # Tokens are set in CircleCI settings so you can't read them from this file.
+          # KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC: rspec-token
+          # KNAPSACK_PRO_TEST_SUITE_TOKEN_CUCUMBER: cucumber-token
+          # KNAPSACK_PRO_TEST_SUITE_TOKEN_MINITEST: minitest-token
+          # KNAPSACK_PRO_TEST_SUITE_TOKEN_SPINACH: spinach-token
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      - run: mkdir ~/gems
+      - run: cd ~/gems && (git clone -b $CIRCLE_BRANCH --single-branch git@github.com:KnapsackPro/knapsack_pro-ruby.git || git clone -b master --single-branch git@github.com:KnapsackPro/knapsack_pro-ruby.git)
+      - run: cd ~/gems/knapsack_pro-ruby && git branch
+      - run: cd ~/gems/knapsack_pro-ruby && git log -n 1 | more
+      - run: mkdir -p tmp/test-reports/rspec/regular_mode/
+      - run: mkdir -p tmp/test-reports/rspec/queue_mode/
+      - run: mkdir -p tmp/test-reports/cucumber/regular_mode/
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v2-dependencies-bundler-{{ checksum "Gemfile.lock" }}
+          # fallback to using the latest cache if no exact match is found
+          - v2-dependencies-bundler-
+
+      - run:
+          name: install ruby dependencies
+          command: |
+            bundle install --jobs=4 --retry=3 --path vendor/bundle
+
+      - save_cache:
+          paths:
+            - ./vendor/bundle
+          key: v2-dependencies-bundler-{{ checksum "Gemfile.lock" }}
+
+      # Database setup
+      - run: rake db:setup
+
+      # run tests!
+      # Queue mode
+      # We run queue tests first because test suite is small so we want to CI nodes
+      # to start at the same time so they will use the same queue
+      - run: KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=$KNAPSACK_PRO_QUEUE_TEST_SUITE_TOKEN_RSPEC bundle exec rake knapsack_pro:queue:rspec
+
+      # Queue mode retry CI with the same test suite split as last dynamic queue run
+      # Test --profile formatter to show only once the profile summary.
+      - run: KNAPSACK_PRO_FIXED_QUEUE_SPLIT=true KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=$KNAPSACK_PRO_QUEUE_TEST_SUITE_TOKEN_RSPEC bundle exec rake "knapsack_pro:queue:rspec[--profile]"
+
+      # Queue mode with junit formatter
+      # Retry CI with the same test suite split as last dynamic queue run
+      # The rspec.xml will have tests from all intermediate requests to API.
+      - run: KNAPSACK_PRO_FIXED_QUEUE_SPLIT=true KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=$KNAPSACK_PRO_QUEUE_TEST_SUITE_TOKEN_RSPEC bundle exec rake "knapsack_pro:queue:rspec[--format documentation --format RspecJunitFormatter --out tmp/test-reports/rspec/queue_mode/rspec.xml]"
+
+      # Queue mode retry CI with the same test suite split as last dynamic queue run
+      - run: KNAPSACK_PRO_FIXED_QUEUE_SPLIT=true KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=$KNAPSACK_PRO_QUEUE_TEST_SUITE_TOKEN_RSPEC bundle exec rake knapsack_pro:queue:rspec
+
+      # Second run should not allow to initialize a new queue for the same CI build ID
+      - run: KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=$KNAPSACK_PRO_QUEUE_TEST_SUITE_TOKEN_RSPEC bundle exec rake knapsack_pro:queue:rspec
+
+      # parallel_tests gem and knapsack_pro in Queue Mode
+      - run: export PARALLEL_TESTS_CONCURRENCY=2; KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=$KNAPSACK_PRO_QUEUE_TEST_SUITE_TOKEN_RSPEC KNAPSACK_PRO_CI_NODE_TOTAL=$CIRCLE_NODE_TOTAL KNAPSACK_PRO_CI_NODE_INDEX=$CIRCLE_NODE_INDEX bundle exec parallel_test -n $PARALLEL_TESTS_CONCURRENCY -e './bin/parallel_tests'
+
+
+      # Regular mode
+      - run: KNAPSACK_PRO_FIXED_TEST_SUITE_SPLIT=false bundle exec rake knapsack_pro:rspec
+
+      # Regular mode with junit formatter
+      - run: KNAPSACK_PRO_FIXED_TEST_SUITE_SPLIT=false bundle exec rake "knapsack_pro:rspec[--format documentation --format RspecJunitFormatter --out tmp/test-reports/rspec/regular_mode/rspec.xml]"
+
+      # Regular mode with custom test_dir
+      - run: KNAPSACK_PRO_FIXED_TEST_SUITE_SPLIT=false KNAPSACK_PRO_TEST_DIR=spec KNAPSACK_PRO_TEST_FILE_PATTERN="{spec,engines/*/spec}/**/*_spec.rb" bundle exec rake knapsack_pro:rspec
+
+      - run: bundle exec rake knapsack_pro:cucumber
+
+      - run: bundle exec rake "knapsack_pro:cucumber[--tag @Test]"
+
+      - run: bundle exec rake "knapsack_pro:cucumber[--format junit --out tmp/test-reports/cucumber/regular_mode]"
+
+      - run: bundle exec rake knapsack_pro:minitest[--verbose]
+
+      - run: KNAPSACK_PRO_TEST_DIR=test-unit KNAPSACK_PRO_TEST_FILE_PATTERN="test-unit/**{,/*/**}/*_test.rb" bundle exec rake "knapsack_pro:test_unit[--verbose]"
+
+      - run: KNAPSACK_PRO_TEST_FILE_PATTERN="spinach_features/**{,/*/**}/*.feature" bundle exec rake knapsack_pro:spinach
+
+      # Check if https endpoint is working
+      - run: KNAPSACK_PRO_FIXED_TEST_SUITE_SPLIT=false KNAPSACK_PRO_ENDPOINT=https://api-staging.knapsackpro.com bundle exec rake knapsack_pro:rspec
+
+      - run: KNAPSACK_PRO_ENDPOINT=https://api-staging.knapsackpro.com bundle exec rake knapsack_pro:cucumber
+
+      - run: KNAPSACK_PRO_ENDPOINT=https://api-staging.knapsackpro.com bundle exec rake knapsack_pro:minitest[--verbose]
+
+      # Example of encrypted test files names
+      # KNAPSACK_PRO_SALT is set in CircleCI settings
+      - run: KNAPSACK_PRO_TEST_FILES_ENCRYPTED=true KNAPSACK_PRO_BRANCH_ENCRYPTED=true KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=$KNAPSACK_PRO_FOR_ENCRYPTED_TEST_SUITE_TOKEN_RSPEC bundle exec rake knapsack_pro:rspec
+
+      # Queue mode with encrypted test files names
+      - run: KNAPSACK_PRO_TEST_FILES_ENCRYPTED=true KNAPSACK_PRO_BRANCH_ENCRYPTED=true KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=$KNAPSACK_PRO_FOR_ENCRYPTED_QUEUE_TEST_SUITE_TOKEN_RSPEC bundle exec rake knapsack_pro:queue:rspec
+
+      # Queue mode retry CI with the same test suite split as last dynamic queue run
+      # with encrypted test files names
+      - run: KNAPSACK_PRO_FIXED_QUEUE_SPLIT=true KNAPSACK_PRO_TEST_FILES_ENCRYPTED=true KNAPSACK_PRO_BRANCH_ENCRYPTED=true KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=$KNAPSACK_PRO_FOR_ENCRYPTED_QUEUE_TEST_SUITE_TOKEN_RSPEC bundle exec rake knapsack_pro:queue:rspec
+
+      # Fallback when cannot connect to API
+      - run: KNAPSACK_PRO_ENDPOINT=https://api-fake.knapsackpro.com bundle exec rake knapsack_pro:rspec
+
+      - run: KNAPSACK_PRO_LOG_LEVEL=warn bundle exec rake knapsack_pro:rspec
+
+
+      # post checking after tests
+      - run: KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=$KNAPSACK_PRO_FOR_ENCRYPTED_QUEUE_TEST_SUITE_TOKEN_RSPEC bundle exec rake knapsack_pro:encrypted_test_file_names[rspec]
+
+      - run: KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=$KNAPSACK_PRO_FOR_ENCRYPTED_QUEUE_TEST_SUITE_TOKEN_RSPEC bundle exec rake knapsack_pro:encrypted_test_file_names[minitest]
+
+      - run: KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=$KNAPSACK_PRO_FOR_ENCRYPTED_QUEUE_TEST_SUITE_TOKEN_RSPEC bundle exec rake knapsack_pro:encrypted_test_file_names[cucumber]
+
+      - run: KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=$KNAPSACK_PRO_FOR_ENCRYPTED_QUEUE_TEST_SUITE_TOKEN_RSPEC bundle exec rake knapsack_pro:encrypted_test_file_names[spinach]
+
+      - run: KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=$KNAPSACK_PRO_FOR_ENCRYPTED_QUEUE_TEST_SUITE_TOKEN_RSPEC bundle exec rake knapsack_pro:encrypted_branch_names
+
+      - run: KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=$KNAPSACK_PRO_FOR_ENCRYPTED_QUEUE_TEST_SUITE_TOKEN_RSPEC bundle exec rake knapsack_pro:encrypted_branch_names[feature-branch]
