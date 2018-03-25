@@ -98,3 +98,11 @@ In `bin` directory are files:
 * `bin/knapsack_pro_cucumber`
 
 They exist for test reason when you want to run this project on local machine. In that case the `KNAPSACK_PRO_ENDPOINT` is pointed to staging which is reserved only for Knapsack Pro developers.
+
+## RSpec dry run
+
+```
+$ mkdir -p tmp/knapsack_pro/rspec
+
+$ bundle exec rspec --dry-run --format json --out tmp/knapsack_pro/rspec/dry_run.json spec
+```
