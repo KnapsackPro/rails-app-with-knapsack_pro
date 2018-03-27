@@ -26,7 +26,7 @@ You can use below command on CI to run tests:
     # Run this on second CI server
     $ KNAPSACK_PRO_CI_NODE_TOTAL=2 KNAPSACK_PRO_CI_NODE_INDEX=1 bundle exec rake knapsack_pro:rspec
 
-See [circle.yml](circle.yml) to see how we set up CircleCI.
+See [.circleci/config.yml](.circleci/config.yml) to see how we set up CircleCI.
 
 
 ## Parallel cucumber test suite with knapsack_pro
@@ -43,7 +43,7 @@ You can use below command on CI to run tests:
     # Run this on second CI server
     $ KNAPSACK_PRO_CI_NODE_TOTAL=2 KNAPSACK_PRO_CI_NODE_INDEX=1 bundle exec rake knapsack_pro:cucumber
 
-See [circle.yml](circle.yml) to see how we set up CircleCI.
+See [.circleci/config.yml](.circleci/config.yml) to see how we set up CircleCI.
 
 
 ## Parallel minitest test suite with knapsack_pro
@@ -60,7 +60,7 @@ You can use below command on CI to run tests:
     # Run this on second CI server
     $ KNAPSACK_PRO_CI_NODE_TOTAL=2 KNAPSACK_PRO_CI_NODE_INDEX=1 bundle exec rake knapsack_pro:minitest
 
-See [circle.yml](circle.yml) to see how we set up CircleCI.
+See [.circleci/config.yml](.circleci/config.yml) to see how we set up CircleCI.
 
 ## Parallel test-unit test suite with knapsack_pro
 
@@ -76,7 +76,7 @@ You can use below command on CI to run tests:
     # Run this on second CI server
     $ KNAPSACK_PRO_CI_NODE_TOTAL=2 KNAPSACK_PRO_CI_NODE_INDEX=1 bundle exec rake knapsack_pro:test_unit
 
-See [circle.yml](circle.yml) to see how we set up CircleCI.
+See [.circleci/config.yml](.circleci/config.yml) to see how we set up CircleCI.
 
 
 
