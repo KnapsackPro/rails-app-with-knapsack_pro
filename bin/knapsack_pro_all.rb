@@ -6,6 +6,9 @@ COMMANDS = %{
 ./bin/knapsack_pro_rspec_junit 0 2
 ./bin/knapsack_pro_rspec_junit 1 2
 
+./bin/knapsack_pro_rspec_only_partial_nodes 0 3
+./bin/knapsack_pro_rspec_only_partial_nodes 1 3
+
 ./bin/knapsack_pro_rspec_encrypted 0 2
 ./bin/knapsack_pro_rspec_encrypted 1 2
 
