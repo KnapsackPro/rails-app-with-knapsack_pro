@@ -2,9 +2,9 @@ require 'knapsack_pro'
 
 # CUSTOM_CONFIG_GOES_HERE
 KnapsackPro::Hooks::Queue.before_queue do |queue_id|
-  print '-'*20
+  print '-'*10
   print 'Before Queue Hook - run before test suite'
-  print '-'*20
+  print '-'*10
 end
 
 # TODO This must be the same path as value for rspec --out argument
@@ -16,6 +16,10 @@ KnapsackPro::Hooks::Queue.after_subset_queue do |queue_id, subset_queue_id|
   if File.exist?(TMP_RSPEC_XML_REPORT)
     FileUtils.mv(TMP_RSPEC_XML_REPORT, FINAL_RSPEC_XML_REPORT)
   end
+
+  print '-'*10
+  print 'After Subset Queue Hook - run after subset of test suite'
+  print '-'*10
 end
 
 KnapsackPro::Hooks::Queue.after_queue do |queue_id|
@@ -25,9 +29,9 @@ KnapsackPro::Hooks::Queue.after_queue do |queue_id|
     FileUtils.cp(FINAL_RSPEC_XML_REPORT, "#{ENV['CIRCLE_TEST_REPORTS']}/rspec.xml")
   end
 
-  print '-'*20
+  print '-'*10
   print 'After Queue Hook - run after test suite'
-  print '-'*20
+  print '-'*10
 end
 
 KnapsackPro::Adapters::RSpecAdapter.bind
