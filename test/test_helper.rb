@@ -6,6 +6,23 @@ require 'minitest/spec'
 require 'knapsack_pro'
 
 # CUSTOM_CONFIG_GOES_HERE
+KnapsackPro::Hooks::Queue.before_queue do |queue_id|
+  print '-'*20
+  print 'Before Queue Hook - run before test suite'
+  print '-'*20
+end
+
+KnapsackPro::Hooks::Queue.after_subset_queue do |queue_id, subset_queue_id|
+  print '-'*20
+  print 'After Subset Queue Hook - run after subset of test suite'
+  print '-'*20
+end
+
+KnapsackPro::Hooks::Queue.after_queue do |queue_id|
+  print '-'*20
+  print 'After Queue Hook - run after test suite'
+  print '-'*20
+end
 
 knapsack_pro_adapter = KnapsackPro::Adapters::MinitestAdapter.bind
 knapsack_pro_adapter.set_test_helper_path(__FILE__)
