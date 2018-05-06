@@ -1,6 +1,10 @@
 require 'test_helper'
 
-describe Meme do
+# Duplicate name of the class so we can run 2 similar test files.
+# Minitest requires unique name in describe if you duplicated test file.
+MemeDuplicated = Meme
+
+describe MemeDuplicated do
   before do
     @meme = Meme.new
   end
