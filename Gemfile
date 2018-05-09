@@ -57,6 +57,8 @@ group :test do
   gem 'rspec_junit_formatter'
   gem 'rspec-retry'
 
+  gem 'minitest-spec-rails'
+
   gem 'cucumber-rails', require: false
   # database_cleaner is not required, but highly recommended
   gem 'database_cleaner'
