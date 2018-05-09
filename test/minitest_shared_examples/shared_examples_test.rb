@@ -1,5 +1,5 @@
 require 'test_helper'
 
-describe "test that use SharedExamples" do
+class TestThatUsesSharedExamples < Minitest::Test
   include SharedExampleSpec
 end
