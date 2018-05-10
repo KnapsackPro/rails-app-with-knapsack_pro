@@ -97,7 +97,7 @@ jobs:
 
 
       # Queue Mode Minitest
-      - run: KNAPSACK_PRO_TEST_SUITE_TOKEN_MINITEST=$KNAPSACK_PRO_QUEUE_TEST_SUITE_TOKEN_MINITEST bundle exec rake knapsack_pro:queue:minitest
+      - run: KNAPSACK_PRO_TEST_SUITE_TOKEN_MINITEST=$KNAPSACK_PRO_QUEUE_TEST_SUITE_TOKEN_MINITEST bundle exec rake knapsack_pro:queue:minitest[--verbose]
 
 
       # Regular mode
