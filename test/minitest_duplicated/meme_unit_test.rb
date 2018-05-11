@@ -2,7 +2,7 @@ require 'test_helper'
 
 # This test is a duplicated test of test/minitest/meme_unit_test.rb
 # It will override the origin test and only this duplicated test will run
-class TestMeme < Minitest::Test
+class TestMemeDuplicated < Minitest::Test
   def setup
     @meme = Meme.new
   end

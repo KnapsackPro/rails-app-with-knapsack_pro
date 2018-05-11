@@ -10,7 +10,7 @@ GIT
 PATH
   remote: ../knapsack_pro-ruby
   specs:
-    knapsack_pro (0.53.0)
+    knapsack_pro (0.54.0)
       rake
 
 GEM
