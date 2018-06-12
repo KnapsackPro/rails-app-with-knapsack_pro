@@ -23,4 +23,15 @@ describe 'Time travel with ActiveSupport::Testing::TimeHelpers' do
       end
     end
   end
+
+  context 'travel_to block 2014' do
+    let!(:time_2014) { Time.new(2004, 11, 24, 01, 04, 44) }
+
+    it do
+      travel_to(time_2014) do
+        expect(Time.current.year).to eq 2004
+        expect(Time.raw_now.year).to be >= 2017
+      end
+    end
+  end
 end
