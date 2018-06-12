@@ -8,9 +8,9 @@ KnapsackPro::Hooks::Queue.before_queue do |queue_id|
 end
 
 # TODO This must be the same path as value for rspec --out argument
-TMP_RSPEC_XML_REPORT = 'tmp/test-reports/rspec/queue_mode/rspec.xml'
+TMP_RSPEC_XML_REPORT = "tmp/test-reports/rspec/queue_mode/rspec_#{ENV['KNAPSACK_PRO_CI_NODE_INDEX']}.xml"
 # move results to FINAL_RSPEC_XML_REPORT so the results won't accumulate with duplicated xml tags in TMP_RSPEC_XML_REPORT
-FINAL_RSPEC_XML_REPORT = 'tmp/test-reports/rspec/queue_mode/rspec_final_results.xml'
+FINAL_RSPEC_XML_REPORT = "tmp/test-reports/rspec/queue_mode/rspec_final_results_#{ENV['KNAPSACK_PRO_CI_NODE_INDEX']}.xml"
 
 KnapsackPro::Hooks::Queue.after_subset_queue do |queue_id, subset_queue_id|
   if File.exist?(TMP_RSPEC_XML_REPORT)
