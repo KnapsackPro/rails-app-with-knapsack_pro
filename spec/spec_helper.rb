@@ -1,10 +1,15 @@
 require 'knapsack_pro'
 
+require 'simplecov'
+SimpleCov.start
+
 # CUSTOM_CONFIG_GOES_HERE
 KnapsackPro::Hooks::Queue.before_queue do |queue_id|
   print '-'*10
   print 'Before Queue Hook - run before test suite'
   print '-'*10
+
+  SimpleCov.command_name("rspec_ci_node_#{KnapsackPro::Config::Env.ci_node_index}")
 end
 
 # TODO This must be the same path as value for rspec --out argument
