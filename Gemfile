@@ -47,6 +47,7 @@ group :development, :test do
   gem 'parallel_tests'
 
   gem 'knapsack_pro', path: ENV['KNAPSACK_PRO_REPO_PATH'] || '~/Documents/github/knapsack-pro/knapsack_pro-ruby'
+  #gem 'knapsack_pro', github: 'KnapsackPro/knapsack_pro-ruby', branch: 'rspec-queue-mode-record-timing-fix'
 
   gem 'test-unit-rails'
 end
