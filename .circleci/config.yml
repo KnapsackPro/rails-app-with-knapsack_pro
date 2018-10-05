@@ -66,6 +66,8 @@ jobs:
             - ./vendor/bundle
           key: v2-dependencies-bundler-{{ checksum "Gemfile.lock" }}
 
+      # wait for postgres to be available
+      - run: dockerize -wait tcp://localhost:5432 -timeout 1m
       # Database setup
       - run: bin/rails db:setup
       # Database setup for parallel_tests gem
