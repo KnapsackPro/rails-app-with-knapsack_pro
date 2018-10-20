@@ -1,5 +1,10 @@
 require 'knapsack_pro'
 
+# uncomment if you want to test how custom logger works
+#require 'logger'
+#KnapsackPro.logger = Logger.new(STDOUT)
+#KnapsackPro.logger.level = Logger::INFO
+
 require 'simplecov'
 SimpleCov.start
 
