@@ -24,6 +24,9 @@ agent:
 blocks:
   - name: Setup
     task:
+      env_vars:
+        - name: KNAPSACK_PRO_REPO_PATH
+          value: vendor/bundle/knapsack_pro-ruby
       jobs:
         - name: bundle
           commands:
@@ -38,6 +41,8 @@ blocks:
           - cache restore gems-$SEMAPHORE_GIT_BRANCH-$(checksum Gemfile.lock),gems-$SEMAPHORE_GIT_BRANCH-,gems-master-
           # Set Ruby version:
           - sem-version ruby 2.6.1
+          - mkdir -p vendor/bundle
+          - cd vendor/bundle && (git clone -b semaphore-2.0 --single-branch git@github.com:KnapsackPro/knapsack_pro-ruby.git || git clone -b master --single-branch git@github.com:KnapsackPro/knapsack_pro-ruby.git)
           - bundle install --jobs=4 --retry=3 --path vendor/bundle
           # Store the latest version of dependencies in cache,
           # to be used in next blocks and future workflows:
