@@ -74,9 +74,9 @@ blocks:
           - bundle exec rake db:setup
 
       jobs:
-      - name: RSpec - model tests
+      - name: RSpec - services tests
         commands:
-          - bundle exec rspec spec/models
+          - bundle exec rspec spec/services
 
       - name: RSpec - controller tests
         commands:
