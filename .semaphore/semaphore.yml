@@ -84,8 +84,24 @@ blocks:
       jobs:
       - name: RSpec via Knapsack Pro - Node 0
         commands:
-          - KNAPSACK_PRO_CI_NODE_TOTAL=2 KNAPSACK_PRO_CI_NODE_INDEX=0 bundle exec rake knapsack_pro:queue:rspec
+          - KNAPSACK_PRO_CI_NODE_TOTAL=6 KNAPSACK_PRO_CI_NODE_INDEX=0 bundle exec rake knapsack_pro:queue:rspec
 
       - name: RSpec via Knapsack Pro - Node 1
         commands:
-          - KNAPSACK_PRO_CI_NODE_TOTAL=2 KNAPSACK_PRO_CI_NODE_INDEX=1 bundle exec rake knapsack_pro:queue:rspec
+          - KNAPSACK_PRO_CI_NODE_TOTAL=6 KNAPSACK_PRO_CI_NODE_INDEX=1 bundle exec rake knapsack_pro:queue:rspec
+
+      - name: RSpec via Knapsack Pro - Node 2
+        commands:
+          - KNAPSACK_PRO_CI_NODE_TOTAL=6 KNAPSACK_PRO_CI_NODE_INDEX=2 bundle exec rake knapsack_pro:queue:rspec
+
+      - name: RSpec via Knapsack Pro - Node 3
+        commands:
+          - KNAPSACK_PRO_CI_NODE_TOTAL=6 KNAPSACK_PRO_CI_NODE_INDEX=3 bundle exec rake knapsack_pro:queue:rspec
+
+      - name: RSpec via Knapsack Pro - Node 4
+        commands:
+          - KNAPSACK_PRO_CI_NODE_TOTAL=6 KNAPSACK_PRO_CI_NODE_INDEX=4 bundle exec rake knapsack_pro:queue:rspec
+
+      - name: RSpec via Knapsack Pro - Node 5
+        commands:
+          - KNAPSACK_PRO_CI_NODE_TOTAL=6 KNAPSACK_PRO_CI_NODE_INDEX=5 bundle exec rake knapsack_pro:queue:rspec
