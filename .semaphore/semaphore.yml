@@ -25,6 +25,8 @@ blocks:
   - name: Setup
     task:
       env_vars:
+        - name: RAILS_ENV
+          value: test
         - name: KNAPSACK_PRO_REPO_PATH
           value: ~/gems/knapsack_pro-ruby
       jobs:
@@ -51,6 +53,8 @@ blocks:
   - name: Unit tests
     task:
       env_vars:
+        - name: RAILS_ENV
+          value: test
         - name: KNAPSACK_PRO_REPO_PATH
           value: ~/gems/knapsack_pro-ruby
       # This block runs two jobs in parallel and they both share common
