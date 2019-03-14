@@ -38,7 +38,7 @@ blocks:
           - cache restore gems-$SEMAPHORE_GIT_BRANCH-$(checksum Gemfile.lock),gems-$SEMAPHORE_GIT_BRANCH-,gems-master-
           # Set Ruby version:
           - sem-version ruby 2.6.1
-          - bundle install --deployment -j 4 --path vendor/bundle
+          - bundle install --jobs=4 --retry=3 --path vendor/bundle
           # Store the latest version of dependencies in cache,
           # to be used in next blocks and future workflows:
           - cache store gems-$SEMAPHORE_GIT_BRANCH-$(checksum Gemfile.lock) vendor/bundle
@@ -56,7 +56,7 @@ blocks:
           # See https://docs.semaphoreci.com/article/54-toolbox-reference#sem-service
           - sem-service start postgres
           - sem-version ruby 2.6.1
-          - bundle install --deployment --path vendor/bundle
+          - bundle install --jobs=4 --retry=3 --path vendor/bundle
           - bundle exec rake db:setup
 
       jobs:
