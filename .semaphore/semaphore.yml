@@ -41,8 +41,8 @@ blocks:
           - cache restore gems-$SEMAPHORE_GIT_BRANCH-$(checksum Gemfile.lock),gems-$SEMAPHORE_GIT_BRANCH-,gems-master-
           # Set Ruby version:
           - sem-version ruby 2.6.1
-          - mkdir -p $KNAPSACK_PRO_REPO_PATH
-          - cd $KNAPSACK_PRO_REPO_PATH && (git clone -b semaphore-2.0 --single-branch git@github.com:KnapsackPro/knapsack_pro-ruby.git || git clone -b master --single-branch git@github.com:KnapsackPro/knapsack_pro-ruby.git)
+          - mkdir -p ~/gems
+          - cd ~/gems && (git clone -b semaphore-2.0 --single-branch git@github.com:KnapsackPro/knapsack_pro-ruby.git || git clone -b master --single-branch git@github.com:KnapsackPro/knapsack_pro-ruby.git)
           - bundle install --jobs=4 --retry=3 --path vendor/bundle
           # Store the latest version of dependencies in cache,
           # to be used in next blocks and future workflows:
@@ -64,8 +64,8 @@ blocks:
           # See https://docs.semaphoreci.com/article/54-toolbox-reference#sem-service
           - sem-service start postgres
           - sem-version ruby 2.6.1
-          - mkdir -p $KNAPSACK_PRO_REPO_PATH
-          - cd $KNAPSACK_PRO_REPO_PATH && (git clone -b semaphore-2.0 --single-branch git@github.com:KnapsackPro/knapsack_pro-ruby.git || git clone -b master --single-branch git@github.com:KnapsackPro/knapsack_pro-ruby.git)
+          - mkdir -p ~/gems
+          - cd ~/gems && (git clone -b semaphore-2.0 --single-branch git@github.com:KnapsackPro/knapsack_pro-ruby.git || git clone -b master --single-branch git@github.com:KnapsackPro/knapsack_pro-ruby.git)
           - bundle install --jobs=4 --retry=3 --path vendor/bundle
           - bundle exec rake db:setup
 
