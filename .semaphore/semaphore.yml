@@ -32,14 +32,17 @@ blocks:
         commands:
           - checkout
           - echo "make rspec"
+          - env
       - name: Lint code
         commands:
           - checkout
           - echo "make lint"
+          - env
       - name: Check security
         commands:
           - checkout
           - echo "make security"
+          - env
   - name: "Integration tests"
     task:
       jobs:
