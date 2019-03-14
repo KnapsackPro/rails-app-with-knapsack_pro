@@ -33,6 +33,7 @@ blocks:
           - checkout
           - echo "make rspec"
           - env
+          - pwd
       - name: Lint code
         commands:
           - checkout
