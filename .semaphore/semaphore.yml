@@ -44,7 +44,7 @@ blocks:
           # Set Ruby version:
           - sem-version ruby 2.6.1
           - mkdir -p ~/gems
-          - cd ~/gems && (git clone -b semaphore-2.0 --single-branch git@github.com:KnapsackPro/knapsack_pro-ruby.git || git clone -b master --single-branch git@github.com:KnapsackPro/knapsack_pro-ruby.git) && cd ~/$SEMAPHORE_GIT_DIR
+          - cd ~/gems && (git clone -b $SEMAPHORE_GIT_BRANCH --single-branch git@github.com:KnapsackPro/knapsack_pro-ruby.git || git clone -b master --single-branch git@github.com:KnapsackPro/knapsack_pro-ruby.git) && cd ~/$SEMAPHORE_GIT_DIR
           - bundle install --jobs=4 --retry=3 --path vendor/bundle
           # Store the latest version of dependencies in cache,
           # to be used in next blocks and future workflows:
