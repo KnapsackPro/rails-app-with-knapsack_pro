@@ -50,6 +50,9 @@ blocks:
 
   - name: Unit tests
     task:
+      env_vars:
+        - name: KNAPSACK_PRO_REPO_PATH
+          value: vendor/bundle/knapsack_pro-ruby
       # This block runs two jobs in parallel and they both share common
       # setup steps. We can group them in a prologue.
       # See https://docs.semaphoreci.com/article/50-pipeline-yaml#prologue
