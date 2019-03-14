@@ -9,8 +9,6 @@ development:
 
 test: &test
   <<: *default
-  host: localhost
-  username: postgres
   database: rails-app-with-knapsack_pro_test<%= ENV['TEST_ENV_NUMBER'] %>
 
 production:
