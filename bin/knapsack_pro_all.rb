@@ -39,6 +39,9 @@ COMMANDS = %{
 ./bin/knapsack_pro_queue_rspec_junit 0 2
 ./bin/knapsack_pro_queue_rspec_junit 1 2
 
+./bin/knapsack_pro_queue_rspec_log_dir 0 2
+./bin/knapsack_pro_queue_rspec_log_dir 1 2
+
 ./bin/knapsack_pro_queue_rspec_json 0 2
 ./bin/knapsack_pro_queue_rspec_json 1 2
 
