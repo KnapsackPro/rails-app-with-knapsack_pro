@@ -19,6 +19,8 @@ RSpec.configure do |config|
   end
 end
 
+#KnapsackPro.logger = Logger.new(Rails.root.join('log', "knapsack_pro_node_#{KnapsackPro::Config::Env.ci_node_index}.log"))
+
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
