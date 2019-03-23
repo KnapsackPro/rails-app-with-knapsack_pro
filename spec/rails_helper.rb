@@ -20,6 +20,7 @@ RSpec.configure do |config|
 end
 
 #KnapsackPro.logger = Logger.new(Rails.root.join('log', "knapsack_pro_node_#{KnapsackPro::Config::Env.ci_node_index}.log"))
+#KnapsackPro.logger = Logger.new("log/knapsack_pro_node_#{KnapsackPro::Config::Env.ci_node_index}.log")
 
 # Add additional requires below this line. Rails is not loaded until this point!
 
