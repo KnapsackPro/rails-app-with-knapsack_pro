@@ -69,6 +69,8 @@ COMMANDS = %{
 ./bin/parallel_tests_knapsack_pro_queue_rspec 0 2
 ./bin/parallel_tests_knapsack_pro_queue_rspec 1 2
 
+./bin/parallel_tests_knapsack_pro_single_machine_run
+
 ./bin/bin_knapsack_pro_rspec 0 2
 ./bin/bin_knapsack_pro_rspec 1 2
 
