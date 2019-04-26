@@ -70,8 +70,8 @@ group :test do
   gem 'webmock', require: false
 
   gem 'capybara'
-  #gem 'capybara-screenshot'
-  gem 'capybara-screenshot', github: 'ArturT/capybara-screenshot', branch: 'fix-reporter_module-loaded-twice'
+  gem 'capybara-screenshot'
+  #gem 'capybara-screenshot', github: 'ArturT/capybara-screenshot', branch: 'fix-reporter_module-loaded-twice'
 
   gem 'shared_should', require: false
   gem 'simplecov', require: false
