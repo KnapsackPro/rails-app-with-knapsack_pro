@@ -54,11 +54,7 @@ jobs:
           command: |
             curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
             chmod +x ./cc-test-reporter
-      - run:
-          name: cc-test-reporter before-build
-          command: |
-            mkdir -p /tmp/test-results
-            ./cc-test-reporter before-build
+      - run: ./cc-test-reporter before-build
 
       # Download and cache dependencies
       - restore_cache:
@@ -180,11 +176,6 @@ jobs:
           root: coverage
           paths:
             - codeclimate.*.json
-      - store_test_results:
-          path: /tmp/test-results
-      - store_artifacts:
-          path: /tmp/test-results
-          destination: test-results
 
   upload-coverage:
     docker:
