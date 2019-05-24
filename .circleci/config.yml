@@ -6,6 +6,8 @@ version: 2
 jobs:
   build:
     parallelism: 2
+    environment:
+      CC_TEST_REPORTER_ID: dd360701bd9bd47abdea789fe94c9a9b118bc9f7fbce6d3cdc1dd3709866e460
     docker:
       # specify the version you desire here
       - image: circleci/ruby:2.5.0-node-browsers
@@ -48,6 +50,19 @@ jobs:
       - run: mkdir -p tmp/test-reports/rspec/regular_mode/
       - run: mkdir -p tmp/test-reports/rspec/queue_mode/
       - run: mkdir -p tmp/test-reports/cucumber/regular_mode/
+
+      - run:
+        name: Install Code Climate Test Reporter
+        command: |
+          curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+          chmod +x ./cc-test-reporter
+      - run:
+        name: cc-test-reporter before-build
+        command: |
+          mkdir -p /tmp/test-results
+          ./cc-test-reporter before-build
+
+
 
       # Download and cache dependencies
       - restore_cache:
@@ -159,3 +174,19 @@ jobs:
       - run: KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=$KNAPSACK_PRO_FOR_ENCRYPTED_QUEUE_TEST_SUITE_TOKEN_RSPEC bundle exec rake knapsack_pro:encrypted_branch_names
 
       - run: KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=$KNAPSACK_PRO_FOR_ENCRYPTED_QUEUE_TEST_SUITE_TOKEN_RSPEC bundle exec rake knapsack_pro:encrypted_branch_names[feature-branch]
+
+      - run:
+        name: Code Climate Test Coverage
+        command: |
+          ./cc-test-reporter format-coverage -t simplecov -o "coverage/codeclimate.$CIRCLE_NODE_INDEX.json"
+
+      - store_test_results:
+          path: /tmp/test-results
+      - store_artifacts:
+          path: /tmp/test-results
+          destination: test-results
+
+      - run:
+        name: Code Climate Test Coverage
+        command: |
+          ./cc-test-reporter sum-coverage --output - --parts $CIRCLE_NODE_TOTAL coverage/codeclimate.*.json | ./cc-test-reporter upload-coverage --debug --input -
