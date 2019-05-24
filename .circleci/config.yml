@@ -176,6 +176,10 @@ jobs:
           root: coverage
           paths:
             - codeclimate.*.json
+      - store_test_results:
+          path: tmp/test-reports
+      - store_artifacts:
+          path: tmp/test-reports
 
   upload-coverage:
     docker:
