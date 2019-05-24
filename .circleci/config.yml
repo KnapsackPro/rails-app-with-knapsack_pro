@@ -187,4 +187,4 @@ jobs:
       - run:
           name: Code Climate Test Coverage
           command: |
-            ./cc-test-reporter sum-coverage --output - --parts $CIRCLE_NODE_TOTAL coverage/rspec_ci_node_*.json | ./cc-test-reporter upload-coverage --debug --input -
+            ./cc-test-reporter sum-coverage --output - --parts $CIRCLE_NODE_TOTAL coverage/codeclimate.*.json | ./cc-test-reporter upload-coverage --debug --input -
