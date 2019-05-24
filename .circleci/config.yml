@@ -6,8 +6,6 @@ version: 2
 jobs:
   build:
     parallelism: 2
-    environment:
-      CC_TEST_REPORTER_ID: dd360701bd9bd47abdea789fe94c9a9b118bc9f7fbce6d3cdc1dd3709866e460
     docker:
       # specify the version you desire here
       - image: circleci/ruby:2.5.0-node-browsers
@@ -178,13 +176,41 @@ jobs:
           command: |
             ./cc-test-reporter format-coverage -t simplecov -o "coverage/codeclimate.$CIRCLE_NODE_INDEX.json"
 
+      - persist_to_workspace:
+          root: coverage
+          paths:
+            - codeclimate.*.json
       - store_test_results:
           path: /tmp/test-results
       - store_artifacts:
           path: /tmp/test-results
           destination: test-results
 
-      - deploy:
-          name: Code Climate Test Coverage
+  upload-coverage:
+    docker:
+      - image: circleci/ruby:2.5.0-node
+    environment:
+      CC_TEST_REPORTER_ID: dd360701bd9bd47abdea789fe94c9a9b118bc9f7fbce6d3cdc1dd3709866e460
+    working_directory: ~/repo
+
+    steps:
+      - attach_workspace:
+          at: ~/repo
+      - run:
+          name: Install Code Climate Test Reporter
           command: |
-            ./cc-test-reporter sum-coverage --output - --parts $CIRCLE_NODE_TOTAL coverage/codeclimate.*.json | ./cc-test-reporter upload-coverage --debug --input -
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+            chmod +x ./cc-test-reporter
+      - run:
+          command: |
+            ./cc-test-reporter sum-coverage --output - codeclimate.*.json | ./cc-test-reporter upload-coverage --debug --input -
+
+workflows:
+  version: 2
+
+  commit:
+    jobs:
+      - build
+      - upload-coverage:
+          requires:
+             - build
