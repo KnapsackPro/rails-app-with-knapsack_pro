@@ -1,5 +1,8 @@
 image: "ruby:2.6"
 
+services:
+  - postgres
+
 variables:
   RAILS_ENV: test
   KNAPSACK_PRO_REPO_PATH: ~/gems/knapsack_pro-ruby
