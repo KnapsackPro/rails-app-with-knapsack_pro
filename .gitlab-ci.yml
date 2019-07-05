@@ -26,5 +26,4 @@ before_script:
 rspec:
   parallel: 2
   script:
-    - rake --tasks
     - bundle exec rake knapsack_pro:queue:rspec
