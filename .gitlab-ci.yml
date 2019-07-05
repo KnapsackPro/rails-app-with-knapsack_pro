@@ -5,7 +5,6 @@ services:
 
 variables:
   RAILS_ENV: test
-  PGHOST: postgres
   POSTGRES_DB: rails-app-with-knapsack_pro_test
   POSTGRES_USER: postgres
   POSTGRES_PASSWORD: ""
