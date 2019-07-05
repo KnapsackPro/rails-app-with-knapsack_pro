@@ -17,6 +17,9 @@ before_script:
   - cd ~/gems/knapsack_pro-ruby && git branch
   - cd ~/gems/knapsack_pro-ruby && git log -n 1 | more
 
+  - pwd
+  - cd /builds/KnapsackPro/rails-app-with-knapsack_pro/
+
   - gem install bundler --no-document
   - bundle install --jobs $(nproc)  "${FLAGS[@]}"
 
@@ -26,4 +29,5 @@ before_script:
 rspec:
   parallel: 2
   script:
+    - pwd
     - bundle exec rake knapsack_pro:queue:rspec
