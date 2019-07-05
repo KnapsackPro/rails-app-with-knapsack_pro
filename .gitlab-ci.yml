@@ -3,6 +3,8 @@ image: "ruby:2.6"
 variables:
   KNAPSACK_PRO_REPO_PATH: ~/gems/knapsack_pro-ruby
   KNAPSACK_PRO_GIT_REPO: https://github.com/KnapsackPro/knapsack_pro-ruby.git
+  KNAPSACK_PRO_ENDPOINT: https://api-staging.knapsackpro.com
+  # KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC: it is set in Settings -> CI/CD -> Variables (Expand) as masked variable
 
 before_script:
   - apt-get update -qq && apt-get install -y -qq sqlite3 libsqlite3-dev nodejs
@@ -19,5 +21,6 @@ before_script:
   - bundle install --jobs $(nproc)  "${FLAGS[@]}"
 
 rspec:
+  parallel: 2
   script:
-    - bundle exec rspec
+    - bundle exec rake knapsack_pro:queue:rspec
