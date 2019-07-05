@@ -21,6 +21,9 @@ before_script:
   - gem install bundler --no-document
   - bundle install --jobs $(nproc)  "${FLAGS[@]}"
 
+  # Database setup
+  - bin/rails db:setup
+
 rspec:
   parallel: 2
   script:
