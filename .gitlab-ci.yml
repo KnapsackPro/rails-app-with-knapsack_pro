@@ -2,6 +2,7 @@ image: "ruby:2.6"
 
 variables:
   KNAPSACK_PRO_REPO_PATH: ~/gems/knapsack_pro-ruby
+  KNAPSACK_PRO_GIT_REPO: https://github.com/KnapsackPro/knapsack_pro-ruby.git
 
 before_script:
   - apt-get update -qq && apt-get install -y -qq sqlite3 libsqlite3-dev nodejs
@@ -10,7 +11,7 @@ before_script:
 
   # clone knapsack_pro gem repo
   - mkdir ~/gems
-  - cd ~/gems && (git clone -b $CI_COMMIT_REF_NAME --single-branch git@github.com:KnapsackPro/knapsack_pro-ruby.git || git clone -b master --single-branch git@github.com:KnapsackPro/knapsack_pro-ruby.git)
+  - cd ~/gems && (git clone -b $CI_COMMIT_REF_NAME --single-branch $KNAPSACK_PRO_GIT_REPO || git clone -b master --single-branch $KNAPSACK_PRO_GIT_REPO)
   - cd ~/gems/knapsack_pro-ruby && git branch
   - cd ~/gems/knapsack_pro-ruby && git log -n 1 | more
 
