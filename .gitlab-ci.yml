@@ -5,6 +5,7 @@ services:
 
 variables:
   RAILS_ENV: test
+  PGHOST: 127.0.0.1
   KNAPSACK_PRO_REPO_PATH: ~/gems/knapsack_pro-ruby
   KNAPSACK_PRO_GIT_REPO: https://github.com/KnapsackPro/knapsack_pro-ruby.git
   KNAPSACK_PRO_ENDPOINT: https://api-staging.knapsackpro.com
