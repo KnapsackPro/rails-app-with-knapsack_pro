@@ -36,5 +36,4 @@ before_script:
 rspec:
   parallel: 2
   script:
-    - env
     - bundle exec rake knapsack_pro:queue:rspec
