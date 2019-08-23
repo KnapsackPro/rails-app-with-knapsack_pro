@@ -84,8 +84,8 @@ blocks:
       jobs:
       - name: Node 0 - Knapsack Pro
         commands:
-          - KNAPSACK_PRO_CI_NODE_TOTAL=2 KNAPSACK_PRO_CI_NODE_INDEX=0 bundle exec rake knapsack_pro:queue:rspec
+          - KNAPSACK_PRO_CI_NODE_TOTAL=$SEMAPHORE_JOB_COUNT KNAPSACK_PRO_CI_NODE_INDEX=$(($SEMAPHORE_JOB_INDEX - 1)) bundle exec rake knapsack_pro:queue:rspec
 
       - name: Node 1 - Knapsack Pro
         commands:
-          - KNAPSACK_PRO_CI_NODE_TOTAL=2 KNAPSACK_PRO_CI_NODE_INDEX=1 bundle exec rake knapsack_pro:queue:rspec
+          - KNAPSACK_PRO_CI_NODE_TOTAL=$SEMAPHORE_JOB_COUNT KNAPSACK_PRO_CI_NODE_INDEX=$(($SEMAPHORE_JOB_INDEX - 1)) bundle exec rake knapsack_pro:queue:rspec
