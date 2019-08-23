@@ -82,10 +82,7 @@ blocks:
           - bundle exec rake db:setup
 
       jobs:
-      - name: Node 0 - Knapsack Pro
-        commands:
-          - KNAPSACK_PRO_CI_NODE_TOTAL=$SEMAPHORE_JOB_COUNT KNAPSACK_PRO_CI_NODE_INDEX=$(($SEMAPHORE_JOB_INDEX - 1)) bundle exec rake knapsack_pro:queue:rspec
-
-      - name: Node 1 - Knapsack Pro
+      - name: Run tests with Knapsack Pro
+        parallelism: 2
         commands:
           - KNAPSACK_PRO_CI_NODE_TOTAL=$SEMAPHORE_JOB_COUNT KNAPSACK_PRO_CI_NODE_INDEX=$(($SEMAPHORE_JOB_INDEX - 1)) bundle exec rake knapsack_pro:queue:rspec
