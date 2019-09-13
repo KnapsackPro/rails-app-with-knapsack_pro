@@ -20,7 +20,7 @@ jobs:
         KNAPSACK_PRO_REPO_PATH: ~/gems/knapsack_pro-ruby
       run: |
         mkdir ~/gems
-        cd ~/gems && (git clone -b $CIRCLE_BRANCH --single-branch git@github.com:KnapsackPro/knapsack_pro-ruby.git || git clone -b master --single-branch git@github.com:KnapsackPro/knapsack_pro-ruby.git)
+        cd ~/gems && (git clone -b $CIRCLE_BRANCH --single-branch https://github.com/KnapsackPro/knapsack_pro-ruby.git || git clone -b master --single-branch https://github.com/KnapsackPro/knapsack_pro-ruby.git)
         cd ~/gems/knapsack_pro-ruby && git branch
         cd ~/gems/knapsack_pro-ruby && git log -n 1 | more
     - name: Build and run tests
