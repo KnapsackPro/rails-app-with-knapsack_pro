@@ -35,16 +35,6 @@ jobs:
       with:
         ruby-version: 2.6.3
 
-    - name: Setup knapsack_pro gem locally
-      run: |
-        mkdir ~/gems
-        # remove refs/heads from branch name like refs/heads/github-actions
-        export BRANCH=$(ruby -e 'print ENV["GITHUB_REF"].to_s.split("/").last')
-        echo $BRANCH
-        cd ~/gems && (git clone -b $BRANCH --single-branch https://github.com/KnapsackPro/knapsack_pro-ruby.git || git clone -b master --single-branch https://github.com/KnapsackPro/knapsack_pro-ruby.git)
-        cd ~/gems/knapsack_pro-ruby && git branch
-        cd ~/gems/knapsack_pro-ruby && git log -n 1 | more
-
     - name: install PostgreSQL client
       run: sudo apt-get install libpq-dev
 
@@ -56,7 +46,6 @@ jobs:
         PGUSER: postgres
         PGPORT: ${{ job.services.postgres.ports[5432] }} # get randomly assigned published port
         RAILS_ENV: test
-        KNAPSACK_PRO_REPO_PATH: ~/gems/knapsack_pro-ruby
       run: |
         gem install bundler
         bundle install --jobs 4 --retry 3
@@ -70,7 +59,6 @@ jobs:
         PGUSER: postgres
         PGPORT: ${{ job.services.postgres.ports[5432] }} # get randomly assigned published port
         RAILS_ENV: test
-        KNAPSACK_PRO_REPO_PATH: ~/gems/knapsack_pro-ruby
         KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC: ${{ secrets.KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC }}
         KNAPSACK_PRO_CI_NODE_TOTAL: ${{ matrix.ci_node_total }}
         KNAPSACK_PRO_CI_NODE_INDEX: ${{ matrix.ci_node_index }}
