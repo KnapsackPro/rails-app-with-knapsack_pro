@@ -13,6 +13,16 @@ jobs:
       uses: actions/setup-ruby@v1
       with:
         ruby-version: 2.6.3
+    - name: Setup knapsack_pro gem locally
+      env:
+        RAILS_ENV: test
+        RACK_ENV: test
+        KNAPSACK_PRO_REPO_PATH: ~/gems/knapsack_pro-ruby
+      run: |
+        mkdir ~/gems
+        cd ~/gems && (git clone -b $CIRCLE_BRANCH --single-branch git@github.com:KnapsackPro/knapsack_pro-ruby.git || git clone -b master --single-branch git@github.com:KnapsackPro/knapsack_pro-ruby.git)
+        cd ~/gems/knapsack_pro-ruby && git branch
+        cd ~/gems/knapsack_pro-ruby && git log -n 1 | more
     - name: Build and run tests
       run: |
         gem install bundler
