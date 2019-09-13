@@ -31,6 +31,8 @@ jobs:
         cd ~/gems && (git clone -b $GITHUB_REF --single-branch https://github.com/KnapsackPro/knapsack_pro-ruby.git || git clone -b master --single-branch https://github.com/KnapsackPro/knapsack_pro-ruby.git)
         cd ~/gems/knapsack_pro-ruby && git branch
         cd ~/gems/knapsack_pro-ruby && git log -n 1 | more
+    - name: install PostgreSQL client
+      run: sudo apt-get install libpq-dev
     - name: Build and run tests
       env:
         # use localhost for the host here because we have specified a container for the job.
