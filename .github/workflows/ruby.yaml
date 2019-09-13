@@ -9,7 +9,8 @@ jobs:
     # runs all of the steps inside the specified continer rather than on the VM host.
     # Because of this the network configuration changes from host based network to a container network.
     container:
-      image: circleci/ruby:2.6.3-node-browsers
+      # image: circleci/ruby:2.6.3-node-browsers
+      image: ruby/2.6.3-alpine3.10
 
     services:
       postgres:
@@ -25,10 +26,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
-    - name: Set up Ruby 2.6
-      uses: actions/setup-ruby@v1
-      with:
-        ruby-version: 2.6.3
+    # - name: Set up Ruby 2.6
+    #   uses: actions/setup-ruby@v1
+    #   with:
+    #     ruby-version: 2.6.3
     - name: Setup knapsack_pro gem locally
       run: |
         sudo mkdir ~/gems
