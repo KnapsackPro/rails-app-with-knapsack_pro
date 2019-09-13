@@ -31,8 +31,8 @@ jobs:
         ruby-version: 2.6.3
     - name: Setup knapsack_pro gem locally
       run: |
-        pwd
-        sudo mkdir ~/gems
+        sudo su
+        mkdir ~/gems
         cd ~/gems && (git clone -b $GITHUB_REF --single-branch https://github.com/KnapsackPro/knapsack_pro-ruby.git || git clone -b master --single-branch https://github.com/KnapsackPro/knapsack_pro-ruby.git)
         cd ~/gems/knapsack_pro-ruby && git branch
         cd ~/gems/knapsack_pro-ruby && git log -n 1 | more
