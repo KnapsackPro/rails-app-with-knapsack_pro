@@ -21,6 +21,7 @@ jobs:
 
     strategy:
       matrix:
+        ci_build_id: [$(openssl rand -base64 32)]
         # set N number of parallel jobs you want to run tests on
         ci_node_total: [2]
         # set N-1 indexes for parallel jobs
@@ -71,6 +72,7 @@ jobs:
         KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC: ${{ secrets.KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC }}
         KNAPSACK_PRO_CI_NODE_TOTAL: ${{ matrix.ci_node_total }}
         KNAPSACK_PRO_CI_NODE_INDEX: ${{ matrix.ci_node_index }}
+        KNAPSACK_PRO_CI_NODE_BUILD_ID: ${{ matrix.ci_build_id }}
       run: |
         export KNAPSACK_PRO_COMMIT_HASH=$GITHUB_SHA
         export KNAPSACK_PRO_BRANCH=$GITHUB_REF
