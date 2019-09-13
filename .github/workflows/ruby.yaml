@@ -12,7 +12,6 @@ jobs:
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: ""
-          POSTGRES_DB: rails-app-with-knapsack_pro_test
         ports:
         # will assign a random free host port
         - 5432/tcp
