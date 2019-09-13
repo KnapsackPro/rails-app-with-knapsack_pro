@@ -38,7 +38,10 @@ jobs:
     - name: Setup knapsack_pro gem locally
       run: |
         mkdir ~/gems
-        cd ~/gems && (git clone -b $GITHUB_REF --single-branch https://github.com/KnapsackPro/knapsack_pro-ruby.git || git clone -b master --single-branch https://github.com/KnapsackPro/knapsack_pro-ruby.git)
+        # remove refs/heads from branch name like refs/heads/github-actions
+        export BRANCH=$(ruby -e 'print ENV["GITHUB_REF"].to_s.split("/").last')
+        echo $BRANCH
+        cd ~/gems && (git clone -b $BRANCH --single-branch https://github.com/KnapsackPro/knapsack_pro-ruby.git || git clone -b master --single-branch https://github.com/KnapsackPro/knapsack_pro-ruby.git)
         cd ~/gems/knapsack_pro-ruby && git branch
         cd ~/gems/knapsack_pro-ruby && git log -n 1 | more
 
