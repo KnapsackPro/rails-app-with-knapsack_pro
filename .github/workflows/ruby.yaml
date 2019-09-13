@@ -11,8 +11,8 @@ jobs:
         image: postgres:10.8
         env:
           POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: postgres
+          POSTGRES_PASSWORD: ""
+          POSTGRES_DB: rails-app-with-knapsack_pro_test
         ports:
         # will assign a random free host port
         - 5432/tcp
@@ -49,5 +49,8 @@ jobs:
       run: |
         gem install bundler
         bundle install --jobs 4 --retry 3
+        echo "Port assigned to postgres: "
+        echo ${{ job.services.postgres.ports[5432] }}
+        pg_isready -h localhost -p 5432
         bin/rails db:setup
         bundle exec rspec spec
