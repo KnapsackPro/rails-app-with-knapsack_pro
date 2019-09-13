@@ -3,14 +3,8 @@ name: Ruby
 on: [push]
 
 jobs:
-  container-job:
+  vm-job:
     runs-on: ubuntu-latest
-
-    # runs all of the steps inside the specified continer rather than on the VM host.
-    # Because of this the network configuration changes from host based network to a container network.
-    container:
-      # image: circleci/ruby:2.6.3-node-browsers
-      image: ruby:2.6.3-alpine3.10
 
     services:
       postgres:
@@ -20,28 +14,29 @@ jobs:
           POSTGRES_PASSWORD: postgres
           POSTGRES_DB: postgres
         ports:
-        - 5432:5432
+        # will assign a random free host port
+        - 5432/tcp
         # needed because the postgres container does not provide a healthcheck
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
     steps:
     - uses: actions/checkout@v1
-    # - name: Set up Ruby 2.6
-    #   uses: actions/setup-ruby@v1
-    #   with:
-    #     ruby-version: 2.6.3
+     - name: Set up Ruby 2.6
+       uses: actions/setup-ruby@v1
+       with:
+         ruby-version: 2.6.3
     - name: Setup knapsack_pro gem locally
       run: |
-        sudo mkdir ~/gems
-        cd ~/gems && (sudo git clone -b $GITHUB_REF --single-branch https://github.com/KnapsackPro/knapsack_pro-ruby.git || sudo git clone -b master --single-branch https://github.com/KnapsackPro/knapsack_pro-ruby.git)
+        mkdir ~/gems
+        cd ~/gems && (git clone -b $GITHUB_REF --single-branch https://github.com/KnapsackPro/knapsack_pro-ruby.git || git clone -b master --single-branch https://github.com/KnapsackPro/knapsack_pro-ruby.git)
         cd ~/gems/knapsack_pro-ruby && git branch
         cd ~/gems/knapsack_pro-ruby && git log -n 1 | more
     - name: Build and run tests
       env:
-        # use postgres for the host here because we have specified a container for the job.
-        # If we were running the job on the VM this would be localhost
-        POSTGRES_HOST: postgres
-        POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }}
+        # use localhost for the host here because we have specified a container for the job.
+        # If we were running the job on the VM this would be postgres
+        POSTGRES_HOST: localhost
+        POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }} # get randomly assigned published port
         # Ruby project envs
         RAILS_ENV: test
         RACK_ENV: test
