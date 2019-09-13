@@ -51,6 +51,5 @@ jobs:
         bundle install --jobs 4 --retry 3
         echo "Port assigned to postgres: "
         echo ${{ job.services.postgres.ports[5432] }}
-        pg_isready -h localhost -p 5432
         bin/rails db:setup
         bundle exec rspec spec
