@@ -21,19 +21,23 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
+
     - name: Set up Ruby 2.6
       uses: actions/setup-ruby@v1
       with:
         ruby-version: 2.6.3
+
     - name: Setup knapsack_pro gem locally
       run: |
         mkdir ~/gems
         cd ~/gems && (git clone -b $GITHUB_REF --single-branch https://github.com/KnapsackPro/knapsack_pro-ruby.git || git clone -b master --single-branch https://github.com/KnapsackPro/knapsack_pro-ruby.git)
         cd ~/gems/knapsack_pro-ruby && git branch
         cd ~/gems/knapsack_pro-ruby && git log -n 1 | more
+
     - name: install PostgreSQL client
       run: sudo apt-get install libpq-dev
-    - name: Build and run tests
+
+    - name: Build and create DB
       env:
         # use localhost for the host here because we have specified a container for the job.
         # If we were running the job on the VM this would be postgres
@@ -41,11 +45,21 @@ jobs:
         PGUSER: postgres
         PGPORT: ${{ job.services.postgres.ports[5432] }} # get randomly assigned published port
         RAILS_ENV: test
-        RACK_ENV: test
         KNAPSACK_PRO_REPO_PATH: ~/gems/knapsack_pro-ruby
-        KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC: ${{ secrets.KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC }}
       run: |
         gem install bundler
         bundle install --jobs 4 --retry 3
         bin/rails db:setup
+
+    - name: Run tests
+      env:
+        # use localhost for the host here because we have specified a container for the job.
+        # If we were running the job on the VM this would be postgres
+        PGHOST: localhost
+        PGUSER: postgres
+        PGPORT: ${{ job.services.postgres.ports[5432] }} # get randomly assigned published port
+        RAILS_ENV: test
+        KNAPSACK_PRO_REPO_PATH: ~/gems/knapsack_pro-ruby
+        KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC: ${{ secrets.KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC }}
+      run: |
         bundle exec rspec spec
