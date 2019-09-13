@@ -19,6 +19,14 @@ jobs:
         # needed because the postgres container does not provide a healthcheck
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
+    strategy:
+      matrix:
+        # set N number of parallel jobs you want to run tests on
+        ci_node_total: [2]
+        # set N-1 indexes for parallel jobs
+        # When you run 2 parallel jobs then first job will have index 0, the second job will have index 1 etc
+        ci_node_index: [0, 1]
+
     steps:
     - uses: actions/checkout@v1
 
@@ -61,5 +69,7 @@ jobs:
         RAILS_ENV: test
         KNAPSACK_PRO_REPO_PATH: ~/gems/knapsack_pro-ruby
         KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC: ${{ secrets.KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC }}
+        KNAPSACK_PRO_CI_NODE_TOTAL: ${{ matrix.ci_node_total }}
+        KNAPSACK_PRO_CI_NODE_INDEX: ${{ matrix.ci_node_index }}
       run: |
-        bundle exec rspec spec
+        bundle exec rake knapsack_pro:queue:rspec
