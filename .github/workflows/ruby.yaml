@@ -37,12 +37,9 @@ jobs:
       env:
         # use localhost for the host here because we have specified a container for the job.
         # If we were running the job on the VM this would be postgres
-        POSTGRES_HOST: localhost
-        POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }} # get randomly assigned published port
-        # Ruby project envs
         PGHOST: localhost
         PGUSER: postgres
-        PGPORT: ${{ job.services.postgres.ports[5432] }}
+        PGPORT: ${{ job.services.postgres.ports[5432] }} # get randomly assigned published port
         RAILS_ENV: test
         RACK_ENV: test
         KNAPSACK_PRO_REPO_PATH: ~/gems/knapsack_pro-ruby
