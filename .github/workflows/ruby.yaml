@@ -21,7 +21,7 @@ jobs:
 
     strategy:
       matrix:
-        ci_build_id: [$(openssl rand -base64 32)]
+        ci_build_id: [${{ openssl rand -base64 32 }}]
         # set N number of parallel jobs you want to run tests on
         ci_node_total: [2]
         # set N-1 indexes for parallel jobs
