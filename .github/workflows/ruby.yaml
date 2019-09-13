@@ -10,7 +10,7 @@ jobs:
     # Because of this the network configuration changes from host based network to a container network.
     container:
       # image: circleci/ruby:2.6.3-node-browsers
-      image: ruby/2.6.3-alpine3.10
+      image: ruby:2.6.3-alpine3.10
 
     services:
       postgres:
