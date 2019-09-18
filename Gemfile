@@ -50,6 +50,8 @@ group :development, :test do
   #gem 'knapsack_pro', github: 'KnapsackPro/knapsack_pro-ruby', branch: 'rspec-queue-mode-record-timing-fix'
 
   gem 'test-unit-rails'
+
+  gem 'listen'
 end
 
 group :test do
