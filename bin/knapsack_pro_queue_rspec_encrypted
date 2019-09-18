@@ -1,6 +1,7 @@
 #!/bin/bash
 
-KNAPSACK_PRO_ENDPOINT=http://api.knapsackpro.test:3000 \
+RAILS_ENV=test \
+  KNAPSACK_PRO_ENDPOINT=http://api.knapsackpro.test:3000 \
   KNAPSACK_PRO_TEST_FILES_ENCRYPTED=true \
   KNAPSACK_PRO_BRANCH_ENCRYPTED=true \
   KNAPSACK_PRO_SALT=0ea9af1982b5e5dbdc99da8dcf4f177d50ab1385bad5039b85e52eaa0ab251b4 \
