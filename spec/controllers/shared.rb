@@ -11,7 +11,12 @@ described_nested_shared_specs_for(:articles_controller, :index) do
     subject { get :index }
 
     context "when found articles" do
-      let(:articles) { double }
+      let(:articles) do
+        [
+          Article.create(title: 'Article 1'),
+          Article.create(title: 'Article 2'),
+        ]
+      end
 
       before do
         expect(Article).to receive(:all).and_return(articles)
