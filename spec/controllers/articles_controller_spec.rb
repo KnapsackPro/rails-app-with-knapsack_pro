@@ -18,7 +18,7 @@ describe ArticlesController do
     end
 
     it do
-      expect(response).to be_success
+      expect(response).to be_successful
     end
   end
 
@@ -28,7 +28,7 @@ describe ArticlesController do
     end
 
     it do
-      expect(response).to be_success
+      expect(response).to be_successful
     end
   end
 end
