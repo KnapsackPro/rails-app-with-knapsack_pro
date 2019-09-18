@@ -1,6 +1,11 @@
 describe ArticlesController do
   describe '#index' do
-    let(:articles) { double }
+    let(:articles) do
+      [
+        Article.create(title: 'Article 1'),
+        Article.create(title: 'Article 2'),
+      ]
+    end
 
     before do
       expect(Article).to receive(:all).and_return(articles)
@@ -10,7 +15,10 @@ describe ArticlesController do
 
     it do
       expect(assigns(:articles)).to eq articles
-      expect(response).to be_success
+    end
+
+    it do
+      expect(response).to be_successful
     end
   end
 
@@ -20,7 +28,7 @@ describe ArticlesController do
     end
 
     it do
-      expect(response).to be_success
+      expect(response).to be_successful
     end
   end
 end
