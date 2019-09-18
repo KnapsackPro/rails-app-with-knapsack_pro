@@ -56,7 +56,7 @@ end
 
 group :test do
   gem 'rails-controller-testing'
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 4.0.0.beta2'
   gem 'rspec_junit_formatter'
   gem 'rspec-retry'
 
