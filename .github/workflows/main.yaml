@@ -21,6 +21,8 @@ jobs:
 
     strategy:
       fail-fast: false
+      job-index: true
+      job-total: true
       matrix:
         # set N number of parallel jobs you want to run tests on
         ci_node_total: [4]
