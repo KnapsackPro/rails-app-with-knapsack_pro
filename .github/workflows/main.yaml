@@ -75,4 +75,5 @@ jobs:
         KNAPSACK_PRO_CI_NODE_TOTAL: ${{ matrix.ci_node_total }}
         KNAPSACK_PRO_CI_NODE_INDEX: ${{ matrix.ci_node_index }}
       run: |
+        env
         bundle exec rake knapsack_pro:queue:rspec
