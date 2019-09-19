@@ -5,6 +5,5 @@ describe 'Foo' do
       sleep 10
     end
     expect(true).to be true
-    expect(true).to be false
   end
 end
