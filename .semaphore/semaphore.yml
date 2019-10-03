@@ -42,7 +42,7 @@ blocks:
           # Read about caching: https://docs.semaphoreci.com/article/54-toolbox-reference#cache
           - cache restore gems-$SEMAPHORE_GIT_BRANCH-$(checksum Gemfile.lock),gems-$SEMAPHORE_GIT_BRANCH-,gems-master-
           # Set Ruby version:
-          - sem-version ruby 2.6.1
+          - sem-version ruby 2.6.5
           - mkdir -p ~/gems
           - cd ~/gems && (git clone -b $SEMAPHORE_GIT_BRANCH --single-branch git@github.com:KnapsackPro/knapsack_pro-ruby.git || git clone -b master --single-branch git@github.com:KnapsackPro/knapsack_pro-ruby.git) && cd ~/$SEMAPHORE_GIT_DIR
           - bundle install --jobs=4 --retry=3 --path vendor/bundle
