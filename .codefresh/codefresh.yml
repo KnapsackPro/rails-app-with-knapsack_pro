@@ -29,7 +29,7 @@ steps:
       - KNAPSACK_PRO_BRANCH=${{CF_BRANCH}}
       - KNAPSACK_PRO_COMMIT_HASH=${{CF_REVISION}}
       - PGHOST=postgres
-      - PGUSER=${{CF_REPO_NAME}}
+      - PGUSER=rails-app-with-knapsack_pro
       - PGPASSWORD=password
     matrix:
       environment:
@@ -44,8 +44,8 @@ steps:
         postgres:
           image: postgres:latest
           environment:
-            - POSTGRES_DB=${{CF_REPO_NAME}}_test
+            - POSTGRES_DB=rails-app-with-knapsack_pro_test
             - POSTGRES_PASSWORD=password
-            - POSTGRES_USER=${{CF_REPO_NAME}}
+            - POSTGRES_USER=rails-app-with-knapsack_pro
           ports:
             - 5432
