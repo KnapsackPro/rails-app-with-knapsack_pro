@@ -23,6 +23,7 @@ steps:
     stage: "tests"
     image: '${{BuildTestDockerImage}}'
     environment:
+      - USE_KNAPSACK_PRO_FROM_RUBYGEMS=true
       - KNAPSACK_PRO_CI_NODE_TOTAL=2
       - BUILD_ID=${{CF_BUILD_ID}}
       - KNAPSACK_PRO_BRANCH=${{CF_BRANCH}}
