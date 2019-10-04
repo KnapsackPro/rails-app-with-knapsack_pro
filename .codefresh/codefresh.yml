@@ -35,6 +35,11 @@ steps:
       environment:
        - KNAPSACK_PRO_CI_NODE_INDEX=0
        - KNAPSACK_PRO_CI_NODE_INDEX=1
+    when:
+      steps:
+        - name: BuildTestDockerImage
+          on:
+            - finished
     working_directory: /src
     commands:
       - bin/rails db:prepare
