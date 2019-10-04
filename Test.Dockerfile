@@ -4,4 +4,4 @@ COPY . /src
 
 WORKDIR /src
 
-RUN bundle install
+RUN USE_KNAPSACK_PRO_FROM_RUBYGEMS=true bundle install
