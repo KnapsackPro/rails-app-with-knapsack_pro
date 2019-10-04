@@ -5,6 +5,18 @@ stages:
   - "build"
   - "tests"
 
+indicators:
+ - environment: &my_common_envs
+      - USE_KNAPSACK_PRO_FROM_RUBYGEMS=true
+      - RAILS_ENV=test
+      - KNAPSACK_PRO_CI_NODE_TOTAL=2
+      - KNAPSACK_PRO_CI_NODE_BUILD_ID=${{CF_BUILD_ID}}
+      - KNAPSACK_PRO_BRANCH=${{CF_BRANCH}}
+      - KNAPSACK_PRO_COMMIT_HASH=${{CF_REVISION}}
+      - PGHOST=postgres
+      - PGUSER=rails-app-with-knapsack_pro
+      - PGPASSWORD=password
+
 steps:
   main_clone:
     type: "git-clone"
@@ -25,20 +37,11 @@ steps:
     title: "Run tests with Knapsack Pro"
     type: parallel
     stage: "tests"
-    environment:
-      - USE_KNAPSACK_PRO_FROM_RUBYGEMS=true
-      - RAILS_ENV=test
-      - KNAPSACK_PRO_CI_NODE_TOTAL=2
-      - KNAPSACK_PRO_CI_NODE_BUILD_ID=${{CF_BUILD_ID}}
-      - KNAPSACK_PRO_BRANCH=${{CF_BRANCH}}
-      - KNAPSACK_PRO_COMMIT_HASH=${{CF_REVISION}}
-      - PGHOST=postgres
-      - PGUSER=rails-app-with-knapsack_pro
-      - PGPASSWORD=password
     steps:
       node_0:
         image: '${{BuildTestDockerImage}}'
         environment:
+          <<: &my_common_envs
           - KNAPSACK_PRO_CI_NODE_INDEX=0
         working_directory: /src
         commands:
@@ -59,6 +62,7 @@ steps:
       node_1:
         image: '${{BuildTestDockerImage}}'
         environment:
+          <<: &my_common_envs
           - KNAPSACK_PRO_CI_NODE_INDEX=1
         working_directory: /src
         commands:
