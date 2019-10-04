@@ -20,11 +20,11 @@ steps:
     stage: "build"
 
   run_parallel_tests:
+    title: "Run tests with Knapsack Pro"
     type: parallel
+    stage: "tests"
     steps:
       node_0:
-        title: "Run tests with Knapsack Pro"
-        stage: "tests"
         image: '${{BuildTestDockerImage}}'
         environment:
           - USE_KNAPSACK_PRO_FROM_RUBYGEMS=true
@@ -53,8 +53,6 @@ steps:
                 - 5432
 
       node_1:
-        title: "Run tests with Knapsack Pro"
-        stage: "tests"
         image: '${{BuildTestDockerImage}}'
         environment:
           - USE_KNAPSACK_PRO_FROM_RUBYGEMS=true
