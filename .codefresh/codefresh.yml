@@ -6,16 +6,16 @@ stages:
   - "tests"
 
 indicators:
-  - environment: &my_common_envs |-
-      USE_KNAPSACK_PRO_FROM_RUBYGEMS=true
-      RAILS_ENV=test
-      KNAPSACK_PRO_CI_NODE_TOTAL=2
-      KNAPSACK_PRO_CI_NODE_BUILD_ID=${{CF_BUILD_ID}}
-      KNAPSACK_PRO_BRANCH=${{CF_BRANCH}}
-      KNAPSACK_PRO_COMMIT_HASH=${{CF_REVISION}}
-      PGHOST=postgres
-      PGUSER=rails-app-with-knapsack_pro
-      PGPASSWORD=password
+  - environment: &my_common_envs
+    - USE_KNAPSACK_PRO_FROM_RUBYGEMS=true
+    - RAILS_ENV=test
+    - KNAPSACK_PRO_CI_NODE_TOTAL=2
+    - KNAPSACK_PRO_CI_NODE_BUILD_ID=${{CF_BUILD_ID}}
+    - KNAPSACK_PRO_BRANCH=${{CF_BRANCH}}
+    - KNAPSACK_PRO_COMMIT_HASH=${{CF_REVISION}}
+    - PGHOST=postgres
+    - PGUSER=rails-app-with-knapsack_pro
+    - PGPASSWORD=password
 
 steps:
   main_clone:
