@@ -6,16 +6,30 @@ stages:
   - "tests"
 
 indicators:
-  - environment: &my_common_envs
-    - USE_KNAPSACK_PRO_FROM_RUBYGEMS=true
-    - RAILS_ENV=test
-    - KNAPSACK_PRO_CI_NODE_TOTAL=2
-    - KNAPSACK_PRO_CI_NODE_BUILD_ID=${{CF_BUILD_ID}}
-    - KNAPSACK_PRO_BRANCH=${{CF_BRANCH}}
-    - KNAPSACK_PRO_COMMIT_HASH=${{CF_REVISION}}
-    - PGHOST=postgres
-    - PGUSER=rails-app-with-knapsack_pro
-    - PGPASSWORD=password
+  - common_config: &common_config
+      image: '${{BuildTestDockerImage}}'
+      working_directory: /src
+      fail_fast: false
+      environment:
+        - USE_KNAPSACK_PRO_FROM_RUBYGEMS=true
+        - RAILS_ENV=test
+        - KNAPSACK_PRO_CI_NODE_TOTAL=2
+        - KNAPSACK_PRO_CI_NODE_BUILD_ID=${{CF_BUILD_ID}}
+        - KNAPSACK_PRO_BRANCH=${{CF_BRANCH}}
+        - KNAPSACK_PRO_COMMIT_HASH=${{CF_REVISION}}
+        - PGHOST=postgres
+        - PGUSER=rails-app-with-knapsack_pro
+        - PGPASSWORD=password
+      services:
+        composition:
+          postgres:
+            image: postgres:latest
+            environment:
+              - POSTGRES_DB=rails-app-with-knapsack_pro_test
+              - POSTGRES_PASSWORD=password
+              - POSTGRES_USER=rails-app-with-knapsack_pro
+            ports:
+              - 5432
 
 steps:
   main_clone:
@@ -34,46 +48,20 @@ steps:
     stage: "build"
 
   run_parallel_tests:
-    title: "Run tests with Knapsack Pro"
     type: parallel
+    title: "Run tests with Knapsack Pro"
     stage: "tests"
     steps:
       node_0:
-        image: '${{BuildTestDockerImage}}'
-        environment: *my_common_envs
-        working_directory: /src
+        <<: *common_config
         commands:
           - export KNAPSACK_PRO_CI_NODE_INDEX=0
           - bin/rails db:prepare
           - bundle exec rake knapsack_pro:queue:rspec
-        fail_fast: false
-        services:
-          composition:
-            postgres:
-              image: postgres:latest
-              environment:
-                - POSTGRES_DB=rails-app-with-knapsack_pro_test
-                - POSTGRES_PASSWORD=password
-                - POSTGRES_USER=rails-app-with-knapsack_pro
-              ports:
-                - 5432
 
       node_1:
-        image: '${{BuildTestDockerImage}}'
-        environment: *my_common_envs
-        working_directory: /src
+        <<: *common_config
         commands:
           - export KNAPSACK_PRO_CI_NODE_INDEX=1
           - bin/rails db:prepare
           - bundle exec rake knapsack_pro:queue:rspec
-        fail_fast: false
-        services:
-          composition:
-            postgres:
-              image: postgres:latest
-              environment:
-                - POSTGRES_DB=rails-app-with-knapsack_pro_test
-                - POSTGRES_PASSWORD=password
-                - POSTGRES_USER=rails-app-with-knapsack_pro
-              ports:
-                - 5432
