@@ -40,7 +40,7 @@ steps:
     steps:
       node_0:
         image: '${{BuildTestDockerImage}}'
-        environment: !toflatten
+        environment:
           - *my_common_envs
           - KNAPSACK_PRO_CI_NODE_INDEX=0
         working_directory: /src
@@ -61,7 +61,7 @@ steps:
 
       node_1:
         image: '${{BuildTestDockerImage}}'
-        environment: !toflatten
+        environment:
           - *my_common_envs
           - KNAPSACK_PRO_CI_NODE_INDEX=1
         working_directory: /src
