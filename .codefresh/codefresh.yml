@@ -37,7 +37,8 @@ steps:
        - KNAPSACK_PRO_CI_NODE_INDEX=1
     working_directory: /src
     commands:
-      - echo test
+      - bin/rails db:prepare
+      #- bundle exec rake knapsack_pro:queue:rspec
     fail_fast: false
     services:
       composition:
