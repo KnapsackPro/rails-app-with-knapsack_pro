@@ -40,5 +40,5 @@ RUN git log -n 1 | more
 
 WORKDIR /src
 
-RUN export KNAPSACK_PRO_REPO_PATH=/root/gems/knapsack_pro-ruby \
+RUN export KNAPSACK_PRO_REPO_PATH=/root/gems/knapsack_pro-ruby && \
       bundle install
