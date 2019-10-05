@@ -54,7 +54,6 @@ steps:
       node_0:
         <<: *common_config
         commands:
-          - env
           - export KNAPSACK_PRO_CI_NODE_INDEX=0
           - bin/rails db:prepare
           - bundle exec rake knapsack_pro:queue:rspec
