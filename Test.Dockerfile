@@ -30,7 +30,7 @@ COPY . /src
 
 WORKDIR /src
 
-RUN mkdir -p /gems \
+RUN sudo mkdir -p /gems \
       cd /gems \
       git clone -b $CF_BRANCH --single-branch https://github.com/KnapsackPro/knapsack_pro-ruby.git || git clone -b master --single-branch https://github.com/KnapsackPro/knapsack_pro-ruby.git
 
