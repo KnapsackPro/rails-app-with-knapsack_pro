@@ -57,9 +57,9 @@ steps:
           - cd /root/gems/knapsack_pro-ruby
           - git branch
           - git log -n 1 | more
+          - cd /src
           - export KNAPSACK_PRO_REPO_PATH=/root/gems/knapsack_pro-ruby
           - bundle install
-          - cd /src
 
           - export KNAPSACK_PRO_CI_NODE_INDEX=0
           - bin/rails db:prepare
@@ -74,9 +74,9 @@ steps:
           - cd /root/gems/knapsack_pro-ruby
           - git branch
           - git log -n 1 | more
+          - cd /src
           - export KNAPSACK_PRO_REPO_PATH=/root/gems/knapsack_pro-ruby
           - bundle install
-          - cd /src
 
           - export KNAPSACK_PRO_CI_NODE_INDEX=1
           - bin/rails db:prepare
