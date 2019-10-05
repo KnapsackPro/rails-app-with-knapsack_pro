@@ -34,8 +34,9 @@ RUN mkdir -p ~/gems
 RUN cd ~/gems && ls -lah
 RUN cd ~/gems && \
       git clone -b $CF_BRANCH --single-branch https://github.com/KnapsackPro/knapsack_pro-ruby.git || git clone -b master --single-branch https://github.com/KnapsackPro/knapsack_pro-ruby.git
-
 RUN cd ~/gems && ls -lah
+RUN cd ~/gems/knapsack_pro-ruby && git branch
+RUN cd ~/gems/knapsack_pro-ruby && git log -n 1 | more
 
 RUN export KNAPSACK_PRO_REPO_PATH=~/gems/knapsack_pro-ruby \
       bundle install
