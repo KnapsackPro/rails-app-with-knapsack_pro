@@ -35,7 +35,6 @@ RUN ls -lah
 RUN git clone -b $CF_BRANCH --single-branch https://github.com/KnapsackPro/knapsack_pro-ruby.git || git clone -b master --single-branch https://github.com/KnapsackPro/knapsack_pro-ruby.git
 RUN ls -lah
 WORKDIR /root/gems/knapsack_pro-ruby
-RUN pwd
 RUN git branch
 RUN git log -n 1 | more
 
