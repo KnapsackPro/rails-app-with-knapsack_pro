@@ -55,8 +55,6 @@ steps:
       node_0:
         <<: *common_config
         commands:
-          - git --version
-          - cd ~/gems && ls -lah
           - env
           - export KNAPSACK_PRO_CI_NODE_INDEX=0
           - bin/rails db:prepare
