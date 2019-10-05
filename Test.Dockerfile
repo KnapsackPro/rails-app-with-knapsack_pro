@@ -32,7 +32,7 @@ WORKDIR /src
 
 RUN mkdir -p ~/gems
 RUN cd ~/gems && ls -lah
-RUN cd ~/gems \
+RUN cd ~/gems && \
       git clone -b $CF_BRANCH --single-branch https://github.com/KnapsackPro/knapsack_pro-ruby.git || git clone -b master --single-branch https://github.com/KnapsackPro/knapsack_pro-ruby.git
 
 RUN cd ~/gems && ls -lah
