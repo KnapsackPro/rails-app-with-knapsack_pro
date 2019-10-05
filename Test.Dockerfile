@@ -28,15 +28,17 @@ RUN tar -xf codefresh-v0.31.1-alpine-x64.tar.gz -C /usr/local/bin/
 
 COPY . /src
 
-WORKDIR /src
-
+# Install knapsack_pro from GitHub repo source code
 RUN mkdir -p ~/gems
-RUN cd ~/gems && ls -lah
-RUN cd ~/gems && \
-      git clone -b $CF_BRANCH --single-branch https://github.com/KnapsackPro/knapsack_pro-ruby.git || git clone -b master --single-branch https://github.com/KnapsackPro/knapsack_pro-ruby.git
-RUN cd ~/gems && ls -lah
-RUN cd ~/gems/knapsack_pro-ruby && git branch
-RUN cd ~/gems/knapsack_pro-ruby && git log -n 1 | more
+WORKDIR ~/gems
+RUN ls -lah
+RUN git clone -b $CF_BRANCH --single-branch https://github.com/KnapsackPro/knapsack_pro-ruby.git || git clone -b master --single-branch https://github.com/KnapsackPro/knapsack_pro-ruby.git
+RUN ls -lah
+WORKDIR ~/gems/knapsack_pro-ruby
+RUN git branch
+RUN git log -n 1 | more
+
+WORKDIR /src
 
 RUN export KNAPSACK_PRO_REPO_PATH=~/gems/knapsack_pro-ruby \
       bundle install
