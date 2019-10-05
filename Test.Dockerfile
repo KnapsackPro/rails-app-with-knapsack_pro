@@ -28,6 +28,4 @@ COPY . /src
 
 WORKDIR /src
 
-ENV USE_KNAPSACK_PRO_FROM_RUBYGEMS=true
-
-RUN bundle install
+RUN USE_KNAPSACK_PRO_FROM_RUBYGEMS=true bundle install
