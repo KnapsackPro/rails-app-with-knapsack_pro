@@ -29,4 +29,7 @@ COPY . /src
 
 WORKDIR /src
 
-RUN USE_KNAPSACK_PRO_FROM_RUBYGEMS=true bundle install
+RUN cd ~/gems && \
+      (git clone -b $CF_BRANCH --single-branch https://github.com/KnapsackPro/knapsack_pro-ruby.git || git clone -b master --single-branch https://github.com/KnapsackPro/knapsack_pro-ruby.git) && \
+      export KNAPSACK_PRO_REPO_PATH=~/gems/knapsack_pro-ruby && \
+      bundle install

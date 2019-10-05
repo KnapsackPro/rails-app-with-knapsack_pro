@@ -11,7 +11,6 @@ indicators:
       working_directory: /src
       fail_fast: false
       environment:
-        - USE_KNAPSACK_PRO_FROM_RUBYGEMS=true
         - RAILS_ENV=test
         - KNAPSACK_PRO_CI_NODE_TOTAL=2
         - KNAPSACK_PRO_CI_NODE_BUILD_ID=${{CF_BUILD_ID}}
