@@ -12,6 +12,7 @@ RUN apk add --update \
   postgresql-dev \
   python3-dev \
   sqlite-dev \
+  git \
   && rm -rf /var/cache/apk/*
 
 # Install AWS CLI
@@ -28,10 +29,6 @@ RUN tar -xf codefresh-v0.31.1-alpine-x64.tar.gz -C /usr/local/bin/
 COPY . /src
 
 WORKDIR /src
-
-RUN apt-get update \
-    apt-get upgrade \
-    apt-get install git
 
 RUN mkdir ~/gems \
       cd ~/gems \
