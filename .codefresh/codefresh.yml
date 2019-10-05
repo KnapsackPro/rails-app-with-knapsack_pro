@@ -11,7 +11,7 @@ indicators:
       working_directory: /src
       fail_fast: false
       environment:
-        - KNAPSACK_PRO_REPO_PATH=/gems/knapsack_pro-ruby
+        - KNAPSACK_PRO_REPO_PATH=~/gems/knapsack_pro-ruby
         - RAILS_ENV=test
         - KNAPSACK_PRO_CI_NODE_TOTAL=2
         - KNAPSACK_PRO_CI_NODE_BUILD_ID=${{CF_BUILD_ID}}
@@ -56,7 +56,7 @@ steps:
         <<: *common_config
         commands:
           - git --version
-          - cd /gems && ls -lah
+          - cd ~/gems && ls -lah
           - env
           - export KNAPSACK_PRO_CI_NODE_INDEX=0
           - bin/rails db:prepare
