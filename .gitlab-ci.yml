@@ -9,7 +9,7 @@ variables:
   POSTGRES_USER: postgres
   POSTGRES_PASSWORD: ""
   DATABASE_URL: "postgresql://postgres:postgres@postgres:5432/rails-app-with-knapsack_pro_test"
-  DATABASE_CLEANER_ALLOW_REMOTE_DATABASE_URL: true
+  DATABASE_CLEANER_ALLOW_REMOTE_DATABASE_URL: "true"
   KNAPSACK_PRO_REPO_PATH: ~/gems/knapsack_pro-ruby
   KNAPSACK_PRO_GIT_REPO: https://github.com/KnapsackPro/knapsack_pro-ruby.git
   KNAPSACK_PRO_ENDPOINT: https://api-staging.knapsackpro.com
