@@ -54,8 +54,7 @@ steps:
       # start - use knapsack_pro from source code
       - mkdir -p /root/gems
       - cd /root/gems
-      #- git clone -b $CF_BRANCH --single-branch https://github.com/KnapsackPro/knapsack_pro-ruby.git || git clone -b master --single-branch https://github.com/KnapsackPro/knapsack_pro-ruby.git
-      - git clone -b codefresh-parallel --single-branch https://github.com/KnapsackPro/knapsack_pro-ruby.git || git clone -b master --single-branch https://github.com/KnapsackPro/knapsack_pro-ruby.git
+      - git clone -b $CF_BRANCH --single-branch https://github.com/KnapsackPro/knapsack_pro-ruby.git || git clone -b master --single-branch https://github.com/KnapsackPro/knapsack_pro-ruby.git
       - cd /root/gems/knapsack_pro-ruby
       - git branch
       - git log -n 1 | more
