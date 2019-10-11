@@ -1,3 +1,4 @@
+# .codefresh/codefresh.yml
 version: "1.0"
 
 stages:
@@ -28,6 +29,7 @@ steps:
     fail_fast: false
     environment:
       - RAILS_ENV=test
+      # set how many parallel jobs you want to run
       - KNAPSACK_PRO_CI_NODE_TOTAL=2
       - PGHOST=postgres
       - PGUSER=rails-app-with-knapsack_pro
@@ -44,6 +46,8 @@ steps:
             - 5432
     matrix:
       environment:
+        # please ensure you have here listed N-1 indexes
+        # where N is KNAPSACK_PRO_CI_NODE_TOTAL
         - KNAPSACK_PRO_CI_NODE_INDEX=0
         - KNAPSACK_PRO_CI_NODE_INDEX=1
     commands:
