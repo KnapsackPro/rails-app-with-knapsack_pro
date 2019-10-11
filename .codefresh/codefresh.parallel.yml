@@ -15,6 +15,7 @@ indicators:
       fail_fast: false
       environment:
         - RAILS_ENV=test
+        # remember to set proper amount of parallel nodes here
         - KNAPSACK_PRO_CI_NODE_TOTAL=2
         - PGHOST=postgres
         - PGUSER=rails-app-with-knapsack_pro
