@@ -15,6 +15,9 @@ COMMANDS = %{
 ./bin/knapsack_pro_rspec_disabled 0 2
 ./bin/knapsack_pro_rspec_disabled 1 2
 
+./bin/knapsack_pro_rspec_fallback_mode 0 2
+./bin/knapsack_pro_rspec_fallback_mode 1 2
+
 ./bin/knapsack_pro_rspec_test_dir 0 2
 ./bin/knapsack_pro_rspec_test_dir 1 2
 
