@@ -163,7 +163,7 @@ jobs:
       # post checking after tests
       - run: KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=$KNAPSACK_PRO_FOR_ENCRYPTED_QUEUE_TEST_SUITE_TOKEN_RSPEC bundle exec rake knapsack_pro:encrypted_test_file_names[rspec]
 
-      - run: KNAPSACK_PRO_RSPEC_DISABLED=true KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=$KNAPSACK_PRO_FOR_ENCRYPTED_QUEUE_TEST_SUITE_TOKEN_RSPEC bundle exec rake knapsack_pro:encrypted_test_file_names[minitest]
+      - run: KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=$KNAPSACK_PRO_FOR_ENCRYPTED_QUEUE_TEST_SUITE_TOKEN_RSPEC bundle exec rake knapsack_pro:encrypted_test_file_names[minitest]
 
       - run: KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=$KNAPSACK_PRO_FOR_ENCRYPTED_QUEUE_TEST_SUITE_TOKEN_RSPEC bundle exec rake knapsack_pro:encrypted_test_file_names[cucumber]
 
