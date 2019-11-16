@@ -1,6 +1,7 @@
 #!/bin/bash
 
-KNAPSACK_PRO_ENDPOINT=http://api.knapsackpro.test:3000 \
+KNAPSACK_PRO_RSPEC_DISABLED=true \
+  KNAPSACK_PRO_ENDPOINT=http://api.knapsackpro.test:3000 \
   KNAPSACK_PRO_TEST_SUITE_TOKEN_MINITEST=2906a5e30c82fa06b59f04c746e439e8 \
   KNAPSACK_PRO_REPOSITORY_ADAPTER=git \
   KNAPSACK_PRO_PROJECT_DIR=~/Documents/github/knapsack-pro/rails-app-with-knapsack_pro \

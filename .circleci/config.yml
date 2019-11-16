@@ -107,7 +107,7 @@ jobs:
 
 
       # Queue Mode Minitest
-      - run: KNAPSACK_PRO_TEST_SUITE_TOKEN_MINITEST=$KNAPSACK_PRO_QUEUE_TEST_SUITE_TOKEN_MINITEST bundle exec rake knapsack_pro:queue:minitest[--verbose]
+      - run: KNAPSACK_PRO_RSPEC_DISABLED=true KNAPSACK_PRO_TEST_SUITE_TOKEN_MINITEST=$KNAPSACK_PRO_QUEUE_TEST_SUITE_TOKEN_MINITEST bundle exec rake knapsack_pro:queue:minitest[--verbose]
 
 
       # Regular mode
@@ -130,7 +130,7 @@ jobs:
 
       - run: KNAPSACK_PRO_FIXED_QUEUE_SPLIT=true KNAPSACK_PRO_TEST_SUITE_TOKEN_CUCUMBER=$KNAPSACK_PRO_QUEUE_TEST_SUITE_TOKEN_CUCUMBER bundle exec rake "knapsack_pro:queue:cucumber[--format junit --out tmp/test-reports/cucumber/queue_mode/]"
 
-      - run: bundle exec rake knapsack_pro:minitest[--verbose]
+      - run: KNAPSACK_PRO_RSPEC_DISABLED=true bundle exec rake knapsack_pro:minitest[--verbose]
 
       - run: KNAPSACK_PRO_TEST_DIR=test-unit KNAPSACK_PRO_TEST_FILE_PATTERN="test-unit/**{,/*/**}/*_test.rb" bundle exec rake "knapsack_pro:test_unit[--verbose]"
 
@@ -141,7 +141,7 @@ jobs:
 
       - run: KNAPSACK_PRO_ENDPOINT=https://api-staging.knapsackpro.com bundle exec rake knapsack_pro:cucumber
 
-      - run: KNAPSACK_PRO_ENDPOINT=https://api-staging.knapsackpro.com bundle exec rake knapsack_pro:minitest[--verbose]
+      - run: KNAPSACK_PRO_RSPEC_DISABLED=true KNAPSACK_PRO_ENDPOINT=https://api-staging.knapsackpro.com bundle exec rake knapsack_pro:minitest[--verbose]
 
       # Example of encrypted test files names
       # KNAPSACK_PRO_SALT is set in CircleCI settings
@@ -163,7 +163,7 @@ jobs:
       # post checking after tests
       - run: KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=$KNAPSACK_PRO_FOR_ENCRYPTED_QUEUE_TEST_SUITE_TOKEN_RSPEC bundle exec rake knapsack_pro:encrypted_test_file_names[rspec]
 
-      - run: KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=$KNAPSACK_PRO_FOR_ENCRYPTED_QUEUE_TEST_SUITE_TOKEN_RSPEC bundle exec rake knapsack_pro:encrypted_test_file_names[minitest]
+      - run: KNAPSACK_PRO_RSPEC_DISABLED=true KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=$KNAPSACK_PRO_FOR_ENCRYPTED_QUEUE_TEST_SUITE_TOKEN_RSPEC bundle exec rake knapsack_pro:encrypted_test_file_names[minitest]
 
       - run: KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=$KNAPSACK_PRO_FOR_ENCRYPTED_QUEUE_TEST_SUITE_TOKEN_RSPEC bundle exec rake knapsack_pro:encrypted_test_file_names[cucumber]
 

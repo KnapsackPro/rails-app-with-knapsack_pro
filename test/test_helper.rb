@@ -34,6 +34,13 @@ class ActiveSupport::TestCase
   # Add more helper methods to be used by all tests here...
   extend MiniTest::Spec::DSL
 
+  # Allow context to be used like describe
+  # This is needed to make minitest spec context work
+  # in test/minitest/meme_spec_test.rb
+  class << self
+    alias :context :describe
+  end
+
   register_spec_type(self) do |desc|
     desc < ActiveRecord::Base if desc.is_a?(Class)
   end
