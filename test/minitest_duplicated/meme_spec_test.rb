@@ -10,12 +10,12 @@ class MemeDuplicatedTest < ActiveSupport::TestCase
 
   #describe "when asked about cheeseburgers" do
   it "must respond positively duplicated" do
-    @meme.i_can_has_cheezburger?.must_equal "OHAI!"
+    _(@meme.i_can_has_cheezburger?).must_equal "OHAI!"
   end
 
   #describe "when asked about blending possibilities" do
   it "won't say no duplicated" do
-    @meme.will_it_blend?.wont_match /^no/i
+    _(@meme.will_it_blend?).wont_match /^no/i
   end
 
   it "a test about nothing" do
