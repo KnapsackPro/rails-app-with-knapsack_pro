@@ -34,7 +34,14 @@ jobs:
     - name: Set up Ruby 2.6
       uses: actions/setup-ruby@v1
       with:
-        ruby-version: 2.6.3
+        ruby-version: 2.6.5
+
+    - uses: actions/cache@v1
+      with:
+        path: vendor/bundle
+        key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-gems-
 
     - name: Setup knapsack_pro gem locally
       run: |
@@ -60,6 +67,7 @@ jobs:
         KNAPSACK_PRO_REPO_PATH: ~/gems/knapsack_pro-ruby
       run: |
         gem install bundler
+        bundle config path vendor/bundle
         bundle install --jobs 4 --retry 3
         bin/rails db:setup
 
