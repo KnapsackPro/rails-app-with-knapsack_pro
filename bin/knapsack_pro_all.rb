@@ -96,6 +96,9 @@ COMMANDS = %{
 ./bin/knapsack_pro_queue_cucumber_junit 0 2
 ./bin/knapsack_pro_queue_cucumber_junit 1 2
 
+./bin/knapsack_pro_queue_cucumber_prefix 0 2
+./bin/knapsack_pro_queue_cucumber_prefix 1 2
+
 # Minitest
 ./bin/knapsack_pro_minitest 0 2
 ./bin/knapsack_pro_minitest 1 2
