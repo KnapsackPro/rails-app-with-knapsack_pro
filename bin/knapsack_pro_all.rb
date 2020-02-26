@@ -1,4 +1,7 @@
 COMMANDS = %{
+./bin/knapsack_pro_a_few_commands 0 2
+./bin/knapsack_pro_a_few_commands 1 2
+
 # RSpec
 ./bin/knapsack_pro_rspec 0 2
 ./bin/knapsack_pro_rspec 1 2
