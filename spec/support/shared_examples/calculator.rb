@@ -1,11 +1,11 @@
 shared_examples 'has add method' do
-  it do
+  it 'add is true' do
     expect(subject.respond_to?(:add)).to be true
   end
 end
 
 shared_examples 'has mal method' do
-  it do
+  it 'mal is true' do
     expect(subject.respond_to?(:mal)).to be true
   end
 end
