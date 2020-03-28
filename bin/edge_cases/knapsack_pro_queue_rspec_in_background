@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# run it with number at the end to bump commit hash and record unique CI build
+# bin/edge_cases/knapsack_pro_queue_rspec_in_background 1
+
+export RAILS_ENV=test
+export KNAPSACK_PRO_ENDPOINT=http://api.knapsackpro.test:3000
+export KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=a28ce51204d7c7dbd25c3352fea222cf
+export KNAPSACK_PRO_CI_NODE_TOTAL=2
+export KNAPSACK_PRO_BRANCH=test-1
+export KNAPSACK_PRO_COMMIT_HASH=commit-${1:-1}
+export KNAPSACK_PRO_TEST_FILE_PATTERN="spec/controllers/**/*_spec.rb"
+
+KNAPSACK_PRO_CI_NODE_INDEX=0 \
+  bundle exec rake "knapsack_pro:queue:rspec[-f d]" &
+
+KNAPSACK_PRO_CI_NODE_INDEX=1 \
+  bundle exec rake "knapsack_pro:queue:rspec[-f d]" &
