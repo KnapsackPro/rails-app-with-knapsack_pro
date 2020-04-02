@@ -52,7 +52,7 @@ group :development, :test do
   if ENV['USE_KNAPSACK_PRO_FROM_RUBYGEMS']
     gem 'knapsack_pro'
   else
-    gem 'knapsack_pro', path: ENV['KNAPSACK_PRO_REPO_PATH'] || '~/Documents/github/knapsack-pro/knapsack_pro-ruby'
+    gem 'knapsack_pro', path: ENV['KNAPSACK_PRO_REPO_PATH'] || '../knapsack_pro-ruby'
     #gem 'knapsack_pro', github: 'KnapsackPro/knapsack_pro-ruby', branch: 'rspec-queue-mode-record-timing-fix'
   end
 
