@@ -9,7 +9,8 @@ export KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=a28ce51204d7c7dbd25c3352fea222cf
 export KNAPSACK_PRO_CI_NODE_TOTAL=2
 export KNAPSACK_PRO_BRANCH=test-1
 export KNAPSACK_PRO_COMMIT_HASH=commit-${1:-1}
-export KNAPSACK_PRO_TEST_FILE_PATTERN="spec/controllers/**/*_spec.rb"
+#export KNAPSACK_PRO_TEST_FILE_PATTERN="spec/controllers/**/*_spec.rb"
+#export KNAPSACK_PRO_RSPEC_SPLIT_BY_TEST_EXAMPLES=true
 
 KNAPSACK_PRO_CI_NODE_INDEX=0 \
   bundle exec rake "knapsack_pro:queue:rspec[-f d]" &
