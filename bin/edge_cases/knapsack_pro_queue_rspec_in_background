@@ -11,6 +11,7 @@ export KNAPSACK_PRO_BRANCH=test-1
 export KNAPSACK_PRO_COMMIT_HASH=commit-${1:-1}
 #export KNAPSACK_PRO_TEST_FILE_PATTERN="spec/controllers/**/*_spec.rb"
 #export KNAPSACK_PRO_RSPEC_SPLIT_BY_TEST_EXAMPLES=true
+#export KNAPSACK_PRO_LOG_LEVEL=warn
 
 KNAPSACK_PRO_CI_NODE_INDEX=0 \
   bundle exec rake "knapsack_pro:queue:rspec[-f d]" &
