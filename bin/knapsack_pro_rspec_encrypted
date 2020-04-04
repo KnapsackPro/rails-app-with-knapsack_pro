@@ -10,3 +10,8 @@ KNAPSACK_PRO_ENDPOINT=http://api.knapsackpro.test:3000 \
   KNAPSACK_PRO_CI_NODE_TOTAL=${2:-2} \
   KNAPSACK_PRO_CI_NODE_INDEX=${1:-0} \
   bundle exec rake knapsack_pro:rspec
+
+# example to preview encrypted test files
+#KNAPSACK_PRO_RSPEC_SPLIT_BY_TEST_EXAMPLES=true \
+  #KNAPSACK_PRO_SALT=0ea9af1982b5e5dbdc99da8dcf4f177d50ab1385bad5039b85e52eaa0ab251b4 \
+  #bundle exec rake knapsack_pro:encrypted_test_file_names[rspec]
