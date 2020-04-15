@@ -86,9 +86,9 @@ See [.circleci/config.yml](.circleci/config.yml) to see how we set up CircleCI.
 Ensure you created databases:
 
 ```
-$ rake db:create
-$ TEST_ENV_NUMBER=1 rake db:create
-$ TEST_ENV_NUMBER=2 rake db:create
+$ rake db:create db:migrate
+$ TEST_ENV_NUMBER=1 rake db:create db:migrate
+$ TEST_ENV_NUMBER=2 rake db:create db:migrate
 ```
 
 In `bin` directory are files:
