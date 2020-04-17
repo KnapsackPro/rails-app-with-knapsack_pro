@@ -17,6 +17,7 @@ export KNAPSACK_PRO_RSPEC_SPLIT_BY_TEST_EXAMPLES=true
 #export KNAPSACK_PRO_SLOW_TEST_FILE_PATTERN="{spec/features/calculator_spec.rb}"
 export KNAPSACK_PRO_SLOW_TEST_FILE_PATTERN="{spec/timecop_spec.rb}"
 #export KNAPSACK_PRO_LOG_LEVEL=warn
+#export KNAPSACK_PRO_LOG_LEVEL=info
 
 KNAPSACK_PRO_CI_NODE_INDEX=0 \
   bundle exec rake "knapsack_pro:queue:rspec[-f d]" #&
