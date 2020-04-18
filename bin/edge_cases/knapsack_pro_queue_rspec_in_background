@@ -10,14 +10,14 @@ export KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=a28ce51204d7c7dbd25c3352fea222cf
 export KNAPSACK_PRO_CI_NODE_TOTAL=2
 export KNAPSACK_PRO_BRANCH=test-1
 export KNAPSACK_PRO_COMMIT_HASH=commit-${1:-1}
-#export KNAPSACK_PRO_TEST_FILE_PATTERN="spec/controllers/**/*_spec.rb"
-#export KNAPSACK_PRO_TEST_FILE_PATTERN="spec/controllers/articles_controller_spec.rb"
+
 export KNAPSACK_PRO_RSPEC_SPLIT_BY_TEST_EXAMPLES=true
-#export KNAPSACK_PRO_SLOW_TEST_FILE_PATTERN="{spec/slow_shared_examples_spec.rb,spec/features/calculator_spec.rb}"
-#export KNAPSACK_PRO_SLOW_TEST_FILE_PATTERN="{spec/features/calculator_spec.rb}"
-export KNAPSACK_PRO_SLOW_TEST_FILE_PATTERN="{spec/timecop_spec.rb}"
 #export KNAPSACK_PRO_LOG_LEVEL=warn
 #export KNAPSACK_PRO_LOG_LEVEL=info
+
+export KNAPSACK_PRO_TEST_FILE_PATTERN="{spec/controllers/articles_controller_spec.rb,spec/timecop_spec.rb}"
+# KNAPSACK_PRO_SLOW_TEST_FILE_PATTERN must be subset of KNAPSACK_PRO_TEST_FILE_PATTERN
+export KNAPSACK_PRO_SLOW_TEST_FILE_PATTERN="{spec/timecop_spec.rb}"
 
 KNAPSACK_PRO_CI_NODE_INDEX=0 \
   bundle exec rake "knapsack_pro:queue:rspec[-f d]" #&
