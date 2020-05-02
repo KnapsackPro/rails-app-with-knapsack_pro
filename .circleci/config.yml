@@ -49,7 +49,6 @@ jobs:
           command: |
             cd ~/gems/knapsack_pro-ruby
             git log -n 1 --pretty=oneline
-            echo "Done"
       - run: mkdir -p tmp/test-reports/rspec/regular_mode/
       - run: mkdir -p tmp/test-reports/rspec/queue_mode/
       - run: mkdir -p tmp/test-reports/cucumber/regular_mode/
