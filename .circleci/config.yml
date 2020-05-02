@@ -48,7 +48,7 @@ jobs:
           name: Show last commit
           command: |
             cd ~/gems/knapsack_pro-ruby
-            git log --name-status HEAD^..HEAD
+            git log -n 1 --pretty=oneline
             echo "Done"
       - run: mkdir -p tmp/test-reports/rspec/regular_mode/
       - run: mkdir -p tmp/test-reports/rspec/queue_mode/
