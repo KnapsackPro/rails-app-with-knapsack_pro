@@ -44,7 +44,7 @@ jobs:
       - run: mkdir ~/gems
       - run: cd ~/gems && (git clone -b $CIRCLE_BRANCH --single-branch git@github.com:KnapsackPro/knapsack_pro-ruby.git || git clone -b master --single-branch git@github.com:KnapsackPro/knapsack_pro-ruby.git)
       - run: cd ~/gems/knapsack_pro-ruby && git branch
-      - run: cd ~/gems/knapsack_pro-ruby && git log -n 1 | more
+      - run: cd ~/gems/knapsack_pro-ruby && git log -n 1
       - run: mkdir -p tmp/test-reports/rspec/regular_mode/
       - run: mkdir -p tmp/test-reports/rspec/queue_mode/
       - run: mkdir -p tmp/test-reports/cucumber/regular_mode/
