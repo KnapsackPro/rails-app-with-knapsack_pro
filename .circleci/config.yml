@@ -107,12 +107,14 @@ jobs:
 
       # Queue Mode - RSpec split by test examples
       - run:
+        name: RSpec split by test cases (Queue Mode)
         command: |
           export KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=$KNAPSACK_PRO_QUEUE_TEST_SUITE_TOKEN_RSPEC_SPLIT_BY_TEST_CASES
           export KNAPSACK_PRO_RSPEC_SPLIT_BY_TEST_EXAMPLES=true
           bundle exec rake knapsack_pro:queue:rspec
 
       - run:
+        name: RSpec split by test cases (Regular Mode), use KNAPSACK_PRO_SLOW_TEST_FILE_PATTERN
         command: |
           export KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=$KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC_SPLIT_BY_TEST_CASES
           export KNAPSACK_PRO_RSPEC_SPLIT_BY_TEST_EXAMPLES=true
