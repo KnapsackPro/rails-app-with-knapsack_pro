@@ -44,7 +44,11 @@ jobs:
       - run: mkdir ~/gems
       - run: cd ~/gems && (git clone -b $CIRCLE_BRANCH --single-branch git@github.com:KnapsackPro/knapsack_pro-ruby.git || git clone -b master --single-branch git@github.com:KnapsackPro/knapsack_pro-ruby.git)
       - run: cd ~/gems/knapsack_pro-ruby && git branch
-      - run: cd ~/gems/knapsack_pro-ruby && git log -n 1 | more
+      - run:
+          name: Show last commit
+          command: |
+            cd ~/gems/knapsack_pro-ruby
+            git log -n 1 --pretty=oneline
       - run: mkdir -p tmp/test-reports/rspec/regular_mode/
       - run: mkdir -p tmp/test-reports/rspec/queue_mode/
       - run: mkdir -p tmp/test-reports/cucumber/regular_mode/
@@ -106,7 +110,20 @@ jobs:
       - run: export PARALLEL_TESTS_CONCURRENCY=2; KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=$KNAPSACK_PRO_QUEUE_TEST_SUITE_TOKEN_RSPEC KNAPSACK_PRO_CI_NODE_TOTAL=$CIRCLE_NODE_TOTAL KNAPSACK_PRO_CI_NODE_INDEX=$CIRCLE_NODE_INDEX bundle exec parallel_test -n $PARALLEL_TESTS_CONCURRENCY -e './bin/parallel_tests'
 
       # Queue Mode - RSpec split by test examples
-      - run: KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=$KNAPSACK_PRO_QUEUE_TEST_SUITE_TOKEN_RSPEC_SPLIT_BY_TEST_EXAMPLES KNAPSACK_PRO_RSPEC_SPLIT_BY_TEST_EXAMPLES=true bundle exec rake knapsack_pro:queue:rspec
+      - run:
+          name: RSpec split by test cases (Queue Mode)
+          command: |
+            export KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=$KNAPSACK_PRO_QUEUE_TEST_SUITE_TOKEN_RSPEC_SPLIT_BY_TEST_CASES
+            export KNAPSACK_PRO_RSPEC_SPLIT_BY_TEST_EXAMPLES=true
+            bundle exec rake knapsack_pro:queue:rspec
+
+      - run:
+          name: RSpec split by test cases (Regular Mode), use KNAPSACK_PRO_SLOW_TEST_FILE_PATTERN
+          command: |
+            export KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=$KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC_SPLIT_BY_TEST_CASES
+            export KNAPSACK_PRO_RSPEC_SPLIT_BY_TEST_EXAMPLES=true
+            export KNAPSACK_PRO_SLOW_TEST_FILE_PATTERN="{spec/timecop_spec.rb}"
+            bundle exec rake knapsack_pro:rspec
 
       # Queue Mode Minitest
       - run: KNAPSACK_PRO_RSPEC_DISABLED=true KNAPSACK_PRO_TEST_SUITE_TOKEN_MINITEST=$KNAPSACK_PRO_QUEUE_TEST_SUITE_TOKEN_MINITEST bundle exec rake knapsack_pro:queue:minitest[--verbose]

@@ -3,6 +3,7 @@ describe 'Timecop' do
   let(:time_2) { Time.local(2016, 1, 21) }
 
   it 'travel in time' do
+    sleep 1
     Timecop.travel(time_1)
 
     expect(Time.now.year).to eq 2015

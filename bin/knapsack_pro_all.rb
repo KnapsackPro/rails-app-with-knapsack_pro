@@ -27,9 +27,6 @@ COMMANDS = %{
 ./bin/knapsack_pro_rspec_test_file_exclude_pattern 0 2
 ./bin/knapsack_pro_rspec_test_file_exclude_pattern 1 2
 
-./bin/knapsack_pro_rspec_split_by_test_examples 0 2
-./bin/knapsack_pro_rspec_split_by_test_examples 1 2
-
 ./bin/knapsack_pro_queue_rspec_test_file_list 0 2
 ./bin/knapsack_pro_queue_rspec_test_file_list 1 2
 
@@ -81,9 +78,6 @@ COMMANDS = %{
 ./bin/knapsack_pro_fixed_queue_split_rspec_encrypted 0 2
 ./bin/knapsack_pro_fixed_queue_split_rspec_encrypted 1 2
 
-./bin/knapsack_pro_queue_rspec_split_by_test_examples 1 2
-./bin/knapsack_pro_queue_rspec_split_by_test_examples 1 2
-
 ./bin/parallel_tests_knapsack_pro_queue_rspec 0 2
 ./bin/parallel_tests_knapsack_pro_queue_rspec 1 2
 
@@ -94,6 +88,10 @@ COMMANDS = %{
 
 ./bin/bin_knapsack_pro_queue_rspec 0 2
 ./bin/bin_knapsack_pro_queue_rspec 1 2
+
+# inside of this bash scripts we run 2 parallel nodes
+./bin/knapsack_pro_split_by_test_cases_rspec
+./bin/knapsack_pro_split_by_test_cases_queue_rspec
 
 # Cucumber
 ./bin/knapsack_pro_cucumber 0 2

@@ -68,6 +68,9 @@ group :test do
     gem 'rspec-rails', '~> 4.0.0.beta2'
     gem 'rspec_junit_formatter'
     gem 'rspec-retry'
+    # use this if you want to test rspec-core
+    # you need to checkout to proper rspec-core version tag v3.8.2
+    #gem 'rspec-core', path: '../forked/rspec/rspec-core'
   end
 
   #gem 'minitest-spec-rails'
