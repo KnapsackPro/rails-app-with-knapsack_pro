@@ -11,6 +11,8 @@ CI_BUILD_ID=$(openssl rand -base64 32)
 COMMIT_HASH=$(ruby -e "require 'securerandom'; puts SecureRandom.hex")
 BRANCH_NAME=not-default-branch-name-$(ruby -e "require 'securerandom'; puts SecureRandom.hex")
 
+#export KNAPSACK_PRO_FIXED_QUEUE_SPLIT=true
+
 RAILS_ENV=test \
   KNAPSACK_PRO_ENDPOINT=http://api.knapsackpro.test:3000 \
   KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=fec3c641a3c4d2e720fe1b6d9dd780bc \
