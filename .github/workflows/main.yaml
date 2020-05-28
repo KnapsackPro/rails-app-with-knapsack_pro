@@ -33,8 +33,9 @@ jobs:
 
     - name: Set up Ruby 2.6
       uses: actions/setup-ruby@v1
-      with:
-        ruby-version: 2.6
+      # not needed if project has .ruby-version file
+      # with:
+      #   ruby-version: 2.6
 
     - name: Check Ruby version
       run: |
