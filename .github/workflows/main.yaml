@@ -34,7 +34,11 @@ jobs:
     - name: Set up Ruby 2.6
       uses: actions/setup-ruby@v1
       with:
-        ruby-version: 2.6.5
+        ruby-version: 2.6
+
+    - name: Check Ruby version
+      run: |
+        ruby -v
 
     - uses: actions/cache@v1
       with:
