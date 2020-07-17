@@ -36,6 +36,12 @@ COMMANDS = %{
 ./bin/knapsack_pro_queue_rspec_record_first_run 0 2
 ./bin/knapsack_pro_queue_rspec_record_first_run 1 2
 
+./bin/knapsack_pro_queue_rspec_split_by_test_examples 0 2
+./bin/knapsack_pro_queue_rspec_split_by_test_examples 1 2
+
+./bin/knapsack_pro_queue_rspec_split_by_test_examples_test_example_detector_prefix 0 2
+./bin/knapsack_pro_queue_rspec_split_by_test_examples_test_example_detector_prefix 1 2
+
 ./bin/knapsack_pro_queue_rspec_tags 0 2
 ./bin/knapsack_pro_queue_rspec_tags 1 2
 
