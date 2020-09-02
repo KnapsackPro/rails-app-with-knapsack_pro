@@ -13,8 +13,12 @@ KnapsackPro::Hooks::Queue.before_queue do |queue_id|
   print '-'*10
   print 'Before Queue Hook - run before test suite'
   print '-'*10
+  puts
 
   SimpleCov.command_name("rspec_ci_node_#{KnapsackPro::Config::Env.ci_node_index}")
+end
+KnapsackPro::Hooks::Queue.before_queue do |queue_id|
+  puts '2nd KnapsackPro::Hooks::Queue.before_queue'
 end
 
 # TODO This must be the same path as value for rspec --out argument
@@ -36,6 +40,10 @@ KnapsackPro::Hooks::Queue.after_subset_queue do |queue_id, subset_queue_id|
   print '-'*10
   print 'After Subset Queue Hook - run after subset of test suite'
   print '-'*10
+  puts
+end
+KnapsackPro::Hooks::Queue.after_subset_queue do |queue_id, subset_queue_id|
+  puts '2nd KnapsackPro::Hooks::Queue.after_subset_queue'
 end
 
 KnapsackPro::Hooks::Queue.after_queue do |queue_id|
@@ -48,6 +56,10 @@ KnapsackPro::Hooks::Queue.after_queue do |queue_id|
   print '-'*10
   print 'After Queue Hook - run after test suite'
   print '-'*10
+  puts
+end
+KnapsackPro::Hooks::Queue.after_queue do |queue_id|
+  puts '2nd KnapsackPro::Hooks::Queue.after_queue'
 end
 
 KnapsackPro::Adapters::RSpecAdapter.bind
