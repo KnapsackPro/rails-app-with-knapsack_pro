@@ -65,7 +65,7 @@ group :test do
   gem 'rails-controller-testing'
 
   if ENV['KNAPSACK_PRO_RSPEC_DISABLED'] != 'true'
-    gem 'rspec-rails', '~> 4.0.0.beta2'
+    gem 'rspec-rails', '~> 4.0.1'
     gem 'rspec_junit_formatter'
     gem 'rspec-retry'
     # use this if you want to test rspec-core
