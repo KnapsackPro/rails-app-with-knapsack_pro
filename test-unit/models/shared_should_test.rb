@@ -26,14 +26,14 @@ class SharedShouldTest < Test::Unit::TestCase
         assert @book.available_for_checkout?
       end
 
-      context "with a rentable book" do
+      context "with a rentable book - context" do
         setup { @book.rentable = true }
 
         ### Use the "be available for checkout" share_should
         use_should "be available for checkout"
       end
 
-      context "with a purchasable book" do
+      context "with a purchasable book - context" do
         setup { @book.purchasable = true }
 
         ### Use the "be available for checkout" share_should in this context too
