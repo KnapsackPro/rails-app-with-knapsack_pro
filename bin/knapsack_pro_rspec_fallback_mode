@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# you can define your own number of request retries
+# introduced in https://github.com/KnapsackPro/knapsack_pro-ruby/pull/124
+export KNAPSACK_PRO_MAX_REQUEST_RETRIES=2
+
 KNAPSACK_PRO_ENDPOINT=http://api-fake.knapsackpro.test:3000 \
   KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=3fa64859337f6e56409d49f865d13fd7 \
   KNAPSACK_PRO_REPOSITORY_ADAPTER=git \
