@@ -62,6 +62,26 @@ KnapsackPro::Hooks::Queue.after_queue do |queue_id|
   puts '2nd KnapsackPro::Hooks::Queue.after_queue'
 end
 
+KnapsackPro::Hooks::Queue.after_queue do |queue_id|
+  THE_SLOWEST_TEST_FILE_TIME_EXECUTION_LIMIT = 10 # in seconds
+
+  # all recorded test files by knapsack_pro gem
+  test_files = []
+  Dir.glob("tmp/knapsack_pro/queue/#{queue_id}/*.json").each do |file|
+    report = JSON.parse(File.read(file))
+    test_files += report
+  end
+
+  slowest_test_file = test_files.max_by do |test_file|
+    test_file['time_execution']
+  end
+
+  if slowest_test_file['time_execution'].to_f > THE_SLOWEST_TEST_FILE_TIME_EXECUTION_LIMIT
+    puts "The slowest test file took #{slowest_test_file['time_execution']} seconds. File path: #{slowest_test_file['path']}"
+    exit 1 # exit 1 means failure so CI provider will mark this CI build as failed
+  end
+end
+
 KnapsackPro::Adapters::RSpecAdapter.bind
 
 RSpec.configure do |config|
