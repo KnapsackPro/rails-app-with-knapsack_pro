@@ -63,7 +63,7 @@ KnapsackPro::Hooks::Queue.after_queue do |queue_id|
 end
 
 KnapsackPro::Hooks::Queue.after_queue do |queue_id|
-  THE_SLOWEST_TEST_FILE_TIME_EXECUTION_LIMIT = 10 # in seconds
+  THE_SLOWEST_TEST_FILE_TIME_EXECUTION_LIMIT = 1 # in seconds
 
   # all recorded test files by knapsack_pro gem
   test_files = []
@@ -77,8 +77,13 @@ KnapsackPro::Hooks::Queue.after_queue do |queue_id|
   end
 
   if slowest_test_file['time_execution'].to_f > THE_SLOWEST_TEST_FILE_TIME_EXECUTION_LIMIT
-    puts "The slowest test file took #{slowest_test_file['time_execution']} seconds. File path: #{slowest_test_file['path']}"
-    exit 1 # exit 1 means failure so CI provider will mark this CI build as failed
+    puts '!'*50
+    puts "The slowest test file took #{slowest_test_file['time_execution']} seconds and exceeded allowed max limit: #{THE_SLOWEST_TEST_FILE_TIME_EXECUTION_LIMIT} seconds. File path: #{slowest_test_file['path']}"
+    puts '!'*50
+
+    File.open('tmp/slowest_test_file_exceeded_allowed_limit.txt', 'w+') do |f|
+      f.write(slowest_test_file.to_json)
+    end
   end
 end
 
