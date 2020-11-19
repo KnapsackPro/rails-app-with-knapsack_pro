@@ -63,7 +63,7 @@ KnapsackPro::Hooks::Queue.after_queue do |queue_id|
 end
 
 KnapsackPro::Hooks::Queue.after_queue do |queue_id|
-  THE_SLOWEST_TEST_FILE_TIME_EXECUTION_LIMIT = 1 # in seconds
+  THE_SLOWEST_TEST_FILE_TIME_EXECUTION_LIMIT = 3 # in seconds
 
   # all recorded test files by knapsack_pro gem
   test_files = []
