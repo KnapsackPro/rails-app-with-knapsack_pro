@@ -1,6 +1,9 @@
 env:
   KNAPSACK_PRO_REPO_PATH: "/Users/artur/Documents/github/knapsack-pro/knapsack_pro-ruby"
-  # allow to run the same set of test files on retry for parallel job
+  # You should hide you secrets like API token
+  # Please follow https://buildkite.com/docs/pipelines/secrets
+  KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC: "3a4abb31f699a6686124a40efeff31e5"
+  # allow to run the same set of test files on job retry
   # https://github.com/KnapsackPro/knapsack_pro-ruby#knapsack_pro_fixed_queue_split-remember-queue-split-on-retry-ci-node
   KNAPSACK_PRO_FIXED_QUEUE_SPLIT: true
 
