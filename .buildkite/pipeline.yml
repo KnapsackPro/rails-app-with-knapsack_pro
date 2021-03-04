@@ -1,0 +1,7 @@
+env:
+  KNAPSACK_PRO_REPO_PATH: "/Users/artur/Documents/github/knapsack-pro/knapsack_pro-ruby"
+  KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC: "3a4abb31f699a6686124a40efeff31e5"
+
+steps:
+  - command: "bundle exec rake knapsack_pro:queue:rspec"
+    parallelism: 2
