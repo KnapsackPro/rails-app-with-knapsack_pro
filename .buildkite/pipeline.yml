@@ -1,4 +1,6 @@
 env:
+  # this is config just for testing purpose in development using Buildkite macOS agents
+  # this is why I had to explicitly set path to knapsack_pro gem
   KNAPSACK_PRO_REPO_PATH: "/Users/artur/Documents/github/knapsack-pro/knapsack_pro-ruby"
   # You should hide you secrets like API token
   # Please follow https://buildkite.com/docs/pipelines/secrets
