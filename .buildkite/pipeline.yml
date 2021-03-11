@@ -8,7 +8,7 @@ env:
   # allow to run the same set of test files on job retry
   # https://github.com/KnapsackPro/knapsack_pro-ruby#knapsack_pro_fixed_queue_split-remember-queue-split-on-retry-ci-node
   KNAPSACK_PRO_FIXED_QUEUE_SPLIT: true
-  KNAPSACK_PRO_TEST_FILE_PATTERN: "spec/examples/**{,/*/**}/*_spec.rb"
+  KNAPSACK_PRO_TEST_FILE_PATTERN: "spec_examples/**{,/*/**}/*_spec.rb"
 
 steps:
   - command: "bundle exec rake knapsack_pro:queue:rspec"
