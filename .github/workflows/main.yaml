@@ -37,7 +37,6 @@ jobs:
       # If we were running the job on the VM this would be postgres
       PGHOST: localhost
       PGUSER: postgres
-      PGPORT: ${{ job.services.postgres.ports[5432] }} # get randomly assigned published port
       TZ: "Europe/Warsaw"
 
     steps:
