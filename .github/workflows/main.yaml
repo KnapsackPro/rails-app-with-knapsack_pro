@@ -72,7 +72,7 @@ jobs:
 
     - name: create DB
       run: |
-        bin/rails db:setup
+        bin/rails db:prepare
 
     - name: Run tests
       env:
