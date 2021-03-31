@@ -16,8 +16,7 @@ jobs:
           # Rails verifies Time Zone in DB is the same as time zone of the Rails app
           TZ: "Europe/Warsaw"
         ports:
-        # will assign a random free host port
-        - 5432/tcp
+          - 5432:5432
         # needed because the postgres container does not provide a healthcheck
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
