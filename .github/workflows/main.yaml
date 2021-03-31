@@ -43,10 +43,7 @@ jobs:
       TZ: "Europe/Warsaw"
 
     steps:
-    - uses: actions/checkout@v1
-
-    - name: install PostgreSQL client
-      run: sudo apt-get install libpq-dev
+    - uses: actions/checkout@v2
 
     - name: show list of env variables
       run: env
