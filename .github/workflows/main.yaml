@@ -13,8 +13,6 @@ jobs:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: ""
           POSTGRES_DB: postgres
-          # Rails verifies Time Zone in DB is the same as time zone of the Rails app
-          TZ: "Europe/Warsaw"
         ports:
           - 5432:5432
         # needed because the postgres container does not provide a healthcheck
@@ -41,6 +39,7 @@ jobs:
       # If we were running the job on the VM this would be postgres
       PGHOST: localhost
       PGUSER: postgres
+      # Rails verifies Time Zone in DB is the same as time zone of the Rails app
       TZ: "Europe/Warsaw"
 
     steps:
