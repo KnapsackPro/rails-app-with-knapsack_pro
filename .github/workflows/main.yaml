@@ -50,7 +50,6 @@ jobs:
 
     - name: Setup knapsack_pro gem locally
       run: |
-        pwd
         mkdir vendor/bundle
         # remove refs/heads from branch name like refs/heads/github-actions
         export BRANCH=$(ruby -e 'print ENV["GITHUB_REF"].to_s.split("/").last')
