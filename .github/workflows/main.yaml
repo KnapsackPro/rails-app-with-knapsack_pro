@@ -33,6 +33,8 @@ jobs:
     env:
       RAILS_ENV: test
       KNAPSACK_PRO_REPO_PATH: ~/gems/knapsack_pro-ruby
+      # allow to install gems when Gemfile.lock is modified dynamically due to using local copy of knapsack_pro gem specified in KNAPSACK_PRO_REPO_PATH directory
+      BUNDLE_FROZEN: false
       # use localhost for the host here because we have specified a container for the job.
       # If we were running the job on the VM this would be postgres
       PGHOST: localhost
