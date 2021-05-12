@@ -2,6 +2,9 @@
 
 #export KNAPSACK_PRO_LOG_LEVEL=warn
 
+# uncomment to run all tests split by examples
+#export KNAPSACK_PRO_SLOW_TEST_FILE_PATTERN="spec/**{,/*/**}/*_spec.rb"
+
 RAILS_ENV=test \
   KNAPSACK_PRO_ENDPOINT=http://api.knapsackpro.test:3000 \
   KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=a28ce51204d7c7dbd25c3352fea222cf \
