@@ -2,7 +2,11 @@
 describe 'Track context time' do
   context 'when something' do
     before(:context) do
-      sleep(5)
+      sleep(2)
+    end
+
+    after(:context) do
+      sleep(3)
     end
 
     before do
