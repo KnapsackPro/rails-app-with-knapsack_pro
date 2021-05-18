@@ -158,11 +158,7 @@ jobs:
           command: |
             for file in tmp/test-reports/cucumber/regular_mode/*
             do
-              curl -X POST \
-                -H "x-api-key:$CALLIOPE_API_KEY" \
-                -H "Content-Type:multipart/form-data" \
-                -F "file[]=@$file" \
-                "https://app.calliope.pro/api/v2/profile/3418/import/junit?build=$CIRCLE_BUILD_NUM"
+              curl -X POST -H "x-api-key:$CALLIOPE_API_KEY" -H "Content-Type:multipart/form-data" -F "file[]=@$file" "https://app.calliope.pro/api/v2/profile/3418/import/junit?build=$CIRCLE_BUILD_NUM"
             done
 
       # Queue Mode in Cucumber
