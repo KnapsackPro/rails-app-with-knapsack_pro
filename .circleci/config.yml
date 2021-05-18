@@ -156,6 +156,9 @@ jobs:
       - run:
           name: import JUnit XML report to Calliope.pro for Cucumber in Knapsack Pro Regular Mode
           command: |
+            echo "All report files:"
+            ls -la tmp/test-reports/cucumber/regular_mode/
+
             for file in tmp/test-reports/cucumber/regular_mode/*
             do
               curl -X POST -H "x-api-key:$CALLIOPE_API_KEY" -H "Content-Type:multipart/form-data" -F "file[]=@$file" "https://app.calliope.pro/api/v2/profile/3418/import/junit?build=$CIRCLE_BUILD_NUM"
