@@ -171,6 +171,19 @@ jobs:
 
       - run: KNAPSACK_PRO_FIXED_QUEUE_SPLIT=true KNAPSACK_PRO_TEST_SUITE_TOKEN_CUCUMBER=$KNAPSACK_PRO_QUEUE_TEST_SUITE_TOKEN_CUCUMBER bundle exec rake "knapsack_pro:queue:cucumber[--format junit --out tmp/test-reports/cucumber/queue_mode/]"
 
+      - run:
+          name: import JUnit XML reports to Calliope.pro for Cucumber in Knapsack Pro Queue Mode
+          command: |
+            echo "All report files:"
+            ls -la tmp/test-reports/cucumber/queue_mode/
+
+            for file in tmp/test-reports/cucumber/queue_mode/*
+            do
+              echo "\nImport file: $file"
+              # import files even when a file name has spaces in the name
+              curl -X POST -H "x-api-key:$CALLIOPE_API_KEY" -H "Content-Type:multipart/form-data" -F "file[]=@\"$file\"" "https://app.calliope.pro/api/v2/profile/3419/import/junit?build=$CIRCLE_BUILD_NUM"
+            done
+
       - run: KNAPSACK_PRO_RSPEC_DISABLED=true bundle exec rake knapsack_pro:minitest[--verbose]
 
       - run: KNAPSACK_PRO_TEST_DIR=test-unit KNAPSACK_PRO_TEST_FILE_PATTERN="test-unit/**{,/*/**}/*_test.rb" bundle exec rake "knapsack_pro:test_unit[--verbose]"
