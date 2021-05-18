@@ -167,7 +167,7 @@ jobs:
               do
                 echo
                 echo "Import file: $file"
-                # use double quote (@\"$file\") to import file name with spaces in the name
+                # use double quote in @\"$file\" to import file name with spaces in the name
                 curl -X POST -H "x-api-key:$CALLIOPE_API_KEY" -H "Content-Type:multipart/form-data" -F "file[]=@\"$file\"" "https://app.calliope.pro/api/v2/profile/3418/import/junit?build=$CIRCLE_BUILD_NUM&merge_containers=true"
                 echo
               done
@@ -194,7 +194,7 @@ jobs:
               do
                 echo
                 echo "Import file: $file"
-                # use double quote (@\"$file\") to import file name with spaces in the name
+                # use double quote in @\"$file\" to import file name with spaces in the name
                 curl -X POST -H "x-api-key:$CALLIOPE_API_KEY" -H "Content-Type:multipart/form-data" -F "file[]=@\"$file\"" "https://app.calliope.pro/api/v2/profile/3419/import/junit?build=$CIRCLE_BUILD_NUM&merge_containers=true"
                 echo
               done

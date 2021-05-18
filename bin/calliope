@@ -21,7 +21,7 @@ if [ -d $report_dir ] && [ `ls $report_dir | wc -l` -gt 0 ]; then
   do
     echo
     echo "Import file: $file"
-    # use double quote (@\"$file\") to import file name with spaces in the name
+    # use double quote in @\"$file\" to import file name with spaces in the name
     curl -X POST -H "x-api-key:$CALLIOPE_API_KEY" -H "Content-Type:multipart/form-data" -F "file[]=@\"$file\"" "https://app.calliope.pro/api/v2/profile/3418/import/junit?build=$CI_BUILD_ID&merge_containers=true"
     echo
   done
