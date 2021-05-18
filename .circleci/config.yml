@@ -161,7 +161,7 @@ jobs:
 
             for file in tmp/test-reports/cucumber/regular_mode/*
             do
-              echo "Import file: $file"
+              echo "\nImport file: $file"
               # import files even when a file name has spaces in the name
               curl -X POST -H "x-api-key:$CALLIOPE_API_KEY" -H "Content-Type:multipart/form-data" -F "file[]=@\"$file\"" "https://app.calliope.pro/api/v2/profile/3418/import/junit?build=$CIRCLE_BUILD_NUM"
             done
