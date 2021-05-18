@@ -15,6 +15,8 @@ if [ -d $report_dir ] && [ `ls $report_dir | wc -l` -gt 0 ]; then
   ls -la $report_dir
   echo
 
+  # $report_dir must end with / so the * will look for files inside of the directory
+  # example of full pattern: dir/dir2/*
   for file in $report_dir*
   do
     echo
