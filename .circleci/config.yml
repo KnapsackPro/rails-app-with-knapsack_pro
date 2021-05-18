@@ -104,7 +104,7 @@ jobs:
           name: import JUnit XML report to Calliope.pro for RSpec in Knapsack Pro Queue Mode
           command: |
             curl -X POST \
-              -H "x-api-key:$CALLIOPE_API_KEY_RSPEC_QUEUE_MODE" \
+              -H "x-api-key:$CALLIOPE_API_KEY" \
               -H "Content-Type:multipart/form-data" \
               -F "file[]=@tmp/test-reports/rspec/queue_mode/rspec.xml" \
               "https://app.calliope.pro/api/v2/profile/3416/import/junit?build=$CIRCLE_BUILD_NUM"
