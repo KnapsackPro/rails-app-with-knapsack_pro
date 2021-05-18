@@ -163,7 +163,7 @@ jobs:
             do
               echo "\nImport file: $file"
               # use double quote (@\"$file\") to import file name with spaces in the name
-              curl -X POST -H "x-api-key:$CALLIOPE_API_KEY" -H "Content-Type:multipart/form-data" -F "file[]=@\"$file\"" "https://app.calliope.pro/api/v2/profile/3418/import/junit?build=$CIRCLE_BUILD_NUM"
+              curl -X POST -H "x-api-key:$CALLIOPE_API_KEY" -H "Content-Type:multipart/form-data" -F "file[]=@\"$file\"" "https://app.calliope.pro/api/v2/profile/3418/import/junit?build=$CIRCLE_BUILD_NUM&merge_containers=true"
             done
 
       # Queue Mode in Cucumber
@@ -181,7 +181,7 @@ jobs:
             do
               echo "\nImport file: $file"
               # use double quote (@\"$file\") to import file name with spaces in the name
-              curl -X POST -H "x-api-key:$CALLIOPE_API_KEY" -H "Content-Type:multipart/form-data" -F "file[]=@\"$file\"" "https://app.calliope.pro/api/v2/profile/3419/import/junit?build=$CIRCLE_BUILD_NUM"
+              curl -X POST -H "x-api-key:$CALLIOPE_API_KEY" -H "Content-Type:multipart/form-data" -F "file[]=@\"$file\"" "https://app.calliope.pro/api/v2/profile/3419/import/junit?build=$CIRCLE_BUILD_NUM&merge_containers=true"
             done
 
       - run: KNAPSACK_PRO_RSPEC_DISABLED=true bundle exec rake knapsack_pro:minitest[--verbose]
