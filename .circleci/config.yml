@@ -100,8 +100,14 @@ jobs:
       # The rspec.xml will have tests from all intermediate requests to API.
       - run: KNAPSACK_PRO_FIXED_QUEUE_SPLIT=true KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=$KNAPSACK_PRO_QUEUE_TEST_SUITE_TOKEN_RSPEC bundle exec rake "knapsack_pro:queue:rspec[--format documentation --format RspecJunitFormatter --out tmp/test-reports/rspec/queue_mode/rspec.xml]"
 
-      # import JUnit XML report to Calliope.pro
-      - run: curl -X POST -H "x-api-key:$CALLIOPE_API_KEY_RSPEC_QUEUE_MODE" -H "Content-Type:application/*" -F "file[]=@tmp/test-reports/rspec/queue_mode/rspec.xml" "https://app.calliope.pro/api/v2/profile/3416/import?build=$CIRCLE_BUILD_NUM"
+      - run:
+          name: import JUnit XML report to Calliope.pro
+          command: |
+            curl -X POST \
+              -H "x-api-key:$CALLIOPE_API_KEY_RSPEC_QUEUE_MODE" \
+              -H "Content-Type:multipart/form-data" \
+              -F "file[]=@tmp/test-reports/rspec/queue_mode/rspec.xml" \
+              "https://app.calliope.pro/api/v2/profile/3416/import/junit?build=$CIRCLE_BUILD_NUM"
 
       # Queue mode retry CI with the same test suite split as last dynamic queue run
       - run: KNAPSACK_PRO_FIXED_QUEUE_SPLIT=true KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=$KNAPSACK_PRO_QUEUE_TEST_SUITE_TOKEN_RSPEC bundle exec rake knapsack_pro:queue:rspec
