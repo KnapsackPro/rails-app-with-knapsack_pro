@@ -101,7 +101,7 @@ jobs:
       - run: KNAPSACK_PRO_FIXED_QUEUE_SPLIT=true KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=$KNAPSACK_PRO_QUEUE_TEST_SUITE_TOKEN_RSPEC bundle exec rake "knapsack_pro:queue:rspec[--format documentation --format RspecJunitFormatter --out tmp/test-reports/rspec/queue_mode/rspec.xml]"
 
       - run:
-          name: import JUnit XML report to Calliope.pro
+          name: import JUnit XML report to Calliope.pro for RSpec in Knapsack Pro Queue Mode
           command: |
             curl -X POST \
               -H "x-api-key:$CALLIOPE_API_KEY_RSPEC_QUEUE_MODE" \
