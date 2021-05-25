@@ -89,5 +89,5 @@ group :test do
   #gem 'capybara-screenshot', github: 'ArturT/capybara-screenshot', branch: 'fix-reporter_module-loaded-twice'
 
   gem 'shared_should', require: false
-  gem 'simplecov', require: false
+  gem 'simplecov', '0.17.1', require: false
 end
