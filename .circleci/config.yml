@@ -103,11 +103,16 @@ jobs:
       - run:
           name: import JUnit XML reports to Calliope.pro for RSpec in Knapsack Pro Queue Mode
           command: |
-            curl -X POST \
-              -H "x-api-key:$CALLIOPE_API_KEY" \
-              -H "Content-Type:multipart/form-data" \
-              -F "file[]=@tmp/test-reports/rspec/queue_mode/rspec.xml" \
-              "https://app.calliope.pro/api/v2/profile/3416/import/junit?build=$CIRCLE_BUILD_NUM"
+            report_dir=tmp/test-reports/rspec/queue_mode/
+            if [ -d $report_dir ] && [ `ls $report_dir | wc -l` -gt 0 ]; then
+              curl -X POST \
+                -H "x-api-key:$CALLIOPE_API_KEY" \
+                -H "Content-Type:multipart/form-data" \
+                -F "file[]=@tmp/test-reports/rspec/queue_mode/rspec.xml" \
+                "https://app.calliope.pro/api/v2/profile/3416/import/junit?build=$CIRCLE_BUILD_NUM"
+            else
+              echo "Report files not found. Nothing to import to Calliope.pro"
+            fi
 
       # Queue mode retry CI with the same test suite split as last dynamic queue run
       - run: KNAPSACK_PRO_FIXED_QUEUE_SPLIT=true KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=$KNAPSACK_PRO_QUEUE_TEST_SUITE_TOKEN_RSPEC bundle exec rake knapsack_pro:queue:rspec
