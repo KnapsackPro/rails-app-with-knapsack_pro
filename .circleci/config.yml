@@ -14,6 +14,7 @@ jobs:
           PGUSER: rails-app-with-knapsack_pro
           RAILS_ENV: test
           RACK_ENV: test
+          COVERAGE: true
           KNAPSACK_PRO_REPO_PATH: ~/gems/knapsack_pro-ruby
 
           # In production you should use endpoint https://api.knapsackpro.com
