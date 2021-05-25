@@ -208,7 +208,7 @@ jobs:
 
   upload-coverage:
     docker:
-      - image: circleci/ruby:2.6.5-node
+      - image: circleci/ruby:3.0.1-node
     environment:
       CC_TEST_REPORTER_ID: dd360701bd9bd47abdea789fe94c9a9b118bc9f7fbce6d3cdc1dd3709866e460
     working_directory: ~/repo
