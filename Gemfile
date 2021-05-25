@@ -89,5 +89,7 @@ group :test do
   #gem 'capybara-screenshot', github: 'ArturT/capybara-screenshot', branch: 'fix-reporter_module-loaded-twice'
 
   gem 'shared_should', require: false
+  # use older simplecov to fix an issue with CodeClimate
+  # https://github.com/codeclimate/test-reporter/issues/418
   gem 'simplecov', '0.17.1', require: false
 end
