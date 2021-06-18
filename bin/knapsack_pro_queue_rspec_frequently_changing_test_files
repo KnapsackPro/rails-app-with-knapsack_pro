@@ -8,7 +8,7 @@ export KNAPSACK_PRO_ENDPOINT=http://api.knapsackpro.test:3000
 export KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=a28ce51204d7c7dbd25c3352fea222cf
 export KNAPSACK_PRO_CI_NODE_TOTAL=2
 
-# generate an unique commit hash and branch
+# generate a unique commit hash and branch
 export KNAPSACK_PRO_COMMIT_HASH=$(ruby -e "require 'securerandom'; puts SecureRandom.hex")
 export KNAPSACK_PRO_BRANCH=frequently-changing-test-files-$(ruby -e "require 'securerandom'; puts SecureRandom.hex")
 
@@ -19,7 +19,7 @@ echo
 echo
 
 # Run all test files in the test suite.
-# Below commands should record time execution for all test files.
+# The commands below should record time execution for all test files.
 export KNAPSACK_PRO_CI_NODE_BUILD_ID=$(openssl rand -base64 32)
 
 KNAPSACK_PRO_CI_NODE_INDEX=0 \
