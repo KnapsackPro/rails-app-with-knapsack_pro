@@ -1,7 +1,7 @@
 PATH
   remote: ../knapsack_pro-ruby
   specs:
-    knapsack_pro (2.17.0)
+    knapsack_pro (2.18.0)
       rake
 
 GEM
