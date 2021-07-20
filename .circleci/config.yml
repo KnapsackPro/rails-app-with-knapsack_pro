@@ -100,6 +100,20 @@ jobs:
       # The rspec.xml will have tests from all intermediate requests to API.
       - run: KNAPSACK_PRO_FIXED_QUEUE_SPLIT=true KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=$KNAPSACK_PRO_QUEUE_TEST_SUITE_TOKEN_RSPEC bundle exec rake "knapsack_pro:queue:rspec[--format documentation --format RspecJunitFormatter --out tmp/test-reports/rspec/queue_mode/rspec.xml]"
 
+      - run:
+          name: import JUnit XML reports to Calliope.pro for RSpec in Knapsack Pro Queue Mode
+          command: |
+            report_dir=tmp/test-reports/rspec/queue_mode/
+            if [ -d $report_dir ] && [ `ls $report_dir | wc -l` -gt 0 ]; then
+              curl -X POST \
+                -H "x-api-key:$CALLIOPE_API_KEY" \
+                -H "Content-Type:multipart/form-data" \
+                -F "file[]=@tmp/test-reports/rspec/queue_mode/rspec.xml" \
+                "https://app.calliope.pro/api/v2/profile/3416/import/junit?build=$CIRCLE_BUILD_NUM"
+            else
+              echo "Report files not found. Nothing to import to Calliope.pro"
+            fi
+
       # Queue mode retry CI with the same test suite split as last dynamic queue run
       - run: KNAPSACK_PRO_FIXED_QUEUE_SPLIT=true KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=$KNAPSACK_PRO_QUEUE_TEST_SUITE_TOKEN_RSPEC bundle exec rake knapsack_pro:queue:rspec
 
@@ -144,10 +158,54 @@ jobs:
 
       - run: bundle exec rake "knapsack_pro:cucumber[--format junit --out tmp/test-reports/cucumber/regular_mode]"
 
+      - run:
+          name: import JUnit XML report to Calliope.pro for Cucumber in Knapsack Pro Regular Mode
+          command: |
+            # ensure there is / at the end of a directory name
+            report_dir=tmp/test-reports/cucumber/regular_mode/
+            if [ -d $report_dir ] && [ `ls $report_dir | wc -l` -gt 0 ]; then
+              echo "All report files:"
+              ls -la $report_dir
+              echo
+
+              for file in $report_dir*
+              do
+                echo
+                echo "Import file: $file"
+                # use double quote in @\"$file\" to import file name with spaces in the name
+                curl -X POST -H "x-api-key:$CALLIOPE_API_KEY" -H "Content-Type:multipart/form-data" -F "file[]=@\"$file\"" "https://app.calliope.pro/api/v2/profile/3418/import/junit?build=$CIRCLE_BUILD_NUM&merge_containers=true"
+                echo
+              done
+            else
+              echo "Report files not found. Nothing to import to Calliope.pro"
+            fi
+
       # Queue Mode in Cucumber
       - run: KNAPSACK_PRO_TEST_SUITE_TOKEN_CUCUMBER=$KNAPSACK_PRO_QUEUE_TEST_SUITE_TOKEN_CUCUMBER bundle exec rake knapsack_pro:queue:cucumber
 
       - run: KNAPSACK_PRO_FIXED_QUEUE_SPLIT=true KNAPSACK_PRO_TEST_SUITE_TOKEN_CUCUMBER=$KNAPSACK_PRO_QUEUE_TEST_SUITE_TOKEN_CUCUMBER bundle exec rake "knapsack_pro:queue:cucumber[--format junit --out tmp/test-reports/cucumber/queue_mode/]"
+
+      - run:
+          name: import JUnit XML reports to Calliope.pro for Cucumber in Knapsack Pro Queue Mode
+          command: |
+            # ensure there is / at the end of a directory name
+            report_dir=tmp/test-reports/cucumber/queue_mode/
+            if [ -d $report_dir ] && [ `ls $report_dir | wc -l` -gt 0 ]; then
+              echo "All report files:"
+              ls -la $report_dir
+              echo
+
+              for file in $report_dir*
+              do
+                echo
+                echo "Import file: $file"
+                # use double quote in @\"$file\" to import file name with spaces in the name
+                curl -X POST -H "x-api-key:$CALLIOPE_API_KEY" -H "Content-Type:multipart/form-data" -F "file[]=@\"$file\"" "https://app.calliope.pro/api/v2/profile/3419/import/junit?build=$CIRCLE_BUILD_NUM&merge_containers=true"
+                echo
+              done
+            else
+              echo "Report files not found. Nothing to import to Calliope.pro"
+            fi
 
       - run: KNAPSACK_PRO_RSPEC_DISABLED=true bundle exec rake knapsack_pro:minitest[--verbose]
 
