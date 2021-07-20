@@ -27,6 +27,9 @@ COMMANDS = %{
 ./bin/knapsack_pro_rspec_test_file_exclude_pattern 0 2
 ./bin/knapsack_pro_rspec_test_file_exclude_pattern 1 2
 
+./bin/knapsack_pro_rspec_split_by_test_examples 0 2
+./bin/knapsack_pro_rspec_split_by_test_examples 1 2
+
 ./bin/knapsack_pro_queue_rspec_test_file_list 0 2
 ./bin/knapsack_pro_queue_rspec_test_file_list 1 2
 
@@ -68,6 +71,8 @@ COMMANDS = %{
 
 ./bin/knapsack_pro_queue_rspec_test_file_exclude_pattern 0 2
 ./bin/knapsack_pro_queue_rspec_test_file_exclude_pattern 1 2
+
+./bin/knapsack_pro_queue_rspec_frequently_changing_test_files
 
 ./bin/knapsack_pro_queue_rspec_initialized_once 0 2
 ./bin/knapsack_pro_queue_rspec_initialized_once 1 2
