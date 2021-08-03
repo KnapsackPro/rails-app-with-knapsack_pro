@@ -1,3 +1,5 @@
+require 'async/rspec'
+
 require 'knapsack_pro'
 
 # uncomment if you want to test how custom logger works
