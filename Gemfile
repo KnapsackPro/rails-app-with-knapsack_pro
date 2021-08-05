@@ -32,6 +32,9 @@ gem 'jbuilder', '~> 2.0'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'async'
+gem 'async-io'
+
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
@@ -71,6 +74,7 @@ group :test do
     # use this if you want to test rspec-core
     # you need to checkout to proper rspec-core version tag v3.8.2
     #gem 'rspec-core', path: '../forked/rspec/rspec-core'
+    gem 'async-rspec', require: false
   end
 
   #gem 'minitest-spec-rails'
