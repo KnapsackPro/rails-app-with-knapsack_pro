@@ -78,7 +78,7 @@ KnapsackPro::Hooks::Queue.after_queue do |queue_id|
     test_file['time_execution']
   end
 
-  if slowest_test_file['time_execution'].to_f > THE_SLOWEST_TEST_FILE_TIME_EXECUTION_LIMIT
+  if slowest_test_file && slowest_test_file['time_execution'].to_f > THE_SLOWEST_TEST_FILE_TIME_EXECUTION_LIMIT
     puts '!'*50
     puts "The slowest test file took #{slowest_test_file['time_execution']} seconds and exceeded allowed max limit: #{THE_SLOWEST_TEST_FILE_TIME_EXECUTION_LIMIT} seconds. File path: #{slowest_test_file['path']}"
     puts '!'*50
