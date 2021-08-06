@@ -69,7 +69,7 @@ KnapsackPro::Hooks::Queue.after_queue do |queue_id|
 
   # all recorded test files by knapsack_pro gem
   test_files = []
-  Dir.glob("tmp/knapsack_pro/queue/#{queue_id}/*.json").each do |file|
+  Dir.glob(".knapsack_pro/queue/#{queue_id}/*.json").each do |file|
     report = JSON.parse(File.read(file))
     test_files += report
   end
