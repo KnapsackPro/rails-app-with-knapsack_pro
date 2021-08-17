@@ -69,7 +69,7 @@ KnapsackPro::Hooks::Queue.after_queue do |queue_id|
 
   # all recorded test files by knapsack_pro gem
   test_files = []
-  Dir.glob("tmp/knapsack_pro/queue/#{queue_id}/*.json").each do |file|
+  Dir.glob(".knapsack_pro/queue/#{queue_id}/*.json").each do |file|
     report = JSON.parse(File.read(file))
     test_files += report
   end
@@ -78,7 +78,7 @@ KnapsackPro::Hooks::Queue.after_queue do |queue_id|
     test_file['time_execution']
   end
 
-  if slowest_test_file['time_execution'].to_f > THE_SLOWEST_TEST_FILE_TIME_EXECUTION_LIMIT
+  if slowest_test_file && slowest_test_file['time_execution'].to_f > THE_SLOWEST_TEST_FILE_TIME_EXECUTION_LIMIT
     puts '!'*50
     puts "The slowest test file took #{slowest_test_file['time_execution']} seconds and exceeded allowed max limit: #{THE_SLOWEST_TEST_FILE_TIME_EXECUTION_LIMIT} seconds. File path: #{slowest_test_file['path']}"
     puts '!'*50
