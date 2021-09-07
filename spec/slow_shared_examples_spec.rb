@@ -1,6 +1,7 @@
 RSpec.shared_context "shared stuff", :shared_context => :metadata do
   before do
     sleep 1
+    sleep ENV['EXTRA_TEST_FILES_DELAY'].to_i
   end
 end
 
