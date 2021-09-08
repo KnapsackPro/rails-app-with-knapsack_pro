@@ -169,6 +169,10 @@ RSpec.configure do |config|
     mocks.verify_partial_doubles = true
   end
 
+  # Uncomment for testing purposes
+  # https://knapsackpro.com/faq/question/how-to-split-slow-rspec-test-files-by-test-examples-by-individual-it#warning-dont-use-deprecated-rspec-run_all_when_everything_filtered-option
+  #config.filter_run_when_matching :focus
+
 # The settings below are suggested to provide a good initial experience
 # with RSpec, but feel free to customize to your heart's content.
 =begin
