@@ -176,6 +176,8 @@ RSpec.configure do |config|
   # to individual examples or groups you care about by tagging them with
   # `:focus` metadata. When nothing is tagged with `:focus`, all examples
   # get run.
+  # This is deprecated, DO NOT USE IT
+  # https://knapsackpro.com/faq/question/how-to-split-slow-rspec-test-files-by-test-examples-by-individual-it#warning-dont-use-deprecated-rspec-run_all_when_everything_filtered-option
   config.filter_run :focus
   config.run_all_when_everything_filtered = true
 
