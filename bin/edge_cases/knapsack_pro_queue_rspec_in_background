@@ -19,6 +19,9 @@ export KNAPSACK_PRO_TEST_FILE_PATTERN="{spec/controllers/articles_controller_spe
 # KNAPSACK_PRO_SLOW_TEST_FILE_PATTERN must be subset of KNAPSACK_PRO_TEST_FILE_PATTERN
 #export KNAPSACK_PRO_SLOW_TEST_FILE_PATTERN="{spec/timecop_spec.rb}"
 
+# split all test files by test examples (RSpec can slow down a lot for large amount of test files)
+#export KNAPSACK_PRO_SLOW_TEST_FILE_PATTERN="spec/**{,/*/**}/*_spec.rb"
+
 KNAPSACK_PRO_CI_NODE_INDEX=0 \
   bundle exec rake "knapsack_pro:queue:rspec[-f d]" #&
 
