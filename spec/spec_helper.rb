@@ -170,8 +170,16 @@ RSpec.configure do |config|
   end
 
   # Uncomment for testing purposes
+  # https://knapsackpro.com/faq/question/why-is-rspec-skipping-some-of-the-tests#if-you-have-too-many-test-files-with-focus-tag-and-you-dont-want-to-remove-the-tag-manually
   # https://knapsackpro.com/faq/question/how-to-split-slow-rspec-test-files-by-test-examples-by-individual-it#warning-dont-use-deprecated-rspec-run_all_when_everything_filtered-option
   #config.filter_run_when_matching :focus
+  #config.filter_run :focus
+  #config.run_all_when_everything_filtered = true
+  #config.filter_run_including :focus => true
+  #config.filter_run_including :focus2 => true
+  # unless ENV['CI']
+  #   config.filter_run_when_matching :focus
+  # end
 
 # The settings below are suggested to provide a good initial experience
 # with RSpec, but feel free to customize to your heart's content.
