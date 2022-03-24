@@ -170,7 +170,7 @@ RSpec.configure do |config|
   end
 
   # Uncomment for testing purposes
-  # https://knapsackpro.com/faq/question/why-is-rspec-skipping-some-of-the-tests#if-you-have-too-many-test-files-with-focus-tag-and-you-dont-want-to-remove-the-tag-manually
+  # https://knapsackpro.com/faq/question/rspec-is-not-running-some-tests
   # https://knapsackpro.com/faq/question/how-to-split-slow-rspec-test-files-by-test-examples-by-individual-it#warning-dont-use-deprecated-rspec-run_all_when_everything_filtered-option
   #config.filter_run_when_matching :focus
   #config.filter_run :focus
