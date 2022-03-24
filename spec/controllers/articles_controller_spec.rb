@@ -1,4 +1,6 @@
-describe ArticlesController do
+# Change :xfocus to :focus to test behaviour when
+# config.filter_run_when_matching :focus is set in spec/spec_helper.rb
+describe ArticlesController, :xfocus do
   describe '#index' do
     let(:articles) do
       [
