@@ -1,0 +1,5 @@
+#!/bin/bash
+
+export TEST_ANALYTICS_TOKEN=tebjGzsKtbkPQurGHaQXypUh
+
+bundle exec rspec spec
