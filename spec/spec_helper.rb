@@ -2,6 +2,10 @@ require 'async/rspec'
 
 require 'knapsack_pro'
 
+require 'rspec/buildkite/analytics'
+
+RSpec::Buildkite::Analytics.configure(token: ENV['TEST_ANALYTICS_TOKEN'])
+
 # uncomment if you want to test how custom logger works
 #require 'logger'
 #KnapsackPro.logger = Logger.new(STDOUT)

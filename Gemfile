@@ -62,6 +62,8 @@ group :development, :test do
   gem 'test-unit-rails'
 
   gem 'listen'
+
+  gem 'rspec-buildkite-analytics'
 end
 
 group :test do
