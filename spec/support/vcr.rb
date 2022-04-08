@@ -13,6 +13,7 @@ VCR.configure do |config|
     'api-staging.knapsackpro.com',
     'api.knapsackpro.test',
     'api-disabled-for-fork.knapsackpro.com',
+    'analytics-api.buildkite.com',
   )
 end
 
