@@ -1,5 +1,16 @@
 #!/bin/bash
 
+#export TEST_ANALYTICS_TOKEN=tebjGzsKtbkPQurGHaQXypUh
+
+#export BUILDKITE_BUILD_ID=my-build-id-3
+#export BUILDKITE_BUILD_URL=https://example.com/url
+#export BUILDKITE_BRANCH=branch-name3
+#export BUILDKITE_COMMIT=commit-sha3
+#export BUILDKITE_BUILD_NUMBER=build-num-3
+#export BUILDKITE_JOB_ID=job-id-3.1
+#export BUILDKITE_MESSAGE=message3
+#export KNAPSACK_PRO_FIXED_QUEUE_SPLIT=true
+
 RAILS_ENV=test \
   KNAPSACK_PRO_ENDPOINT=http://api.knapsackpro.test:3000 \
   KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=a28ce51204d7c7dbd25c3352fea222cf \
