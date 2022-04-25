@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.1.3.2'
+gem 'rails', '~> 6.1.5'
 gem 'pg'
 gem 'tzinfo-data'
 # Use SCSS for stylesheets
@@ -34,6 +34,14 @@ gem 'jbuilder', '~> 2.0'
 
 gem 'async'
 gem 'async-io'
+
+# Fix for Ruby 3.1.x
+# https://stackoverflow.com/a/70500221/905697
+# https://github.com/mikel/mail/pull/1439
+# This can be removed after upgrade to Rails 7.x
+gem 'net-smtp', require: false
+gem 'net-imap', require: false
+gem 'net-pop', require: false
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
