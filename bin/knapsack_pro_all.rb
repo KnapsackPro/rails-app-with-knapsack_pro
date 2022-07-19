@@ -134,6 +134,9 @@ COMMANDS = %{
 ./bin/knapsack_pro_queue_minitest 0 2
 ./bin/knapsack_pro_queue_minitest 1 2
 
+./bin/knapsack_pro_fixed_queue_split_minitest_custom_branch_commit 0 2
+./bin/knapsack_pro_fixed_queue_split_minitest_custom_branch_commit 1 2
+
 ./bin/bin_knapsack_pro_queue_minitest 0 2
 ./bin/bin_knapsack_pro_queue_minitest 1 2
 
