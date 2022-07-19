@@ -12,4 +12,4 @@ RAILS_ENV=test \
   KNAPSACK_PRO_FIXED_QUEUE_SPLIT=true \
   KNAPSACK_PRO_BRANCH=test-fixed-queue-split-v${3:-1} \
   KNAPSACK_PRO_COMMIT_HASH=test-commit \
-  bundle exec rake knapsack_pro:queue:minitest
+  bundle exec rake knapsack_pro:queue:minitest[--verbose]
