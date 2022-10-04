@@ -96,6 +96,10 @@ jobs:
       # Test --profile formatter to show only once the profile summary.
       - run: KNAPSACK_PRO_FIXED_QUEUE_SPLIT=true KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=$KNAPSACK_PRO_QUEUE_TEST_SUITE_TOKEN_RSPEC bundle exec rake "knapsack_pro:queue:rspec[--profile]"
 
+      # Queue Mode - retry the CI build with the same test suite split as the last knapsack_pro command execution for this CI build
+      # add the RSpec order option to ensure we print a seed in the log output
+      - run: KNAPSACK_PRO_FIXED_QUEUE_SPLIT=true KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=$KNAPSACK_PRO_QUEUE_TEST_SUITE_TOKEN_RSPEC bundle exec rake "knapsack_pro:queue:rspec[--order random]"
+
       # Queue mode with junit formatter
       # Retry CI with the same test suite split as last dynamic queue run
       # The rspec.xml will have tests from all intermediate requests to API.
