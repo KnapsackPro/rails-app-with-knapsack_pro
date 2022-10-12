@@ -80,6 +80,21 @@ COMMANDS = %{
 ./bin/knapsack_pro_queue_rspec_only_failures 0 2
 ./bin/knapsack_pro_queue_rspec_only_failures 1 2
 
+./bin/knapsack_pro_queue_rspec_order_defined 0 2
+./bin/knapsack_pro_queue_rspec_order_defined 1 2
+
+./bin/knapsack_pro_queue_rspec_order_rand 0 2
+./bin/knapsack_pro_queue_rspec_order_rand 1 2
+
+./bin/knapsack_pro_queue_rspec_order_rand_with_custom_seed 0 2
+./bin/knapsack_pro_queue_rspec_order_rand_with_custom_seed 1 2
+
+./bin/knapsack_pro_queue_rspec_order_random 0 2
+./bin/knapsack_pro_queue_rspec_order_random 1 2
+
+./bin/knapsack_pro_queue_rspec_order_random_defined_in_config 0 2
+./bin/knapsack_pro_queue_rspec_order_random_defined_in_config 1 2
+
 ./bin/knapsack_pro_fixed_queue_rspec_queue_consumed_at_least_once_with_ci_build_id
 
 ./bin/knapsack_pro_fixed_queue_rspec_queue_consumed_at_least_once_without_ci_build_id
