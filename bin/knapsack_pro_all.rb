@@ -6,6 +6,9 @@ COMMANDS = %{
 ./bin/knapsack_pro_rspec 0 2
 ./bin/knapsack_pro_rspec 1 2
 
+./bin/knapsack_pro_rspec_attempt_to_read_from_cache 0 2
+./bin/knapsack_pro_rspec_attempt_to_read_from_cache 1 2
+
 ./bin/knapsack_pro_rspec_junit 0 2
 ./bin/knapsack_pro_rspec_junit 1 2
 
