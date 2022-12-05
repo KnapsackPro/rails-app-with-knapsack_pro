@@ -23,6 +23,16 @@ KnapsackPro::Hooks::Queue.before_queue do |queue_id|
   puts '2nd KnapsackPro::Hooks::Queue.before_queue'
 end
 
+KnapsackPro::Hooks::Queue.before_subset_queue do |queue_id, subset_queue_id|
+  print '-'*10
+  print 'Before Subset Queue Hook - run before the subset of the test suite'
+  print '-'*10
+  puts
+end
+KnapsackPro::Hooks::Queue.before_subset_queue do |queue_id, subset_queue_id|
+  puts '2nd KnapsackPro::Hooks::Queue.before_subset_queue'
+end
+
 # TODO This must be the same path as value for rspec --out argument
 TMP_RSPEC_XML_REPORT = "tmp/test-reports/rspec/queue_mode/rspec_#{KnapsackPro::Config::Env.ci_node_index}.xml"
 TMP_RSPEC_JSON_REPORT = "tmp/test-reports/rspec/queue_mode/rspec_#{KnapsackPro::Config::Env.ci_node_index}.json"
@@ -40,7 +50,7 @@ KnapsackPro::Hooks::Queue.after_subset_queue do |queue_id, subset_queue_id|
   end
 
   print '-'*10
-  print 'After Subset Queue Hook - run after subset of test suite'
+  print 'After Subset Queue Hook - run after the subset of the test suite'
   print '-'*10
   puts
 end
