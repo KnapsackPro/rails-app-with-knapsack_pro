@@ -15,7 +15,7 @@ RUN apk add --update \
   && rm -rf /var/cache/apk/*
 
 # Install AWS CLI
-RUN pip3 install awscli
+#RUN pip3 install awscli
 
 # Use libxml2, libxslt a packages from alpine for building nokogiri
 RUN bundle config build.nokogiri --use-system-libraries
