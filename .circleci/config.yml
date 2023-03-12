@@ -9,7 +9,7 @@ jobs:
     docker:
       # specify the version you desire here
       # https://circleci.com/developer/images/image/cimg/ruby
-      - image: cimg/ruby:3.1.2-browsers
+      - image: cimg/ruby:3.2.1-browsers
         environment:
           PGHOST: 127.0.0.1
           PGUSER: rails-app-with-knapsack_pro
@@ -271,7 +271,7 @@ jobs:
 
   upload-coverage:
     docker:
-      - image: cimg/ruby:3.1.2-browsers
+      - image: cimg/ruby:3.2.1-browsers
     environment:
       CC_TEST_REPORTER_ID: dd360701bd9bd47abdea789fe94c9a9b118bc9f7fbce6d3cdc1dd3709866e460
     working_directory: ~/repo
