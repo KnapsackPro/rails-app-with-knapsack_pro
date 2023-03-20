@@ -2,6 +2,26 @@ require 'async/rspec'
 
 require 'knapsack_pro'
 
+#KnapsackPro::Hooks::Queue.after_subset_queue do |queue_id, subset_queue_id|
+  #puts '\\'*100
+  #puts 'Executed tests for a batch of tests fetched from Queue API'
+  #Dir.glob(".knapsack_pro/queue/#{queue_id}/*.json").each do |file|
+    #report = JSON.parse(File.read(file))
+    #puts report.inspect
+  #end
+  #puts '/'*100
+#end
+
+#KnapsackPro::Hooks::Queue.after_queue do |queue_id|
+  #puts '\\'*100
+  #puts 'Summary of all executed tests'
+  #Dir.glob(".knapsack_pro/queue/#{queue_id}/*.json").each do |file|
+    #report = JSON.parse(File.read(file))
+    #puts report.inspect
+  #end
+  #puts '/'*100
+#end
+
 # uncomment if you want to test how custom logger works
 #require 'logger'
 #KnapsackPro.logger = Logger.new(STDOUT)
