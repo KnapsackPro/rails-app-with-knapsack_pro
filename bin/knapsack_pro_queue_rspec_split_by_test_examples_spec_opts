@@ -1,0 +1,25 @@
+#!/bin/bash
+
+#export KNAPSACK_PRO_LOG_LEVEL=warn
+
+# uncomment to run all tests split by examples
+#export KNAPSACK_PRO_SLOW_TEST_FILE_PATTERN="spec/**{,/*/**}/*_spec.rb"
+export KNAPSACK_PRO_SLOW_TEST_FILE_PATTERN="spec/controllers/**{,/*/**}/*_spec.rb"
+
+export KNAPSACK_PRO_TEST_FILE_LIST=spec/controllers/articles_controller_spec.rb,spec/controllers/welcome_controller_spec.rb
+
+#export KNAPSACK_PRO_RSPEC_TEST_EXAMPLE_DETECTOR_PREFIX="SPEC_OPTS=''"
+
+#export EXTRA_TEST_FILES_DELAY=10 # seconds
+
+export SPEC_OPTS="--format documentation"
+
+RAILS_ENV=test \
+  KNAPSACK_PRO_ENDPOINT=http://api.knapsackpro.test:3000 \
+  KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=a28ce51204d7c7dbd25c3352fea222cf \
+  KNAPSACK_PRO_REPOSITORY_ADAPTER=git \
+  KNAPSACK_PRO_PROJECT_DIR=. \
+  KNAPSACK_PRO_CI_NODE_TOTAL=${2:-2} \
+  KNAPSACK_PRO_CI_NODE_INDEX=${1:-0} \
+  KNAPSACK_PRO_RSPEC_SPLIT_BY_TEST_EXAMPLES=true \
+  bundle exec rake "knapsack_pro:queue:rspec"
