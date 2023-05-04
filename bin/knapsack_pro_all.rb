@@ -6,6 +6,9 @@ COMMANDS = %{
 ./bin/knapsack_pro_rspec 0 2
 ./bin/knapsack_pro_rspec 1 2
 
+./bin/knapsack_pro_rspec_user_seat 0 2
+./bin/knapsack_pro_rspec_user_seat 1 2
+
 ./bin/knapsack_pro_rspec_cache_read_attempt 0 2
 ./bin/knapsack_pro_rspec_cache_read_attempt 1 2
 
@@ -41,6 +44,9 @@ COMMANDS = %{
 
 ./bin/knapsack_pro_queue_rspec 0 2
 ./bin/knapsack_pro_queue_rspec 1 2
+
+./bin/knapsack_pro_queue_rspec_user_seat 0 2
+./bin/knapsack_pro_queue_rspec_user_seat 1 2
 
 ./bin/knapsack_pro_queue_rspec_record_first_run 0 2
 ./bin/knapsack_pro_queue_rspec_record_first_run 1 2
