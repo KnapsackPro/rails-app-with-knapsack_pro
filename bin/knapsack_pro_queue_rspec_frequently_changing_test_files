@@ -3,7 +3,6 @@
 # The purpose of this script is to test that a frequently changing list of test files in Queue Mode
 # can be ordered by ever recorded test files' time execution.
 
-export RAILS_ENV=test
 export KNAPSACK_PRO_ENDPOINT=http://api.knapsackpro.test:3000
 export KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=a28ce51204d7c7dbd25c3352fea222cf
 export KNAPSACK_PRO_CI_NODE_TOTAL=2
