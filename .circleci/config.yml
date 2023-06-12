@@ -5,7 +5,7 @@
 version: 2
 jobs:
   build:
-    parallelism: 2
+    parallelism: 4
     docker:
       # specify the version you desire here
       # https://circleci.com/developer/images/image/cimg/ruby
