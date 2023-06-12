@@ -121,6 +121,20 @@ end
 
 KnapsackPro::Adapters::RSpecAdapter.bind
 
+if ENV['KNAPSACK_PRO_RSPEC_SPLIT_BY_TEST_EXAMPLES']
+  puts '+'*100
+  if ENV['CUSTOM_VARIABLE_FOR_RSPEC_TEST_EXAMPLE_DETECTOR']
+    # use the following bin script to test this scenario:
+    # bin/knapsack_pro_queue_rspec_split_by_test_examples_test_example_detector_prefix
+    # test following env var should be set only when running RSpec in dry run by knapsack_pro:rspec_test_example_detector rake task to generate test examples JSON report
+    puts "CUSTOM_VARIABLE_FOR_RSPEC_TEST_EXAMPLE_DETECTOR=#{ENV['CUSTOM_VARIABLE_FOR_RSPEC_TEST_EXAMPLE_DETECTOR']}"
+  else
+    # use the following bin script to test this scenario:
+    # bin/knapsack_pro_queue_rspec_split_by_test_examples
+    puts "CUSTOM_VARIABLE_FOR_RSPEC_TEST_EXAMPLE_DETECTOR is not set"
+  end
+end
+
 RSpec.configure do |config|
   config.around(:each) do |example|
     #sleep 1 # time tracked
