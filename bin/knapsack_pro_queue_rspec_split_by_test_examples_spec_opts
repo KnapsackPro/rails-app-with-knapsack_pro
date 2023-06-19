@@ -10,10 +10,6 @@ export KNAPSACK_PRO_SLOW_TEST_FILE_PATTERN="spec/controllers/**{,/*/**}/*_spec.r
 
 export KNAPSACK_PRO_TEST_FILE_LIST=spec/controllers/articles_controller_spec.rb,spec/controllers/welcome_controller_spec.rb
 
-#export KNAPSACK_PRO_RSPEC_TEST_EXAMPLE_DETECTOR_PREFIX="SPEC_OPTS=''"
-
-#export EXTRA_TEST_FILES_DELAY=10 # seconds
-
 # overrides the options passed to the Knapsack Pro command
 export SPEC_OPTS="--format json"
 
