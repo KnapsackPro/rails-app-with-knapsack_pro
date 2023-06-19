@@ -21,6 +21,7 @@ COMMANDS = {
   './bin/knapsack_pro_queue_rspec_user_seat' => ['0 2 BUILD_ID', '1 2 BUILD_ID'],
   './bin/knapsack_pro_queue_rspec_record_first_run' => ['0 2', '1 2'],
   './bin/knapsack_pro_queue_rspec_split_by_test_examples' => ['0 2 BUILD_ID', '1 2 BUILD_ID'],
+  './bin/knapsack_pro_queue_rspec_split_by_test_examples_spec_opts' => ['0 2 BUILD_ID', '1 2 BUILD_ID'],
   './bin/knapsack_pro_queue_rspec_split_by_test_examples_test_example_detector_prefix' => ['0 2 BUILD_ID', '1 2 BUILD_ID'],
   './bin/knapsack_pro_queue_rspec_tags' => ['0 2 BUILD_ID', '1 2 BUILD_ID'],
   './bin/knapsack_pro_queue_rspec_default_formatter' => ['0 2 BUILD_ID', '1 2 BUILD_ID'],
