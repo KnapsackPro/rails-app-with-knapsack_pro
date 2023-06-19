@@ -74,15 +74,18 @@ COMMANDS = {
 }
 
 failed_commands = []
+commands_count = COMMANDS.values.flatten.size
 
-COMMANDS.each do |command, args|
+COMMANDS.each_with_index do |(command, args), command_index|
   uuid = SecureRandom.uuid
 
   args
     .map { _1.sub('BUILD_ID', uuid) }
     .each do |arg|
       cmd = [command, arg].join(' ')
-      puts "EXECUTING: #{cmd}"
+      puts "="*50
+      puts "EXECUTING (#{command_index+1} of #{commands_count}): #{cmd}"
+      puts
       system(cmd)
 
       (failed_commands << command) if $?.exitstatus != 0
