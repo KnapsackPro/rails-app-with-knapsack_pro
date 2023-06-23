@@ -6,16 +6,27 @@ describe 'Dummy rake' do
     let(:task) { Rake::Task[task_name] }
 
     before do
-      # Clear rake task from memory if it was already loaded.
-      # This ensures rake task is loaded only once in knapsack_pro Queue Mode.
+      # clear the rake task from the memory to ensure it's not loaded multiple times
       Rake::Task[task_name].clear if Rake::Task.task_defined?(task_name)
 
-      # loaad rake task only once here
-      Rake.application.rake_require("tasks/dummy")
+      # loaad the rake task only once
+      Rake.load_rakefile("tasks/dummy.rake")
       Rake::Task.define_task(:environment)
     end
 
-    it "does something once" do
+    after do
+      Rake::Task[task_name].reenable
+
+      # reset the state that was changed by the rake task execution
+      DummyOutput.count = 0
+    end
+
+    it "calls the rake task once (increases counter by one)" do
+      expect { task.invoke }.to_not raise_error
+      expect(DummyOutput.count).to eq(1)
+    end
+
+    it "calls the rake task once again (increases counter by one)" do
       expect { task.invoke }.to_not raise_error
       expect(DummyOutput.count).to eq(1)
     end
