@@ -9,11 +9,10 @@
 
 CI_BUILD_ID=$(openssl rand -base64 32)
 COMMIT_HASH=$(ruby -e "require 'securerandom'; puts SecureRandom.hex")
-BRANCH_NAME=not-default-branch-name-$(ruby -e "require 'securerandom'; puts SecureRandom.hex")
+BRANCH_NAME=fake-branch
 
 # you can set a const fake data if you need to test running tests on 2 CI nodes for the same commit/branch
-#COMMIT_HASH=612103b34829786acb4be23995b795c2
-#BRANCH_NAME=fake-branch-v1
+#COMMIT_HASH=57dccc53cb2ee921692ad1d3df971674
 
 #export KNAPSACK_PRO_FIXED_QUEUE_SPLIT=true
 
