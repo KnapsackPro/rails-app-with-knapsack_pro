@@ -6,6 +6,12 @@
 # for test files with not recorded time execution
 #
 # This file can be used to test how to optimise the first run of Queue Mode
+#
+# To run tests on the same commit for all nodes do:
+# CI node 0 for commit-v1
+# bin/knapsack_pro_queue_rspec_record_first_run 0 2 commit-v1
+# CI node 1 for commit-v2
+# bin/knapsack_pro_queue_rspec_record_first_run 1 2 commit-v1
 
 CI_BUILD_ID=$(openssl rand -base64 32)
 COMMIT_HASH=$(ruby -e "require 'securerandom'; puts SecureRandom.hex")
@@ -19,7 +25,7 @@ BRANCH_NAME=fake-branch
 KNAPSACK_PRO_ENDPOINT=http://api.knapsackpro.test:3000 \
   KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=fec3c641a3c4d2e720fe1b6d9dd780bc \
   KNAPSACK_PRO_CI_NODE_BUILD_ID=$CI_BUILD_ID \
-  KNAPSACK_PRO_COMMIT_HASH=$COMMIT_HASH \
+  KNAPSACK_PRO_COMMIT_HASH=${3:-$COMMIT_HASH} \
   KNAPSACK_PRO_BRANCH=$BRANCH_NAME \
   KNAPSACK_PRO_CI_NODE_TOTAL=${2:-2} \
   KNAPSACK_PRO_CI_NODE_INDEX=${1:-0} \
