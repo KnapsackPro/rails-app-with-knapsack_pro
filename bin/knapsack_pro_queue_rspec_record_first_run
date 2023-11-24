@@ -23,4 +23,4 @@ KNAPSACK_PRO_ENDPOINT=http://api.knapsackpro.test:3000 \
   KNAPSACK_PRO_BRANCH=$BRANCH_NAME \
   KNAPSACK_PRO_CI_NODE_TOTAL=${2:-2} \
   KNAPSACK_PRO_CI_NODE_INDEX=${1:-0} \
-  bundle exec rake knapsack_pro:queue:rspec
+  bundle exec rake "knapsack_pro:queue:rspec[--format d]"
