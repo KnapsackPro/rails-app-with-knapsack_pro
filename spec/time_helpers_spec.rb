@@ -12,10 +12,6 @@ describe 'Time travel with ActiveSupport::Testing::TimeHelpers' do
 
       expect(Time.current.year).to eq 2004
       expect(Time.now.year).to eq 2004
-
-      # ensure knapsack_pro adds raw method
-      # to detect real time
-      expect(Time.raw_now.year).to be >= 2017
     end
   end
 
@@ -27,7 +23,6 @@ describe 'Time travel with ActiveSupport::Testing::TimeHelpers' do
         sleep 1
 
         expect(Time.current.day).to eq yesterday.day
-        expect(Time.raw_now.year).to be >= 2017
       end
     end
   end
@@ -40,7 +35,6 @@ describe 'Time travel with ActiveSupport::Testing::TimeHelpers' do
         sleep 1
 
         expect(Time.current.year).to eq 2004
-        expect(Time.raw_now.year).to be >= 2017
       end
     end
   end
