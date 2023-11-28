@@ -9,11 +9,12 @@
 #
 # To run tests on the same commit for all nodes do:
 # CI node 0 for commit-v1
-# bin/knapsack_pro_queue_rspec_record_first_run 0 2 commit-v1
+# bin/knapsack_pro_queue_rspec_record_first_run 0 2 commit-v1 ci-build-1
 # CI node 1 for commit-v2
-# bin/knapsack_pro_queue_rspec_record_first_run 1 2 commit-v1
+# bin/knapsack_pro_queue_rspec_record_first_run 1 2 commit-v1 ci-build-1
 
-CI_BUILD_ID=$(openssl rand -base64 32)
+RANDOM_CI_BUILD_ID=$(openssl rand -base64 32)
+CI_BUILD_ID=${3:-$RANDOM_CI_BUILD_ID}
 COMMIT_HASH=$(ruby -e "require 'securerandom'; puts SecureRandom.hex")
 BRANCH_NAME=fake-branch
 
@@ -21,6 +22,9 @@ BRANCH_NAME=fake-branch
 #COMMIT_HASH=57dccc53cb2ee921692ad1d3df971674
 
 #export KNAPSACK_PRO_FIXED_QUEUE_SPLIT=true
+
+#export EXTRA_TEST_FILES_DELAY=10 # seconds
+#export KNAPSACK_PRO_RSPEC_SPLIT_BY_TEST_EXAMPLES=true
 
 KNAPSACK_PRO_ENDPOINT=http://api.knapsackpro.test:3000 \
   KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=fec3c641a3c4d2e720fe1b6d9dd780bc \
