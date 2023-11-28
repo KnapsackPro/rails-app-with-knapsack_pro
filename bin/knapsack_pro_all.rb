@@ -75,7 +75,7 @@ COMMANDS = {
 }
 
 failed_commands = []
-commands_count = COMMANDS.values.flatten.size
+commands_count = COMMANDS.keys.size
 
 COMMANDS.each_with_index do |(command, args), command_index|
   uuid = SecureRandom.uuid
