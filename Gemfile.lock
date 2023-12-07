@@ -141,6 +141,8 @@ GEM
       rexml (~> 3.0)
       webrick (~> 1.7)
     cucumber-tag-expressions (4.1.0)
+    cuke_modeler (3.20.1)
+      cucumber-gherkin (< 28.0)
     database_cleaner (2.0.2)
       database_cleaner-active_record (>= 2, < 3)
     database_cleaner-active_record (2.1.0)
@@ -352,6 +354,9 @@ GEM
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
+    turnip (4.4.0)
+      cuke_modeler (~> 3.15)
+      rspec (>= 3.0, < 4.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     tzinfo-data (1.2023.3)
@@ -414,6 +419,7 @@ DEPENDENCIES
   test-unit-rails
   timecop
   turbolinks
+  turnip (~> 4.4)
   tzinfo-data
   uglifier (>= 1.3.0)
   vcr

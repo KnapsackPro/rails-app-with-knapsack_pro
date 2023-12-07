@@ -49,6 +49,7 @@ COMMANDS = {
   './bin/parallel_tests_knapsack_pro_single_machine_run BUILD_ID' => [''],
   './bin/bin_knapsack_pro_rspec' => ['0 2 BUILD_ID', '1 2 BUILD_ID'],
   './bin/bin_knapsack_pro_queue_rspec' => ['0 2 same-build-id', '1 2 same-build-id'],
+  './bin/knapsack_pro_queue_turnip' => ['0 2 BUILD_ID', '1 2 BUILD_ID'],
 
   # inside of this bash scripts we run 2 parallel nodes
   './bin/knapsack_pro_split_by_test_cases_rspec' => [''],
