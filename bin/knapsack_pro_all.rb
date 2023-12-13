@@ -28,6 +28,7 @@ COMMANDS = {
   './bin/knapsack_pro_queue_rspec_default_formatter' => ['0 2 BUILD_ID', '1 2 BUILD_ID'],
   './bin/knapsack_pro_queue_rspec_profile_formatter' => ['0 2 BUILD_ID', '1 2 BUILD_ID'],
   './bin/knapsack_pro_queue_rspec_junit' => ['0 2 BUILD_ID', '1 2 BUILD_ID'],
+  './bin/knapsack_pro_queue_rspec_junit_with_rspec_custom_options' => ['0 2 BUILD_ID', '1 2 BUILD_ID'],
   './bin/knapsack_pro_queue_rspec_log_dir' => ['0 2 BUILD_ID', '1 2 BUILD_ID'],
   './bin/knapsack_pro_queue_rspec_json' => ['0 2 BUILD_ID', '1 2 BUILD_ID'],
   './bin/knapsack_pro_queue_rspec_test_dir' => ['0 2 BUILD_ID', '1 2 BUILD_ID'],
