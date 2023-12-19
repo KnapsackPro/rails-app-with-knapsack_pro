@@ -22,7 +22,7 @@ jobs:
           # KNAPSACK_PRO_TEST_SUITE_TOKEN_MINITEST: minitest-token
           # KNAPSACK_PRO_TEST_SUITE_TOKEN_SPINACH: spinach-token
 
-      - image: cimg/postgres:16.1
+      - image: cimg/postgres:14.7
         environment:
           POSTGRES_DB: rails-app-with-knapsack_pro_test
           POSTGRES_PASSWORD: password
