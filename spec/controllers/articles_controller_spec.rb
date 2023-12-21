@@ -15,7 +15,7 @@ describe ArticlesController, :xfocus do
       get :index
     end
 
-    it do
+    it 'assigns the article' do
       expect(assigns(:articles)).to eq articles
     end
 
