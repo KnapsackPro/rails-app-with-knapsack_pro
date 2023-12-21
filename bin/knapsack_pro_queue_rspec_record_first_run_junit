@@ -31,6 +31,9 @@ export KNAPSACK_PRO_CI_NODE_INDEX=${1:-0}
 
 export EXTRA_TEST_FILES_DELAY=10 # seconds
 
+# uncomment to run all tests split by examples
+export KNAPSACK_PRO_SLOW_TEST_FILE_PATTERN="spec/**{,/*/**}/*_spec.rb"
+
 KNAPSACK_PRO_ENDPOINT=http://api.knapsackpro.test:3000 \
   KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=fec3c641a3c4d2e720fe1b6d9dd780bc \
   KNAPSACK_PRO_CI_NODE_BUILD_ID=$CI_BUILD_ID \
