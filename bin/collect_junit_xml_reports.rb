@@ -1,5 +1,13 @@
 # How to use it:
 # $ ruby bin/collect_junit_xml_reports.rb
+#
+# $ ruby bin/collect_junit_xml_reports.rb > tmp/junit_test_cases_summary.txt && cat tmp/junit_test_cases_summary.txt
+# $ ruby bin/collect_junit_xml_reports.rb > tmp/junit_test_cases_summary2.txt && cat tmp/junit_test_cases_summary2.txt
+#
+# Find differences:
+# git diff --no-index tmp/junit_test_cases_summary.txt tmp/junit_test_cases_summary2.txt
+# OR
+# diff tmp/junit_test_cases_summary.txt tmp/junit_test_cases_summary2.txt
 
 require 'juniter'
 
