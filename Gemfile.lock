@@ -1,7 +1,5 @@
-GIT
-  remote: https://github.com/tubaxenor/knapsack_pro-ruby.git
-  revision: 575ef6f641d61607a17c05332591308b6d899d72
-  branch: runner-refactor
+PATH
+  remote: ../knapsack_pro-ruby
   specs:
     knapsack_pro (6.0.3)
       rake
