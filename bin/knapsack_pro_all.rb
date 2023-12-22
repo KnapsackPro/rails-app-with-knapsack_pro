@@ -20,6 +20,7 @@ COMMANDS = {
   './bin/knapsack_pro_queue_rspec' => ['0 2 BUILD_ID', '1 2 BUILD_ID'],
   './bin/knapsack_pro_queue_rspec_user_seat' => ['0 2 BUILD_ID', '1 2 BUILD_ID'],
   './bin/knapsack_pro_queue_rspec_record_first_run' => ['0 2', '1 2'],
+  './bin/knapsack_pro_queue_rspec_record_first_run_junit' => ['0 2 COMMIT_HASH BUILD_ID', '1 2 COMMIT_HASH BUILD_ID'],
   './bin/knapsack_pro_queue_rspec_split_by_test_examples' => ['0 2 BUILD_ID', '1 2 BUILD_ID'],
   './bin/knapsack_pro_queue_rspec_split_by_test_examples_spec_opts' => ['0 2 BUILD_ID', '1 2 BUILD_ID'],
   './bin/knapsack_pro_queue_rspec_split_by_test_examples_test_example_detector_prefix' => ['0 2 BUILD_ID', '1 2 BUILD_ID'],
@@ -81,9 +82,11 @@ commands_count = COMMANDS.keys.size
 
 COMMANDS.each_with_index do |(command, args), command_index|
   uuid = SecureRandom.uuid
+  commit_hash = SecureRandom.hex
 
   args
     .map { _1.sub('BUILD_ID', uuid) }
+    .map { _1.sub('COMMIT_HASH', commit_hash) }
     .each do |arg|
       cmd = [command, arg].join(' ')
       puts "="*50

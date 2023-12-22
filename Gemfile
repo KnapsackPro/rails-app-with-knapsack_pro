@@ -106,3 +106,4 @@ group :test do
 end
 
 gem "turnip", "~> 4.4"
+gem 'juniter'
