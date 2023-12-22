@@ -1,16 +1,11 @@
 #!/bin/bash
-
-# This file uses separate KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC
-# to don't pollute master and other default branches
-# so thanks to that we can test a new queue generated on API side
-# for test files with not recorded time execution
 #
-# This file can be used to test how to optimise the first run of Queue Mode and collect junit reports
+# Run a new CI build in Queue Mode and collect JUnit reports.
 #
-# To run tests on the same commit for all nodes do:
-# CI node 0 for commit-v1
+# Do the following to run tests on the same commit for all nodes:
+# CI node 0
 # bin/knapsack_pro_queue_rspec_record_first_run_junit 0 2 commit-v1 ci-build-1
-# CI node 1 for commit-v2
+# CI node 1
 # bin/knapsack_pro_queue_rspec_record_first_run_junit 1 2 commit-v1 ci-build-1
 
 mkdir -p tmp/test-reports/rspec/queue_mode/
@@ -21,18 +16,10 @@ RANDOM_COMMIT_HASH=$(ruby -e "require 'securerandom'; puts SecureRandom.hex")
 COMMIT_HASH=${4:-$RANDOM_COMMIT_HASH}
 BRANCH_NAME=fake-junit-branch
 
-# you can set a const fake data if you need to test running tests on 2 CI nodes for the same commit/branch
-#COMMIT_HASH=57dccc53cb2ee921692ad1d3df971674
-
-# must be exported to read value in below knapsack_pro command
-export KNAPSACK_PRO_CI_NODE_INDEX=${1:-0}
-
-#export KNAPSACK_PRO_FIXED_QUEUE_SPLIT=true
-
 export EXTRA_TEST_FILES_DELAY=10 # seconds
-
-# uncomment to run all tests split by examples
+export KNAPSACK_PRO_CI_NODE_INDEX=${1:-0}
 export KNAPSACK_PRO_SLOW_TEST_FILE_PATTERN="spec/**{,/*/**}/*_spec.rb"
+#export KNAPSACK_PRO_FIXED_QUEUE_SPLIT=true
 
 KNAPSACK_PRO_ENDPOINT=http://api.knapsackpro.test:3000 \
   KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=fec3c641a3c4d2e720fe1b6d9dd780bc \
