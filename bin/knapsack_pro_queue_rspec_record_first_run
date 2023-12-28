@@ -14,7 +14,7 @@
 # bin/knapsack_pro_queue_rspec_record_first_run 1 2 commit-v1 ci-build-1
 
 RANDOM_CI_BUILD_ID=$(openssl rand -base64 32)
-CI_BUILD_ID=${3:-$RANDOM_CI_BUILD_ID}
+CI_BUILD_ID=${4:-$RANDOM_CI_BUILD_ID}
 COMMIT_HASH=$(ruby -e "require 'securerandom'; puts SecureRandom.hex")
 BRANCH_NAME=fake-branch
 
