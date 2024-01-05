@@ -32,7 +32,7 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
-  extend MiniTest::Spec::DSL
+  extend Minitest::Spec::DSL
 
   # Allow context to be used like describe
   # This is needed to make minitest spec context work
