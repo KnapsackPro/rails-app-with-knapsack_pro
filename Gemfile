@@ -105,5 +105,6 @@ group :test do
   gem 'simplecov', '0.17.1', require: false
 end
 
-gem "turnip", "~> 4.4"
+gem 'turnip', '~> 4.4'
 gem 'juniter'
+gem 'minitest-ci'

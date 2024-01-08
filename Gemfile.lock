@@ -196,6 +196,8 @@ GEM
     mini_mime (1.1.2)
     mini_portile2 (2.8.1)
     minitest (5.18.0)
+    minitest-ci (3.4.0)
+      minitest (>= 5.0.6)
     multi_test (1.1.0)
     net-imap (0.3.4)
       date
@@ -402,6 +404,7 @@ DEPENDENCIES
   juniter
   knapsack_pro!
   listen
+  minitest-ci
   net-imap
   net-pop
   net-smtp
