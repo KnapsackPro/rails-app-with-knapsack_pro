@@ -41,6 +41,11 @@ KNAPSACK_PRO_ENDPOINT=http://api.knapsackpro.test:3000 \
   KNAPSACK_PRO_CI_NODE_INDEX=${1:-0} \
   bundle exec rake "knapsack_pro:queue:rspec[--format d]"
 
+# do not use the skip tag because it's the internal tag to mark test as pending
+#bundle exec rake "knapsack_pro:queue:rspec[--format d --tag xfocus --tag ~xskip]"
+#bundle exec rake "knapsack_pro:queue:rspec[--format d --tag xfocus]"
+#bundle exec rake "knapsack_pro:queue:rspec[--format d --tag ~xskip]"
+
 echo
 echo
 echo
