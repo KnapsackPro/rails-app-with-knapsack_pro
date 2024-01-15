@@ -34,11 +34,6 @@ KnapsackPro::Hooks::Queue.before_queue do |queue_id|
   SimpleCov.command_name("minitest_ci_node_#{KnapsackPro::Config::Env.ci_node_index}")
 end
 
-# manually output SimpleCov results
-#KnapsackPro::Hooks::Queue.after_queue do |queue_id|
-  #SimpleCov.result.format!
-#end
-
 class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
