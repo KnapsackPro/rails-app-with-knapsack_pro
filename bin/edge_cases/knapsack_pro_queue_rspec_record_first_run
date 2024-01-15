@@ -45,6 +45,8 @@ KNAPSACK_PRO_ENDPOINT=http://api.knapsackpro.test:3000 \
 #bundle exec rake "knapsack_pro:queue:rspec[--format d --tag xfocus --tag ~xskip]"
 #bundle exec rake "knapsack_pro:queue:rspec[--format d --tag xfocus]"
 #bundle exec rake "knapsack_pro:queue:rspec[--format d --tag ~xskip]"
+#
+#bundle exec rake "knapsack_pro:queue:rspec[--format d --profile]"
 
 echo
 echo
