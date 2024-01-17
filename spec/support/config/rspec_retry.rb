@@ -5,7 +5,8 @@ RSpec.configure do |config|
   config.verbose_retry = true
   # show exception that triggers a retry if verbose_retry is set to true
   config.display_try_failure_messages = true
-  config.fail_fast = 3
+  # --fail-fast option makes RSpec fail after X failed tests. This can lead to canceled test execution in Queue Mode
+  #config.fail_fast = 1
 
   # run retry only on features
   config.around :each, :js do |ex|
