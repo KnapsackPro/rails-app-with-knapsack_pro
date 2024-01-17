@@ -47,11 +47,12 @@ KNAPSACK_PRO_ENDPOINT=http://api.knapsackpro.test:3000 \
 #bundle exec rake "knapsack_pro:queue:rspec[--format d --tag ~xskip]"
 #
 #bundle exec rake "knapsack_pro:queue:rspec[--format d --profile]"
+#bundle exec rake "knapsack_pro:queue:rspec[--format d --failure-exit-code]"
 
-echo
-echo
-echo
-echo
+#echo
+#echo
+#echo
+#echo
 
 # Run 2nd CI node to ensure the CI build is finished in the user dashboard
 #KNAPSACK_PRO_ENDPOINT=http://api.knapsackpro.test:3000 \
