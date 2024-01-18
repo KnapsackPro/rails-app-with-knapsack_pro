@@ -47,7 +47,13 @@ KNAPSACK_PRO_ENDPOINT=http://api.knapsackpro.test:3000 \
 #bundle exec rake "knapsack_pro:queue:rspec[--format d --tag ~xskip]"
 #
 #bundle exec rake "knapsack_pro:queue:rspec[--format d --profile]"
-#bundle exec rake "knapsack_pro:queue:rspec[--format d --failure-exit-code]"
+#bundle exec rake "knapsack_pro:queue:rspec[--format d --order random]"
+#
+# --failure-exit-code CODE - Override the exit code used when there are failing specs.
+#bundle exec rake "knapsack_pro:queue:rspec[--format d --failure-exit-code 2]"
+#
+# --error-exit-code CODE - Override the exit code used when there are errors loading or running specs outside of examples.
+#bundle exec rake "knapsack_pro:queue:rspec[--format d --error-exit-code 3]"
 
 #echo
 #echo
