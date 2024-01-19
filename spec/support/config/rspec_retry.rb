@@ -5,7 +5,9 @@ RSpec.configure do |config|
   config.verbose_retry = true
   # show exception that triggers a retry if verbose_retry is set to true
   config.display_try_failure_messages = true
-  config.fail_fast = 3
+
+  # It's the RSpec option. When too many tests fail then the Knapsack Pro is terminated
+  # config.fail_fast = 3
 
   # run retry only on features
   config.around :each, :js do |ex|
