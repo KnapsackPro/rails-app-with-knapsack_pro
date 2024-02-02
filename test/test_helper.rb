@@ -27,6 +27,13 @@ end
 knapsack_pro_adapter = KnapsackPro::Adapters::MinitestAdapter.bind
 knapsack_pro_adapter.set_test_helper_path(__FILE__)
 
+require 'simplecov'
+SimpleCov.start
+
+KnapsackPro::Hooks::Queue.before_queue do |queue_id|
+  SimpleCov.command_name("minitest_ci_node_#{KnapsackPro::Config::Env.ci_node_index}")
+end
+
 class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
