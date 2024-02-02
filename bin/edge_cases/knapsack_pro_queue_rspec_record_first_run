@@ -27,6 +27,8 @@ BRANCH_NAME=fake-branch
 #export KNAPSACK_PRO_RSPEC_SPLIT_BY_TEST_EXAMPLES=true
 #export KNAPSACK_PRO_SLOW_TEST_FILE_PATTERN="spec/**{,/*/**}/*_spec.rb"
 
+# In order to mock the Queue API responses, you need to change source code of the knapsack_pro gem:
+# https://github.com/KnapsackPro/rails-app-with-knapsack_pro/pull/56/
 # uncomment all 3 export lines to test mocked API response
 export KNAPSACK_PRO_RSPEC_SPLIT_BY_TEST_EXAMPLES=true
 export KNAPSACK_PRO_SLOW_TEST_FILE_PATTERN="spec/features/calculator_spec.rb" # it must match test cases returned from Queue API
@@ -41,11 +43,9 @@ KNAPSACK_PRO_ENDPOINT=http://api.knapsackpro.test:3000 \
   KNAPSACK_PRO_CI_NODE_INDEX=${1:-0} \
   bundle exec rake "knapsack_pro:queue:rspec[--format d]"
 
-# do not use the skip tag because it's the internal tag to mark test as pending
-#bundle exec rake "knapsack_pro:queue:rspec[--format d --tag xfocus --tag ~xskip]"
-#bundle exec rake "knapsack_pro:queue:rspec[--format d --tag xfocus]"
-#bundle exec rake "knapsack_pro:queue:rspec[--format d --tag ~xskip]"
-#
+# Example options you can pass to RSpec:
+#bundle exec rake "knapsack_pro:queue:rspec[--format d --tag my_tag]"
+#bundle exec rake "knapsack_pro:queue:rspec[--format d --tag my_skip_tag]"
 #bundle exec rake "knapsack_pro:queue:rspec[--format d --profile]"
 #bundle exec rake "knapsack_pro:queue:rspec[--format d --order random]"
 #
@@ -55,12 +55,8 @@ KNAPSACK_PRO_ENDPOINT=http://api.knapsackpro.test:3000 \
 # --error-exit-code CODE - Override the exit code used when there are errors loading or running specs outside of examples.
 #bundle exec rake "knapsack_pro:queue:rspec[--format d --error-exit-code 3]"
 
-#echo
-#echo
-#echo
-#echo
 
-# Run 2nd CI node to ensure the CI build is finished in the user dashboard
+# Uncomment the following to run 2nd CI node to ensure the CI build is finished in the user dashboard
 #KNAPSACK_PRO_ENDPOINT=http://api.knapsackpro.test:3000 \
   #KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=fec3c641a3c4d2e720fe1b6d9dd780bc \
   #KNAPSACK_PRO_CI_NODE_BUILD_ID=$CI_BUILD_ID \
