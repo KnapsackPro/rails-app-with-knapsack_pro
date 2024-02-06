@@ -2,6 +2,8 @@
 
 CI_BUILD_ID=$(openssl rand -base64 32)
 
+export MOCK_QUEUE_API_RESPONSE=true
+
 # you can test running only minitest spec file to see if spec syntax works for minitest
 #KNAPSACK_PRO_TEST_FILE_LIST=test/minitest/meme_spec_test.rb \
 KNAPSACK_PRO_RSPEC_DISABLED=true \
