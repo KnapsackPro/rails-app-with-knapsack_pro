@@ -10,7 +10,9 @@ require File.expand_path('../../config/environment', __FILE__)
 #
 # minitest is loaded by rails so we need to fake it that it's not loaded
 # so proper case will happen in share_should test_unit_hooks.rb
-Object.const_get('MiniTest::Unit').send(:remove_const, 'TestCase')
+if defined?(MiniTest::Unit)
+  Object.const_get('MiniTest::Unit').send(:remove_const, 'TestCase')
+end
 
 if defined?(MiniTest::Unit::TestCase)
   raise 'MiniTest should not be visible for share_should'
