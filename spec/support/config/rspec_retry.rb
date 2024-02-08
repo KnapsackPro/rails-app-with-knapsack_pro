@@ -7,7 +7,7 @@ RSpec.configure do |config|
   config.display_try_failure_messages = true
  
   # --fail-fast option makes RSpec fail after X failed tests. This can lead to canceled tests in Queue Mode.
-  #config.fail_fast = 1
+  # config.fail_fast = 1
 
   # run retry only on features
   config.around :each, :js do |ex|
