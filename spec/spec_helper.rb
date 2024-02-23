@@ -31,48 +31,6 @@ require 'simplecov'
 SimpleCov.start
 
 
-before_suite_block = proc {
-  puts '+'*100
-  puts 'RSpec before suite hook called only once'
-}
-
-unless KnapsackPro::Config::Env.queue_recording_enabled?
-  RSpec.configure do |config|
-    config.before(:suite) do
-      before_suite_block.call
-      puts 'Run this only when not using Knapsack Pro Queue Mode'
-    end
-  end
-end
-
-KnapsackPro::Hooks::Queue.before_queue do |queue_id|
-  before_suite_block.call
-  puts 'Run this only when using Knapsack Pro Queue Mode'
-  puts 'This code is executed within the context of RSpec before(:suite) hook'
-end
-
-
-after_suite_block = proc {
-  puts '+'*100
-  puts 'after suite hook called only once'
-}
-
-unless KnapsackPro::Config::Env.queue_recording_enabled?
-  RSpec.configure do |config|
-    config.after(:suite) do
-      after_suite_block.call
-      puts 'Run this only when not using Knapsack Pro Queue Mode'
-    end
-  end
-end
-
-KnapsackPro::Hooks::Queue.after_queue do |queue_id|
-  after_suite_block.call
-  puts 'Run this only when using Knapsack Pro Queue Mode'
-  puts "This code is executed outside of the RSpec after(:suite) hook context because it's impossible to determine which after(:suite) is the last one to execute until it's executed."
-end
-
-
 # CUSTOM_CONFIG_GOES_HERE
 KnapsackPro::Hooks::Queue.before_queue do |queue_id|
   print '-'*10
@@ -96,22 +54,7 @@ KnapsackPro::Hooks::Queue.before_subset_queue do |queue_id, subset_queue_id|
   puts '2nd KnapsackPro::Hooks::Queue.before_subset_queue'
 end
 
-# TODO This must be the same path as value for rspec --out argument
-TMP_RSPEC_XML_REPORT = "tmp/test-reports/rspec/queue_mode/rspec_#{KnapsackPro::Config::Env.ci_node_index}.xml"
-TMP_RSPEC_JSON_REPORT = "tmp/test-reports/rspec/queue_mode/rspec_#{KnapsackPro::Config::Env.ci_node_index}.json"
-# move results to FINAL_RSPEC_XML_REPORT so the results won't accumulate with duplicated xml tags in TMP_RSPEC_XML_REPORT
-FINAL_RSPEC_XML_REPORT = "tmp/test-reports/rspec/queue_mode/rspec_final_results_#{KnapsackPro::Config::Env.ci_node_index}.xml"
-FINAL_RSPEC_JSON_REPORT = "tmp/test-reports/rspec/queue_mode/rspec_final_results_#{KnapsackPro::Config::Env.ci_node_index}.json"
-
 KnapsackPro::Hooks::Queue.after_subset_queue do |queue_id, subset_queue_id|
-  if File.exist?(TMP_RSPEC_XML_REPORT)
-    FileUtils.mv(TMP_RSPEC_XML_REPORT, FINAL_RSPEC_XML_REPORT)
-  end
-
-  if File.exist?(TMP_RSPEC_JSON_REPORT)
-    FileUtils.mv(TMP_RSPEC_JSON_REPORT, FINAL_RSPEC_JSON_REPORT)
-  end
-
   print '-'*10
   print 'After Subset Queue Hook - run after the subset of the test suite'
   print '-'*10
@@ -122,12 +65,6 @@ KnapsackPro::Hooks::Queue.after_subset_queue do |queue_id, subset_queue_id|
 end
 
 KnapsackPro::Hooks::Queue.after_queue do |queue_id|
-  # Metadata collection
-  # https://circleci.com/docs/1.0/test-metadata/#metadata-collection-in-custom-test-steps
-  if File.exist?(FINAL_RSPEC_XML_REPORT) && ENV['CIRCLE_TEST_REPORTS']
-    FileUtils.cp(FINAL_RSPEC_XML_REPORT, "#{ENV['CIRCLE_TEST_REPORTS']}/rspec.xml")
-  end
-
   print '-'*10
   print 'After Queue Hook - run after test suite'
   print '-'*10
