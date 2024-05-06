@@ -280,8 +280,13 @@ module KnapsackPro
     module ConnectionPatch
       def build_http(uri)
         http = super(uri)
+
+        FileUtils.mkdir_p('tmp')
+        log_file = 'tmp/knapsack_http_requests.log'
+        http.set_debug_output(Logger.new(log_file))
+
         #http.set_debug_output($stdout) # uncomment if you prefer to log all requests to stdout
-        http.set_debug_output(Logger.new("tmp/knapsack_http_requests.log"))
+
         http
       end
 
