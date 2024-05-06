@@ -273,3 +273,77 @@ trap 'USR1' do
 
   puts "=" * 80
 end
+
+
+module KnapsackPro
+  module Client
+    module ConnectionPatch
+      def build_http(uri)
+        http = super(uri)
+        #http.set_debug_output($stdout) # uncomment if you prefer to log all requests to stdout
+        http.set_debug_output(Logger.new("tmp/knapsack_http_requests.log"))
+        http
+      end
+
+      def make_request(&block)
+        retries ||= 0
+
+        @http_response = block.call
+        @response_body = parse_response_body(http_response.body)
+
+        request_uuid = http_response.header['X-Request-Id'] || 'N/A'
+
+        logger.debug("#{action.http_method.to_s.upcase} #{endpoint_url}")
+        logger.debug("API request UUID: #{request_uuid}")
+        logger.debug("Test suite split seed: #{seed}") if has_seed?
+        logger.debug('API response:')
+        if errors?
+          logger.error(response_body)
+        else
+          logger.debug(response_body)
+        end
+
+        if server_error?
+          raise KnapsackPro::Client::Connection::ServerError.new(response_body)
+        end
+
+        response_body
+      rescue KnapsackPro::Client::Connection::ServerError, Errno::ECONNREFUSED, Errno::ECONNRESET, Errno::ETIMEDOUT, Errno::EPIPE, EOFError, SocketError, Net::OpenTimeout, Net::ReadTimeout, OpenSSL::SSL::SSLError => e
+        logger.warn("#{action.http_method.to_s.upcase} #{endpoint_url}")
+        logger.warn('Request failed due to:')
+        logger.warn(e.inspect)
+        retries += 1
+        if retries < max_request_retries
+          wait = retries * KnapsackPro::Client::Connection::REQUEST_RETRY_TIMEBOX
+          print_every = 2 # seconds
+          (wait / print_every).ceil.times do |i|
+            if i == 0
+              logger.warn("Wait for #{wait}s before retrying the request to Knapsack Pro API.")
+            else
+              logger.warn("#{wait - i * print_every}s left before retry...")
+            end
+            Kernel.sleep(print_every)
+          end
+
+          logger.warn('The request is going to be retried.')
+          curl_trace_api
+          curl_trace_google
+
+          retry
+        else
+          response_body
+        end
+      end
+
+      def curl_trace_api
+        `curl --trace tmp/knapsack_curl_trace.log https://api.knapsackpro.com`
+      end
+
+      def curl_trace_google
+        `curl --trace tmp/google_curl_trace.log https://google.com`
+      end
+    end
+  end
+end
+
+KnapsackPro::Client::Connection.prepend(KnapsackPro::Client::ConnectionPatch)
