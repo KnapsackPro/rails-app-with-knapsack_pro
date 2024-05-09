@@ -92,8 +92,8 @@ group :test do
 
   gem 'spinach'
   gem 'timecop'
-  gem 'vcr'
-  gem 'webmock', require: false
+  gem 'vcr' # Needed to test https://github.com/KnapsackPro/knapsack_pro-ruby/pull/251
+  gem 'webmock', require: false # Needed to test https://github.com/KnapsackPro/knapsack_pro-ruby/pull/251
 
   gem 'capybara'
   gem 'capybara-screenshot'

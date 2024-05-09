@@ -7,4 +7,4 @@ VCR.configure do |config|
 end
 
 require 'webmock/rspec'
-WebMock.disable_net_connect!
+WebMock.disable_net_connect! # Needed to test https://github.com/KnapsackPro/knapsack_pro-ruby/pull/251
