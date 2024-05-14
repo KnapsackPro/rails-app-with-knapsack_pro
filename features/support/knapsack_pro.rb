@@ -8,7 +8,7 @@ KnapsackPro::Hooks::Queue.before_queue do |queue_id|
 
   puts
   puts 'Queue Batches:'
-  puts KnapsackPro::Store::Server.client.queue_batches.inspect
+  puts KnapsackPro::Store::Client.batches.inspect
 end
 
 KnapsackPro::Hooks::Queue.after_subset_queue do |queue_id, subset_queue_id|
@@ -18,7 +18,7 @@ KnapsackPro::Hooks::Queue.after_subset_queue do |queue_id, subset_queue_id|
 
   puts
   puts 'Queue Batches:'
-  puts KnapsackPro::Store::Server.client.queue_batches.inspect
+  puts KnapsackPro::Store::Client.batches.inspect
 end
 
 KnapsackPro::Hooks::Queue.after_queue do |queue_id|
@@ -28,7 +28,7 @@ KnapsackPro::Hooks::Queue.after_queue do |queue_id|
 
   puts
   puts 'Queue Batches:'
-  puts KnapsackPro::Store::Server.client.queue_batches.inspect
+  puts KnapsackPro::Store::Client.batches.inspect
 end
 
 KnapsackPro::Adapters::CucumberAdapter.bind
