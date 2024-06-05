@@ -34,10 +34,20 @@ knapsack_pro_adapter = KnapsackPro::Adapters::MinitestAdapter.bind
 knapsack_pro_adapter.set_test_helper_path(__FILE__)
 
 require 'simplecov'
+
+if ENV['CI']
+  require 'simplecov_json_formatter'
+  SimpleCov.formatter = SimpleCov::Formatter::JSONFormatter
+end
+
 SimpleCov.start
 
 KnapsackPro::Hooks::Queue.before_queue do |queue_id|
   SimpleCov.command_name("minitest_ci_node_#{KnapsackPro::Config::Env.ci_node_index}")
+end
+
+KnapsackPro::Hooks::Queue.after_queue do
+  SimpleCov.result.format!
 end
 
 class ActiveSupport::TestCase
