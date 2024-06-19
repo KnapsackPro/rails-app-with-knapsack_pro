@@ -2,6 +2,13 @@ describe 'Timecop' do
   let(:time_1) { Time.local(2015, 12, 1) }
   let(:time_2) { Time.local(2016, 1, 21) }
 
+  before do
+    Timecop.travel(time_1)
+  end
+  after do
+    #Timecop.return
+  end
+
   it 'travel in time' do
     sleep 1
     Timecop.travel(time_1)
