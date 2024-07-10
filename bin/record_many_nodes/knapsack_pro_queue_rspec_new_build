@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CI_BUILD_ID=${4:-$RANDOM_CI_BUILD_ID}
+CI_BUILD_ID=$(openssl rand -base64 32)
 COMMIT_HASH=$(ruby -e "require 'securerandom'; puts SecureRandom.hex")
 
 bin/knapsack_pro_queue_rspec_record_first_run 0 2 $COMMIT_HASH $CI_BUILD_ID &
