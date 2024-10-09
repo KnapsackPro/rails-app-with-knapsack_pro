@@ -34,6 +34,10 @@ gem 'jbuilder', '~> 2.0'
 gem 'async'
 gem 'async-io'
 
+# use a legacy version which supports Ruby 3.0
+# we use this repo with Ruby 3.0 for testing the knapsack_pro gem
+gem 'fiber-local', '~> 1.0'
+
 # Fix for Ruby 3.1.x
 # https://stackoverflow.com/a/70500221/905697
 # https://github.com/mikel/mail/pull/1439

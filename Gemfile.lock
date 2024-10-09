@@ -68,10 +68,10 @@ GEM
       zeitwerk (~> 2.3)
     addressable (2.8.7)
       public_suffix (>= 2.0.2, < 7.0)
-    async (2.17.0)
-      console (~> 1.26)
-      fiber-annotation
-      io-event (~> 1.6, >= 1.6.5)
+    async (1.32.1)
+      console (~> 1.10)
+      nio4r (~> 2.3)
+      timers (~> 4.1)
     async-io (1.43.2)
       async
     async-rspec (1.17.0)
@@ -108,9 +108,9 @@ GEM
     coffee-script-source (1.12.2)
     colorize (1.1.0)
     concurrent-ruby (1.3.4)
-    console (1.27.0)
+    console (1.24.0)
       fiber-annotation
-      fiber-local (~> 1.1)
+      fiber-local
       json
     crack (1.0.0)
       bigdecimal
@@ -161,16 +161,13 @@ GEM
     execjs (2.9.1)
     ffi (1.17.0)
     fiber-annotation (0.2.0)
-    fiber-local (1.1.0)
-      fiber-storage
-    fiber-storage (1.0.0)
+    fiber-local (1.0.0)
     gherkin-ruby (0.3.2)
     globalid (1.2.1)
       activesupport (>= 6.1)
     hashdiff (1.1.1)
     i18n (1.14.6)
       concurrent-ruby (~> 1.0)
-    io-event (1.7.1)
     jbuilder (2.13.0)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
@@ -363,6 +360,7 @@ GEM
     tilt (2.4.0)
     timecop (0.9.10)
     timeout (0.4.1)
+    timers (4.3.5)
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
@@ -406,6 +404,7 @@ DEPENDENCIES
   coffee-rails
   cucumber-rails
   database_cleaner
+  fiber-local (~> 1.0)
   jbuilder (~> 2.0)
   jquery-rails
   juniter
