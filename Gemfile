@@ -50,12 +50,9 @@ gem 'fiber-local', '1.0.0'
 # https://stackoverflow.com/a/70500221/905697
 # https://github.com/mikel/mail/pull/1439
 # This can be removed after upgrade to Rails 7.x
-gem 'net-smtp'#, require: false
-#gem 'net-imap', require: false
-#gem 'net-pop', require: false
-# fix for Rails 6.1.7.10
-# https://github.com/ruby/net-pop/issues/26#issuecomment-2377936567
-#gem 'net-protocol', require: false
+gem 'net-smtp', require: false
+gem 'net-imap', require: false
+gem 'net-pop', require: false
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
