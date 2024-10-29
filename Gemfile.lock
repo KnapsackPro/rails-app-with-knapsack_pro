@@ -418,9 +418,6 @@ DEPENDENCIES
   knapsack_pro!
   listen
   mutex_m
-  net-imap
-  net-pop
-  net-smtp
   ostruct
   parallel_tests
   pg
