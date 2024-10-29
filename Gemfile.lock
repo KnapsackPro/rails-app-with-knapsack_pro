@@ -80,6 +80,7 @@ GEM
       rspec-files (~> 1.0)
       rspec-memory (~> 1.0)
     base64 (0.2.0)
+    benchmark (0.3.0)
     bigdecimal (3.1.8)
     binding_of_caller (1.0.1)
       debug_inspector (>= 1.2.0)
@@ -158,6 +159,7 @@ GEM
     debug_inspector (1.2.0)
     diff-lcs (1.5.1)
     docile (1.4.1)
+    drb (2.2.1)
     erubi (1.13.0)
     execjs (2.9.1)
     ffi (1.17.0)
@@ -202,6 +204,7 @@ GEM
     mini_portile2 (2.8.7)
     minitest (5.25.1)
     multi_test (1.1.0)
+    mutex_m (0.2.0)
     net-imap (0.5.0)
       date
       net-protocol
@@ -214,6 +217,7 @@ GEM
     nokogiri (1.16.7)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
+    ostruct (0.6.0)
     ox (2.14.18)
     parallel (1.26.3)
     parallel_tests (4.7.2)
@@ -399,21 +403,25 @@ DEPENDENCIES
   async
   async-io
   async-rspec
+  benchmark
   byebug
   capybara
   capybara-screenshot
   coffee-rails
   cucumber-rails
   database_cleaner
+  drb
   fiber-local (= 1.0.0)
   jbuilder (~> 2.0)
   jquery-rails
   juniter
   knapsack_pro!
   listen
+  mutex_m
   net-imap
   net-pop
   net-smtp
+  ostruct
   parallel_tests
   pg
   pry

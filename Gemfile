@@ -2,6 +2,14 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.1.7'
+
+# make old Rails 6 work with Ruby 3.4
+gem 'mutex_m'
+gem 'drb'
+# make old Rails 6 work with Ruby 3.5
+gem 'benchmark'
+gem 'ostruct'
+
 gem 'pg'
 gem 'tzinfo-data'
 # Use SCSS for stylesheets
