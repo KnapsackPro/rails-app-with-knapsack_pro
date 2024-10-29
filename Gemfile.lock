@@ -420,6 +420,7 @@ DEPENDENCIES
   mutex_m
   net-imap
   net-pop
+  net-protocol
   net-smtp
   ostruct
   parallel_tests
