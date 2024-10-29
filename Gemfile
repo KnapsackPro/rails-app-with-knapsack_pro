@@ -50,7 +50,7 @@ gem 'fiber-local', '1.0.0'
 # https://stackoverflow.com/a/70500221/905697
 # https://github.com/mikel/mail/pull/1439
 # This can be removed after upgrade to Rails 7.x
-#gem 'net-smtp', require: false
+gem 'net-smtp'#, require: false
 #gem 'net-imap', require: false
 #gem 'net-pop', require: false
 # fix for Rails 6.1.7.10
