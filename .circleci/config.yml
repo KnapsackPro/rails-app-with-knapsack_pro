@@ -51,8 +51,8 @@ jobs:
       - run: ./cc-test-reporter before-build
       - restore_cache:
           keys:
-          - v2-dependencies-bundler-{{ checksum "Gemfile.lock" }}
-          - v2-dependencies-bundler-
+          - v3-dependencies-bundler-{{ checksum "Gemfile.lock" }}
+          - v3-dependencies-bundler-
       - run:
           name: Install ruby dependencies
           command: |
@@ -61,7 +61,7 @@ jobs:
       - save_cache:
           paths:
             - ./vendor/bundle
-          key: v2-dependencies-bundler-{{ checksum "Gemfile.lock" }}
+          key: v3-dependencies-bundler-{{ checksum "Gemfile.lock" }}
       - run:
           name: Wait for postgres to be available
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
