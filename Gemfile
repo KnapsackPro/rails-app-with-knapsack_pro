@@ -54,7 +54,7 @@ gem 'net-smtp', require: false
 gem 'net-imap', require: false
 gem 'net-pop', require: false
 # fix for Rails 6.1.7.10
-gem 'net-protocol', require: false
+gem 'net-protocol'
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
