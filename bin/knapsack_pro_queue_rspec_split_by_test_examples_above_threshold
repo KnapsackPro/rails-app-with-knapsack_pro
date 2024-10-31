@@ -1,10 +1,5 @@
 #!/bin/bash
 
-#export KNAPSACK_PRO_LOG_LEVEL=warn
-
-# uncomment to run all tests split by examples
-#export KNAPSACK_PRO_SLOW_TEST_FILE_PATTERN="spec/**{,/*/**}/*_spec.rb"
-
 export EXTRA_TEST_FILES_DELAY=10 # seconds
 CI_BUILD_ID=$(openssl rand -base64 32)
 
