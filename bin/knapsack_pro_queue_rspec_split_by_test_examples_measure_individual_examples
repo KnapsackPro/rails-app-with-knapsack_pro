@@ -11,8 +11,8 @@ CI_BUILD_ID=${4:-$RANDOM_CI_BUILD_ID}
 COMMIT_HASH=$(ruby -e "require 'securerandom'; puts SecureRandom.hex")
 BRANCH_NAME=fake-branch
 
-export KNAPSACK_PRO_RSPEC_SPLIT_BY_TEST_EXAMPLES=true
 export KNAPSACK_PRO_LOG_LEVEL=debug
+export KNAPSACK_PRO_RSPEC_SPLIT_BY_TEST_EXAMPLES=true
 export KNAPSACK_PRO_TEST_FILE_LIST=spec/features/homepage_spec.rb[1:1],spec/collection_spec.rb,spec/features/homepage_spec.rb[1:2],spec/bar_spec.rb
 
 KNAPSACK_PRO_ENDPOINT=http://api.knapsackpro.test:3000 \
