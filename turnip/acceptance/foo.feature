@@ -1,15 +1,11 @@
-Feature: Foo 1
+Feature: Foo
   Background:
     Given I have a two
 
-  Scenario: Add one
+  Scenario: Add one (1st)
     When I add one
     Then I expect a three
 
-Feature: Foo 2
-  Background:
-    Given I have a two
-
-  Scenario: Add one
+  Scenario: Add one (2nd)
     When I add one
     Then I expect a three
