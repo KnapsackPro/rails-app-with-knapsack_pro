@@ -2,7 +2,9 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.1.5'
+gem 'mutex_m'
 gem 'pg'
+gem 'drb'
 gem 'tzinfo-data'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
