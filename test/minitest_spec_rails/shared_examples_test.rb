@@ -9,3 +9,10 @@ require 'test_helper'
     #assert true
   #end
 #end
+
+# https://github.com/metaskills/minitest-spec-rails?tab=readme-ov-file#test-styles
+#describe 'not recommended test style in minitest-spec-rails' do
+  #it 'execution time of a test with this syntax is not measured by Knapsack Pro' do
+    #expect(true).to be true
+  #end
+#end
