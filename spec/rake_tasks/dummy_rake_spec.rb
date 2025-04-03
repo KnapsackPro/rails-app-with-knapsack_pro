@@ -5,6 +5,7 @@ describe 'Dummy rake' do
     let(:task_name) { "dummy:do_something_once" }
     let(:task) { Rake::Task[task_name] }
 
+    #before(:all) do
     before do
       # clear the rake task from the memory to ensure it's not loaded multiple times
       Rake::Task[task_name].clear if Rake::Task.task_defined?(task_name)
@@ -12,10 +13,23 @@ describe 'Dummy rake' do
       # loaad the rake task only once
       Rake.load_rakefile("tasks/dummy.rake")
       Rake::Task.define_task(:environment)
+
+      # Housecall
+      #Rake.application.rake_require("tasks/dummy.rake")
+      #Rake::Task.define_task(:environment)
+
+      #Rails.application.load_tasks
+      #Rails.application.load_tasks
+      #puts "*"*50
+      #puts "Load tasks in the test"
     end
 
     after do
       Rake::Task[task_name].reenable
+
+
+      # Housecall
+      #Rake::Task[task_name].reenable
 
       # reset the state that was changed by the rake task execution
       DummyOutput.count = 0

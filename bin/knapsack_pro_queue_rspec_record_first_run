@@ -27,6 +27,8 @@ BRANCH_NAME=fake-branch
 #export KNAPSACK_PRO_RSPEC_SPLIT_BY_TEST_EXAMPLES=true
 #export KNAPSACK_PRO_LOG_LEVEL=debug
 
+RAILS_ENV=test \
+RACK_ENV=test \
 KNAPSACK_PRO_ENDPOINT=http://api.knapsackpro.test:3000 \
   KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=fec3c641a3c4d2e720fe1b6d9dd780bc \
   KNAPSACK_PRO_CI_NODE_BUILD_ID=$CI_BUILD_ID \
@@ -34,4 +36,6 @@ KNAPSACK_PRO_ENDPOINT=http://api.knapsackpro.test:3000 \
   KNAPSACK_PRO_BRANCH=$BRANCH_NAME \
   KNAPSACK_PRO_CI_NODE_TOTAL=${2:-2} \
   KNAPSACK_PRO_CI_NODE_INDEX=${1:-0} \
-  bundle exec rake "knapsack_pro:queue:rspec[--format d]"
+bundle exec rake "knapsack_pro:queue:rspec[--format d]"
+#bundle exec rake "knapsack_pro:rspec[--format d]"
+#bundle exec rake "knapsack_pro:queue:rspec_go[--format d]"

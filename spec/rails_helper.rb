@@ -4,6 +4,10 @@ require 'spec_helper'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rspec/rails'
 
+#unless ENV['CI']
+  #Rails.application.load_tasks
+#end
+
 require 'capybara/rspec'
 require 'capybara-screenshot/rspec'
 require 'timecop'
