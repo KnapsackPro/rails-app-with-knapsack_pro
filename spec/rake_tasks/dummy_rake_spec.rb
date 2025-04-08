@@ -5,44 +5,52 @@ describe 'Dummy rake' do
     let(:task_name) { "dummy:do_something_once" }
     let(:task) { Rake::Task[task_name] }
 
-    #before(:all) do
-    before do
-      # clear the rake task from the memory to ensure it's not loaded multiple times
-      Rake::Task[task_name].clear if Rake::Task.task_defined?(task_name)
+    context 'when Rake.application.rake_require is used to load rake task' do
+      before do
+        Rake.application.rake_require("tasks/dummy")
+        Rake::Task.define_task(:environment)
+      end
 
-      # loaad the rake task only once
-      Rake.load_rakefile("tasks/dummy.rake")
-      Rake::Task.define_task(:environment)
+      after do
+        Rake::Task[task_name].reenable
 
-      # Housecall
-      #Rake.application.rake_require("tasks/dummy.rake")
-      #Rake::Task.define_task(:environment)
+        # reset the state that was changed by the rake task execution
+        DummyOutput.count = 0
+      end
 
-      #Rails.application.load_tasks
-      #Rails.application.load_tasks
-      #puts "*"*50
-      #puts "Load tasks in the test"
+      it "calls the rake task once (increases counter by one)" do
+        expect { task.invoke }.to_not raise_error
+        expect(DummyOutput.count).to eq(1)
+      end
+
+      it "calls the rake task once again (increases counter by one)" do
+        expect { task.invoke }.to_not raise_error
+        expect(DummyOutput.count).to eq(1)
+      end
     end
 
-    after do
-      Rake::Task[task_name].reenable
+    context 'when Rake.load_rakefile is used to load rake task' do
+      before(:all) do # all must be used to ensure rake task is loaded only once
+        Rake.load_rakefile("tasks/dummy.rake")
+        Rake::Task.define_task(:environment)
+      end
 
+      after do
+        Rake::Task[task_name].reenable
 
-      # Housecall
-      #Rake::Task[task_name].reenable
+        # reset the state that was changed by the rake task execution
+        DummyOutput.count = 0
+      end
 
-      # reset the state that was changed by the rake task execution
-      DummyOutput.count = 0
-    end
+      it "calls the rake task once (increases counter by one)" do
+        expect { task.invoke }.to_not raise_error
+        expect(DummyOutput.count).to eq(1)
+      end
 
-    it "calls the rake task once (increases counter by one)" do
-      expect { task.invoke }.to_not raise_error
-      expect(DummyOutput.count).to eq(1)
-    end
-
-    it "calls the rake task once again (increases counter by one)" do
-      expect { task.invoke }.to_not raise_error
-      expect(DummyOutput.count).to eq(1)
+      it "calls the rake task once again (increases counter by one)" do
+        expect { task.invoke }.to_not raise_error
+        expect(DummyOutput.count).to eq(1)
+      end
     end
   end
 end
