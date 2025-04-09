@@ -17,14 +17,11 @@ describe 'Another dummy rake' do
         AnotherDummyOutput.count = 0
       end
 
-      it "calls the rake task once (increases counter by one)" do
-        expect { task.invoke }.to_not raise_error
-        expect(AnotherDummyOutput.count).to eq(1)
-      end
-
-      it "calls the rake task once again (increases counter by one)" do
-        expect { task.invoke }.to_not raise_error
-        expect(AnotherDummyOutput.count).to eq(1)
+      2.times do
+        it "calls the rake task (increases counter by one)" do
+          expect { task.invoke }.to_not raise_error
+          expect(AnotherDummyOutput.count).to eq(1)
+        end
       end
     end
   end
