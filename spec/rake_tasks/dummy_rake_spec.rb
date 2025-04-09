@@ -5,7 +5,7 @@ describe 'Dummy rake' do
     let(:task_name) { "dummy:do_something_once" }
     let(:task) { Rake::Task[task_name] }
 
-    context 'when Rake.application.rake_require is used to load rake task' do
+    context 'when Rake.application.rake_require is used to load the rake task' do
       before do
         Rake.application.rake_require("tasks/dummy")
         Rake::Task.define_task(:environment)
@@ -14,7 +14,6 @@ describe 'Dummy rake' do
       after do
         Rake::Task[task_name].reenable
 
-        # reset the state that was changed by the rake task execution
         DummyOutput.count = 0
       end
 

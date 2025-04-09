@@ -5,7 +5,7 @@ describe 'Another dummy rake' do
     let(:task_name) { "another_dummy:do_something_once" }
     let(:task) { Rake::Task[task_name] }
 
-    context 'when Rake.load_rakefile is used to load rake task' do
+    context 'when Rake.load_rakefile is used to load the rake task' do
       before(:all) do # :all must be used to ensure the rake task is loaded only once
         Rake.load_rakefile("tasks/another_dummy.rake")
         Rake::Task.define_task(:environment)
