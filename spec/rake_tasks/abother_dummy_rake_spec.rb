@@ -14,7 +14,6 @@ describe 'Another dummy rake' do
       after do
         Rake::Task[task_name].reenable
 
-        # reset the state that was changed by the rake task execution
         AnotherDummyOutput.count = 0
       end
 
