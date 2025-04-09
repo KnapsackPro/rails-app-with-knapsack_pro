@@ -72,7 +72,9 @@ group :development, :test do
     #gem 'knapsack_pro', github: 'KnapsackPro/knapsack_pro-ruby', branch: 'rspec-queue-mode-record-timing-fix'
   end
 
-  gem 'test-unit-rails'
+  unless ENV["MINITEST"]
+    gem 'test-unit-rails'
+  end
 
   gem 'listen'
 end
