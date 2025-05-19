@@ -111,7 +111,7 @@ if ENV['KNAPSACK_PRO_RSPEC_SPLIT_BY_TEST_EXAMPLES']
     # use the following bin script to test this scenario:
     # bin/knapsack_pro_queue_rspec_split_by_test_examples_test_example_detector_prefix
     # test following env var should be set only when running RSpec in dry run by knapsack_pro:rspec_test_example_detector rake task to generate test examples JSON report
-    env_var_passed_via_detector_prefix = "off_CUSTOM_VARIABLE_FOR_RSPEC_TEST_EXAMPLE_DETECTOR=#{ENV['CUSTOM_VARIABLE_FOR_RSPEC_TEST_EXAMPLE_DETECTOR']}"
+    env_var_passed_via_detector_prefix = "CUSTOM_VARIABLE_FOR_RSPEC_TEST_EXAMPLE_DETECTOR=#{ENV['CUSTOM_VARIABLE_FOR_RSPEC_TEST_EXAMPLE_DETECTOR']}"
     puts env_var_passed_via_detector_prefix
     File.write(env_var_passed_via_detector_prefix_path, env_var_passed_via_detector_prefix)
   else
