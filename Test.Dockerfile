@@ -1,4 +1,4 @@
-FROM ruby:3.4.5-alpine3.20
+FROM ruby:3.4.5-alpine3.22
 
 # Prepare Docker image for Nokogiri
 RUN apk add --update \
