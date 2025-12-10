@@ -12,7 +12,7 @@
 export EXTRA_TEST_FILES_DELAY=10 # seconds
 CI_BUILD_ID=$(openssl rand -base64 32)
 
-KNAPSACK_PRO_ENDPOINT=http://api.knapsackpro.test:3000 \
+KNAPSACK_PRO_ENDPOINT=http://api.knapsackpro.localhost:3000 \
   KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=a28ce51204d7c7dbd25c3352fea222cf \
   KNAPSACK_PRO_CI_NODE_TOTAL=${2:-2} \
   KNAPSACK_PRO_CI_NODE_INDEX=${1:-0} \

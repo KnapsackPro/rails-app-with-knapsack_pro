@@ -2,7 +2,7 @@
 
 CI_BUILD_ID=$(openssl rand -base64 32)
 
-KNAPSACK_PRO_ENDPOINT=http://api.knapsackpro.test:3000 \
+KNAPSACK_PRO_ENDPOINT=http://api.knapsackpro.localhost:3000 \
   KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=7f558f2ec21f9fffeb6ccb2e998dc3e5 \
   KNAPSACK_PRO_REPOSITORY_ADAPTER=git \
   KNAPSACK_PRO_PROJECT_DIR=. \
